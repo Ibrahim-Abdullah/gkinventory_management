@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+			<div id="header-top" class="row">
+				<div class="col-md-1">
+					<img src="images/gklogo.png" style="height:30px";>
+				</div>
+				<div class="header-top">
+					<div class="col-md-2 col-md-offset-7 header-user">
+						<a href="#">example@Genkey.com</a>
+					</div>
+					<div class="col-md-1 header-logout">
+						<a href="index.html">Log out</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="header-tab" class="row header-tab">
+				<ul class="nav nav-tabs nav-justified">
+  					<li><a data-toggle="tab" href="item-management.html">Item Management</a></li>
+  					<li><a data-toggle="tab" href="employee-management.html">Employee Management</a></li>
+  					<li><a data-toggle="tab" href="#">User Profile Management</a></li>
+				</ul>
+			</div>
+
+		<!--header end-->
+		<!--Content-->
+	<div id="filter-row" class="container filter-row">
+		<h3 class="text-center">Edit Item</h3>
+	</div>
+	<div id="table-row" class="container">
+		<form role="form" class="form-horizontal">
+			<div class="form-group">
+		    	<label class="control-label col-sm-2 col-md-offset-1" for="serial_number">Serial Number:</label>
+		    	<div class="col-sm-6">
+		      		<input type="text" class="form-control" id="serial_number" disabled value="xxxxxxxxxx">
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="control-label col-sm-2 col-md-offset-1" for="gk_label">GK Label</label>
+		    	<div class="col-sm-6"> 
+		      		<input type="text" class="form-control" id="gk_label">
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="control-label col-sm-2 col-md-offset-1">Type</label>
+		    	<div class="col-sm-6"> 
+		      		<select class="form-control">
+		      			<option>Select</option>
+		      			<option>Laptop</option>
+		      			<option>Desktop</option>
+		      			<option>Keyboard</option>
+		      			<option>Mouse</option>
+		      			<option>Mobile Phone</option>
+		      		</select>
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="control-label col-sm-2 col-md-offset-1">Status</label>
+		    	<div class="col-sm-6"> 
+		      		<select class="form-control">
+		      			<option>Select</option>
+		      			<option>Working</option>
+		      			<option>Not working</option>
+		      		</select>
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="control-label col-sm-2 col-md-offset-1" for="model">Model</label>
+		    	<div class="col-sm-6"> 
+		      		<input type="text" class="form-control" id="model">
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="control-label col-sm-2 col-md-offset-1" for="brand">Brand</label>
+		    	<div class="col-sm-6"> 
+		      		<input type="text" class="form-control" id="brand">
+		    	</div>
+		  	</div>
+		  <div class="form-group">
+		  		<label class="control-label col-sm-2 col-md-offset-1" for="comment">Comment</label>
+		  		<div class="col-sm-6">
+		  			<textarea rows="2" class="form-control">
+		  				
+		  			</textarea>
+		  		</div>
+		  </div>	
+		  <div class="form-group"> 
+		    <div class="col-sm-offset-4 col-sm-3">
+		      <button type="submit" name="add" class="btn btn-success">Save</button>
+		    </div>
+		    <div class="col-sm-3">
+		    	<button type="submit" name="cancel" class="btn btn-danger">Cancel</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+
+	<!--Content end-->
+	<!--footer-->
+	<div class="footer-bottom">
+		<div class="col-md-3 col-md-offset-4 footer-class">
+			<p>GenKey Africa, Ghana @ 2017</p>
+		</div>
+	</div>
+
+</body>
+</html>

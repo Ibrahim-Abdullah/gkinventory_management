@@ -1,28 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html >
 <head>
-	
-	<title>Insert title here</title>
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	
-	<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-	<link href="<c:url value ="webjars/bootstrap/3.3.6/css/bootstrap.min.css"/>" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Login</title>
+   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+  <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 </head>
+
 <body>
-	<div class="wrapper">
-	    <form class="form-signin">       
-	      	<h2 class="form-signin-heading">Please login</h2>
-	      	<input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-	      	<input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
-	      	<label class="checkbox">
-	        	<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-	      	</label>
-	      	<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
-	    </form>
-  	</div>
-  <script type="text/javascript" src="<c:url value="webjars/jquery/3.2.1/jquery.min.js"/>"></script>
-  <script type="text/javascript" src="<c:url value="webjars/bootstrap/3.3.6/js/bootstrap.min.js"/>"></script>
+  <div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">Email</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="hr"></div>
+				<div class="group">
+					<input type="submit" class="button" value="Sign In">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  
+  
 </body>
 </html>
