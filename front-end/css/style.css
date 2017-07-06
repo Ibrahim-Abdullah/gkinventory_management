@@ -70,11 +70,15 @@ ul.nav-tabs li
 	font-size: 25;
 	background-color: #999999;
 	color: #003748;
-	border-right: 2px solid black;
 }
 .nav>li>a
 {
 	padding: 3.6%;
+}
+
+#tab-content
+{
+	height: 75%;
 }
 #filter-row
 {

@@ -23,14 +23,18 @@
 
 			<div id="header-tab" class="row header-tab">
 				<ul class="nav nav-tabs nav-justified">
-  					<li><a data-toggle="tab" href="item-management.html">Item Management</a></li>
-  					<li><a data-toggle="tab" href="employee-management.html">Employee Management</a></li>
-  					<li><a data-toggle="tab" href="user-profile.html">User Profile Management</a></li>
+  					<li class="active"><a data-toggle="tab" href="#item-management">Item Management</a></li>
+  					<li><a data-toggle="tab" href="#employee-management">Employee Management</a></li>
+  					<li><a data-toggle="tab" href="#user-profile-management">User Profile Management</a></li>
 				</ul>
 			</div>
 
 		<!--heade end-->
 		<!--Content-->
+	<div class="tab-content" id="tab-content">
+
+	<!--Item Management Section-->
+	<div class="tab-pane fade in active" id="item-management">
 	<div id="filter-row" class="container filter-row">
 		<div class="row">
 			<div class="col-md-6">
@@ -47,7 +51,7 @@
 				</form>
 			</div>
 			<div class="btn-group btn-group-xs tble-buttons col-md-offset-4">
-				<a href="add-newItem.html"><button type="button" class="btn btn-lg btn-success add-new"> Add New Item</button></a>
+				<a href="#addnewitem" data-toggle="modal"><button type="button" class="btn btn-lg btn-success add-new"> Add New Item</button></a>
 			</div>
 		</div>
 	</div>
@@ -72,10 +76,10 @@
 					        	<td>Working</td>
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  	<a href="view-item.html"><button type="button" class="btn btn-black btn-sm">View</button></a>
+									  	<a href="#viewItem" data-toggle="modal"><button type="button" class="btn btn-black btn-sm">View</button></a>
 									  	<a><button type="button" class="btn btn-info btn-sm">Assign</button></a>
-									  	<a href="edit-Item.html"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
-									  	<a href="#delete" data-toggle="modal"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+									  	<a href="#editItem" data-toggle="modal"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+									  	<a href="#deleteItem" data-toggle="modal"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>
@@ -119,7 +123,113 @@
   				</table>
 			</div>
 		</div>
+	</div>
+	</div>
 
+	<!--Employee Management Section-->
+	<div class="tab-pane fade" id="employee-management">
+		<!--heade end-->
+	<div id="filter-row" class="container filter-row">
+		<div class="row">
+			<div class="col-md-6 col-sm-3">
+				<form role="form" class="form-inline form-element">
+					<div class="col-md-3 form-group">
+						<select class="form-control">
+							<option>Filter Employees</option>
+							<option>Administration</option>
+							<option>Developers</option>
+							<option>Support and Operations</option>
+							<option>Quality Assurance</option>
+							<option>Logistics and Tranportation</option>
+						</select>
+					</div>
+				</form>
+			</div>
+			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-2">
+				<a href="add-newemployee.html"><button type="button" class="btn btn-lg btn-success add-new">New Employee</button></a>
+			</div>
+		</div>
+	</div>
+	<div id="table-row" class="container">
+		<div class="row table-row">
+			<div class="table-responsive">
+  				<table class="table table-hover table-bordered">
+ 					<thead>
+      					<tr>
+						    <th>First name</th>
+						    <th>Last name</th>
+						    <th>Department</th>
+						    <th>Permission</th>
+						    <th>Action</th>
+					    </tr>
+					</thead>
+					    <tbody>
+					      	<tr>
+					        	<td>Kwesi</td>
+					        	<td>Mensah</td>
+					        	<td>Developers</td>
+					        	<td>Admin</td>
+					        	<td>
+									<div class="btn-group btn-group-xs tble-buttons">
+									  <a href="view-employee.html"><button type="button" class="btn btn-sm btn-black">View</button></a>
+									  <a><button type="button" class="btn btn-sm btn-info">Make Admin</button></a>
+									  <a href="edit-employee.html"><button type="button" class="btn btn-sm btn-primary">Edit</button></a>
+									  <a href="#"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+									</div>
+					        	</td>
+					      	</tr>
+					      	<tr>
+					        	<td>Kwesi</td>
+					        	<td>Mensah</td>
+					        	<td>Developers</td>
+					        	<td>Admin</td>
+					        	<td></td>
+
+					      	</tr>
+					      	<tr>
+					        	<td>Kwesi</td>
+					        	<td>Mensah</td>
+					        	<td>Developers</td>
+					        	<td>Admin</td>
+					        	<td></td>
+					      	</tr>
+					      	<tr>
+					        	<td>Kwesi</td>
+					        	<td>Mensah</td>
+					        	<td>Developers</td>
+					        	<td>Admin</td>
+					        	<td></td>
+					      	</tr>
+					      	<tr>
+					        	<td>Kwesi</td>
+					        	<td>Mensah</td>
+					        	<td>Developers</td>
+					        	<td>Admin</td>
+					        	<td></td>
+					      	</tr>
+					      	<tr>
+					        	<td>Kwesi</td>
+					        	<td>Mensah</td>
+					        	<td>Developers</td>
+					        	<td>Admin</td>
+					        	<td></td>
+					      	</tr>					   
+					    </tbody>
+  				</table>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<!--User profile management section-->
+	<div class="tab-pane fade" id="user-profile-management">
+		<div id="filter-row" class="container filter-row">
+			<h3 class="text-center">User Profile</h3>
+		</div>
+		<div id="table-row" class="container">
+
+		</div>
+	</div>
 	</div>
 	<!--Content end-->
 	<!--footer-->
@@ -128,6 +238,200 @@
 			<p>GenKey Africa, Ghana @ 2017</p>
 		</div>
 	</div>
+
+	<!--ADD NEW ITEM MODAL-->
+	<div id="addnewitem" class="modal fade">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h5 class="Save Edited Item">Editing Item</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          				<span aria-hidden="true">&times;</span>
+       				</button>
+      			</div>
+      			<div class="modal-body">
+					<form role="form" class="form-horizontal">
+						<div class="form-group">
+		    				<label class="control-label col-sm-2 col-md-offset-1" for="serial_number">Serial Number:</label>
+		    				<div class="col-sm-6">
+		      					<input type="text" class="form-control" id="serial_number">
+		    				</div>
+		  				</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1" for="gk_label">GK Label</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="gk_label">
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1">Type</label>
+					    	<div class="col-sm-6"> 
+					      		<select class="form-control">
+					      			<option>Select</option>
+					      			<option>Laptop</option>
+					      			<option>Desktop</option>
+					      			<option>Keyboard</option>
+					      			<option>Mouse</option>
+					      			<option>Mobile Phone</option>
+					      		</select>
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1">Status</label>
+					    	<div class="col-sm-6"> 
+					      		<select class="form-control">
+					      			<option>Select</option>
+					      			<option>Working</option>
+					      			<option>Not working</option>
+					      		</select>
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1" for="model">Model</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="model">
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1" for="brand">Brand</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="brand">
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					  		<label class="control-label col-sm-2 col-md-offset-1" for="comment">Comment</label>
+					  		<div class="col-sm-6">
+					  			<textarea rows="2" class="form-control">
+					  				
+					  			</textarea>
+					  		</div>
+					  	</div>	
+					</form>
+				</div>
+				<div class="modal-footer">
+        			<button type="button" class="btn btn-primary">Save changes</button>
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      			</div>
+      		</div>
+    	</div>
+  	</div>
+	<!--END OF ADD NEW ITEM MODAL-->
+
+	<!--EDIT ITEM MODAL -->
+	<div id="editItem" class="modal fade">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h5 class="Save Edited Item">Editing Item</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          				<span aria-hidden="true">&times;</span>
+       				</button>
+      			</div>
+      			<div class="modal-body">
+					<form role="form" class="form-horizontal">
+						<div class="form-group">
+		    				<label class="control-label col-sm-2 col-md-offset-1" for="serial_number">Serial Number:</label>
+		    				<div class="col-sm-6">
+		      					<input type="text" class="form-control" id="serial_number" disabled value="xxxxxxxxxx">
+		    				</div>
+		  				</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1" for="gk_label">GK Label</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="gk_label">
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1">Type</label>
+					    	<div class="col-sm-6"> 
+					      		<select class="form-control">
+					      			<option>Select</option>
+					      			<option>Laptop</option>
+					      			<option>Desktop</option>
+					      			<option>Keyboard</option>
+					      			<option>Mouse</option>
+					      			<option>Mobile Phone</option>
+					      		</select>
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1">Status</label>
+					    	<div class="col-sm-6"> 
+					      		<select class="form-control">
+					      			<option>Select</option>
+					      			<option>Working</option>
+					      			<option>Not working</option>
+					      		</select>
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1" for="model">Model</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="model">
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-2 col-md-offset-1" for="brand">Brand</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="brand">
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					  		<label class="control-label col-sm-2 col-md-offset-1" for="comment">Comment</label>
+					  		<div class="col-sm-6">
+					  			<textarea rows="2" class="form-control">
+					  				
+					  			</textarea>
+					  		</div>
+					  	</div>	
+					</form>
+				</div>
+				<div class="modal-footer">
+        			<button type="button" class="btn btn-primary">Save changes</button>
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      			</div>
+      		</div>
+    	</div>
+  	</div>
+
+  	<!--DELETE ITEM MODAL-->
+	<div id="deleteItem" class="modal fade">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+      				<h5>Delete Item</h5>
+      			</div>
+      			<div class="modal-body">
+      				<p>Confirm deleting Item with GenKey Label XXXXXXX</p>
+      			</div>
+      			<div class="modal-footer">
+      				<button type="button" class="btn btn-danger">Delete</button>
+      				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      			</div>
+      		</div>
+      	</div>
+    </div>
+
+    <!--END OF DELETE ITEM MODAL-->
+
+    <!--VIEW ITEM MODAL-->
+    <div id="viewItem" class="modal fade">
+    	<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h5>Item detail</h5>
+    			</div>
+    			<div class="modal-body">
+    				
+    			</div>
+	    		<div  class="modal-footer">
+	    			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	    		</div>
+    		</div>
+    	</div>
+    	
+    </div>
+    <!--END OF VIEW ITEM MODAL-->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
