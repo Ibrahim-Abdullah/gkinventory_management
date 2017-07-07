@@ -73,7 +73,7 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
+		<!-- Bootstrap and Jquery web jar -->
 		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
 		<dependency>
 		    <groupId>org.webjars</groupId>
@@ -92,6 +92,15 @@
 		    <artifactId>jquery</artifactId>
 		    <version>3.2.1</version>
 		</dependency>
+		
+		<!--Postgrss Database-->
+		<!-- https://mvnrepository.com/artifact/org.cloudhoist/postgres -->
+		<dependency>
+		    <groupId>org.cloudhoist</groupId>
+		    <artifactId>postgres</artifactId>
+		    <version>0.6.2</version>
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>

@@ -11,7 +11,7 @@
 <body>
 		<!--header-->
 			<div id="header-top" class="row">
-				<div class="header-user">
+				<div class="header-user" id="header-user">
 					<div class="col-md-2 col-md-offset-9">kwesi.mensah@GenKey.com</div>
 				</div>
 					<div class="col-md-1 header-logout">
@@ -48,8 +48,8 @@
 					</div>
 				</form>
 			</div>
-			<div class="btn-group btn-group-xs tble-buttons col-md-offset-4">
-				<a href="#addnewitem" data-toggle="modal"><button type="button" class="btn btn-lg btn-success add-new">Add New Item</button></a>
+			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-2">
+				<a href="#addnewitem" data-toggle="modal"><button type="button" class="btn btn-sm btn-primary add-new">New Item</button></a>
 			</div>
 		</div>
 	</div>
@@ -72,13 +72,13 @@
 					        	<td>xxxxxx</td>
 					        	<td>Laptop</td>
 					        	<td>Working</td>
-					        	
+
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  	<a href="#viewItem" data-toggle="modal"><button type="button" class="btn btn-black btn-sm">View</button></a>
-									  	<a><button type="button" class="btn btn-info btn-sm">Assign</button></a>
-									  	<a href="#editItem" data-toggle="modal"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
-									  	<a href="#deleteItem" data-toggle="modal"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+									  	<a href="#viewItem" data-toggle="modal"><button type="button" class="btn black-background btn-sm">View</button></a>
+									  	<a><button type="button" class="btn black-background btn-sm">Assign</button></a>
+									  	<a href="#editItem" data-toggle="modal"><button type="button" class="btn black-background btn-sm">Edit</button></a>
+									  	<a href="#deleteItem" data-toggle="modal"><button type="button" class="btn black-background btn-sm">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>
@@ -145,7 +145,7 @@
 				</form>
 			</div>
 			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-2">
-				<a href="#addnewemployee" data-toggle="modal"><button type="button" class="btn btn-lg btn-success add-new">New Employee</button></a>
+				<a href="#addnewemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-primary add-new">New Employee</button></a>
 			</div>
 		</div>
 	</div>
@@ -170,10 +170,10 @@
 					        	<td>Admin</td>
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  <a href="#viewemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-black">View</button></a>
-									  <a href="#makeadmin" data-toggle="modal"><button type="button" class="btn btn-sm btn-info">Make Admin</button></a>
-									  <a href="#editemployee" data-toggle="modal" ><button type="button" class="btn btn-sm btn-primary">Edit</button></a>
-									  <a href="#deleteemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+									  <a href="#viewemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-black black-background">View</button></a>
+									  <a href="#makeadmin" data-toggle="modal"><button type="button" class="btn btn-sm btn-black black-background">Make User</button></a>
+									  <a href="#editemployee" data-toggle="modal" ><button type="button" class="btn btn-sm btn-black black-background">Edit</button></a>
+									  <a href="#deleteemployee" data-toggle="modal"><button type="button" class="btn btn-sm black-background">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>
@@ -222,10 +222,16 @@
 
 	<!--USER PROFILE MANAGEMENT SECTION-->
 	<div class="tab-pane fade" id="user-profile-management">
-		<div id="filter-row" class="container filter-row">
-			<h3 class="text-center">User Profile</h3>
+	<div id="filter-row" class="container filter-row">
+		<div class="row">
+			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-8">
+				<a href="#editemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-primary add-new">Edit Profile</button></a>
+			</div>
 		</div>
-		<div id="table-row" class="container">
+	</div>
+	<div id="table-row" class="container">
+		<div class="row table-row">
+			<div class="table-responsive">
     				<table class="table table-hover table-bordered">
     					<tbody>
     						<tr>
@@ -251,38 +257,9 @@
     						</tr>    						
     					</tbody>
     				</table>
-    				<hr>
-    				<h5>Assigned Items</h5>
-    				<table class="table table-hover">
-    					<tbody>
-    						<thead>
-    							<tr>
-    								<td>Type</td>
-    								<td>GK Label</td>
-    								<td>Action</td>
-    							</tr>
-    						</thead>
-    						<tr>
-    							<td>Laptop</td>
-    							<td>xxxxxxx</td>
-    							<td><a href="#unassignitem" data-toggle="modal"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
-    						</tr>
-    						<tr>
-    							<td>Laptop</td>
-    							<td>xxxxxxx</td>
-    							<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
-    						</tr>
-     						<tr>
-    							<td>Laptop</td>
-    							<td>xxxxxxx</td>
-    							<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
-    						</tr>
-    					</tbody>
-    				</table>
-    		<div class="row">
-    			<a href="#editemployee" data-toggle="modal" class="col-md-offset-5"><button class="btn btn-sm btn-primary">Edit Profile</button></a>
-    		</div>
+			</div>
 		</div>
+	</div>
 	</div>
 	</div>
 	<!--Content end-->
@@ -481,7 +458,7 @@
       				<p>Confirm deleting Item with GenKey Label XXXXXXX</p>
       			</div>
       			<div class="modal-footer">
-      				<button type="button" class="btn btn-danger">Delete</button>
+      				<button type="button" class="btn btn-primary">Confirm</button>
       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       			</div>
       		</div>
@@ -695,7 +672,7 @@
       				<p>Confirm deleting of Employee identified as Kwesi Mensah</p>
       			</div>
       			<div class="modal-footer">
-      				<button type="button" class="btn btn-danger">Delete</button>
+      				<button type="button" class="btn btn-primary">Confirm</button>
       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       			</div>
       		</div>
@@ -786,7 +763,7 @@
       				<p>Confirm making Employee identified as Kwesi Mensah and ADMIN USER</p>
       			</div>
       			<div class="modal-footer">
-      				<button type="button" class="btn btn-danger">Confirm</button>
+      				<button type="button" class="btn btn-primary">Confirm</button>
       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       			</div>
       		</div>
