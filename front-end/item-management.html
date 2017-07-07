@@ -12,13 +12,11 @@
 		<!--header-->
 			<div id="header-top" class="row">
 				<div class="header-user">
-					<div class="col-md-2 col-md-offset-8">
-						<a href="user-profile.html">example@Genkey.com</a>
-					</div>
+					<div class="col-md-2 col-md-offset-9">kwesi.mensah@GenKey.com</div>
+				</div>
 					<div class="col-md-1 header-logout">
 						<a href="index.html">Log out</a>
 					</div>
-				</div>
 			</div>
 
 			<div id="header-tab" class="row header-tab">
@@ -30,7 +28,7 @@
 			</div>
 
 		<!--heade end-->
-		<!--Content-->
+		<!--Content--> 
 	<div class="tab-content" id="tab-content">
 
 	<!--Item Management Section-->
@@ -51,7 +49,7 @@
 				</form>
 			</div>
 			<div class="btn-group btn-group-xs tble-buttons col-md-offset-4">
-				<a href="#addnewitem" data-toggle="modal"><button type="button" class="btn btn-lg btn-success add-new"> Add New Item</button></a>
+				<a href="#addnewitem" data-toggle="modal"><button type="button" class="btn btn-lg btn-success add-new">Add New Item</button></a>
 			</div>
 		</div>
 	</div>
@@ -126,7 +124,7 @@
 	</div>
 	</div>
 
-	<!--Employee Management Section-->
+	<!--EPLOYEE MANAGEMENT TAB SECTION-->
 	<div class="tab-pane fade" id="employee-management">
 		<!--heade end-->
 	<div id="filter-row" class="container filter-row">
@@ -146,7 +144,7 @@
 				</form>
 			</div>
 			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-2">
-				<a href="add-newemployee.html"><button type="button" class="btn btn-lg btn-success add-new">New Employee</button></a>
+				<a href="#addnewemployee" data-toggle="modal"><button type="button" class="btn btn-lg btn-success add-new">New Employee</button></a>
 			</div>
 		</div>
 	</div>
@@ -171,10 +169,10 @@
 					        	<td>Admin</td>
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  <a href="view-employee.html"><button type="button" class="btn btn-sm btn-black">View</button></a>
+									  <a href="#viewemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-black">View</button></a>
 									  <a><button type="button" class="btn btn-sm btn-info">Make Admin</button></a>
-									  <a href="edit-employee.html"><button type="button" class="btn btn-sm btn-primary">Edit</button></a>
-									  <a href="#"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+									  <a href="#editemployee" data-toggle="modal" ><button type="button" class="btn btn-sm btn-primary">Edit</button></a>
+									  <a href="#deleteemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>
@@ -221,7 +219,7 @@
 	</div>
 	</div>
 
-	<!--User profile management section-->
+	<!--USER PROFILE MANAGEMENT SECTION-->
 	<div class="tab-pane fade" id="user-profile-management">
 		<div id="filter-row" class="container filter-row">
 			<h3 class="text-center">User Profile</h3>
@@ -232,12 +230,14 @@
 	</div>
 	</div>
 	<!--Content end-->
+
 	<!--footer-->
 	<div class="footer-bottom">
 		<div class="col-md-3 col-md-offset-4 footer-class">
 			<p>GenKey Africa, Ghana @ 2017</p>
 		</div>
 	</div>
+	<!--End of footer-->
 
 	<!--ADD NEW ITEM MODAL-->
 	<div id="addnewitem" class="modal fade">
@@ -432,6 +432,180 @@
     	
     </div>
     <!--END OF VIEW ITEM MODAL-->
+
+    <!--ADD NEW EMPLOYEE MODAL-->
+    <div id="addnewemployee" class="modal fade">
+    	<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header"> 
+    				<h5>Add New Employee Form</h5>
+    			</div>
+    			<div class="modal-body">
+							<form role="form" class="form-horizontal">
+								<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1" for="firstname">First name</label>
+							    	<div class="col-sm-6">
+							      		<input type="text" class="form-control" id="firstname">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1" for="lastname">Last name</label>
+							    	<div class="col-sm-6"> 
+							      		<input type="text" class="form-control" id="lastname">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1" for="email">Email</label>
+							    	<div class="col-sm-6"> 
+							      		<input type="Email" class="form-control" id="email">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1">Department</label>
+							    	<div class="col-sm-6"> 
+							      		<select class="form-control">
+							      			<option>Select</option>
+							      			<option>Administration</option>
+							      			<option>Developers</option>
+							      			<option>Operations and Support</option>
+							      			<option>Quality Assurance</option>
+							      			<option>Logistics and Transport</option>
+							      		</select>
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1" for="employee_id">Employee ID</label>
+							    	<div class="col-sm-6"> 
+							      		<input type="text" class="form-control" id="employee_id">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1">Permission</label>
+							    	<div class="col-sm-6"> 
+							      		<select class="form-control">
+							      			<option>Select</option>
+							      			<option>Admin</option>
+							      			<option>Not Admin</option>
+							      		</select>
+							    	</div>
+							  	</div>	
+							</form>
+					</div>
+    			<div class="modal-footer">
+       				<button type="button" class="btn btn-primary">Add</button>
+      				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <!--END OF ADD NEW EMPLOYEE MODAL-->
+
+    <!--EDIT EMPLOYEE MODAL-->
+    <div id="editemployee" class="modal fade">
+    	<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header"> 
+    				<h5>Edit Employee Form</h5>
+    			</div>
+    			<div class="modal-body">
+							<form role="form" class="form-horizontal">
+								<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1" for="firstname">First name</label>
+							    	<div class="col-sm-6">
+							      		<input type="text" class="form-control" id="firstname">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1" for="lastname">Last name</label>
+							    	<div class="col-sm-6"> 
+							      		<input type="text" class="form-control" id="lastname">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1" for="email">Email</label>
+							    	<div class="col-sm-6"> 
+							      		<input type="Email" class="form-control" id="email">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1">Department</label>
+							    	<div class="col-sm-6"> 
+							      		<select class="form-control">
+							      			<option>Select</option>
+							      			<option>Administration</option>
+							      			<option>Developers</option>
+							      			<option>Operations and Support</option>
+							      			<option>Quality Assurance</option>
+							      			<option>Logistics and Transport</option>
+							      		</select>
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1" for="employee_id">Employee ID</label>
+							    	<div class="col-sm-6"> 
+							      		<input type="text" class="form-control" id="employee_id">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							    	<label class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1">Permission</label>
+							    	<div class="col-sm-6"> 
+							      		<select class="form-control">
+							      			<option>Select</option>
+							      			<option>Admin</option>
+							      			<option>Not Admin</option>
+							      		</select>
+							    	</div>
+							  	</div>	
+							</form>
+					</div>
+    			<div class="modal-footer">
+       				<button type="button" class="btn btn-primary">Add</button>
+      				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!--END OF EDIT EMPLOYEE MODAL-->
+
+  	<!--DELETE EMPLOYEE MODAL-->
+	<div id="deleteemployee" class="modal fade">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+      				<h5>Deleting Employee</h5>
+      			</div>
+      			<div class="modal-body">
+      				<p>Confirm deleting of Employee identified as Kwesi Mensah</p>
+      			</div>
+      			<div class="modal-footer">
+      				<button type="button" class="btn btn-danger">Delete</button>
+      				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      			</div>
+      		</div>
+      	</div>
+    </div>
+
+    <!--END OF DELETE EMPLOYEE MODAL-->
+
+    <!--VIEW EMPLOYEE MODAL-->
+    <div id="viewemployee" class="modal fade">
+    	<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h5>Employee Profile</h5>
+    			</div>
+    			<div class="modal-body">
+    				
+    			</div>
+	    		<div  class="modal-footer">
+	    			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	    		</div>
+    		</div>
+    	</div>
+    	
+    </div>
+    <!--END OF VIEW EMPLOYEE MODAL-->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
