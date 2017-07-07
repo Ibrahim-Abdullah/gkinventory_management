@@ -9,36 +9,32 @@
 <body>
 		<!--header-->
 			<div id="header-top" class="row">
-				<div class="col-md-1">
-					<img src="images/gklogo.png" style="height:30px";>
-				</div>
-				<div class="header-top">
-					<div class="col-md-2 col-md-offset-7 header-user">
-						<a href="#">example@Genkey.com</a>
+				<div class="header-user">
+					<div class="col-md-2 col-md-offset-8">
+						<a href="user-profile.html">example@Genkey.com</a>
 					</div>
 					<div class="col-md-1 header-logout">
 						<a href="index.html">Log out</a>
 					</div>
 				</div>
 			</div>
+
 			<div id="header-tab" class="row header-tab">
 				<ul class="nav nav-tabs nav-justified">
   					<li><a data-toggle="tab" href="item-management.html">Item Management</a></li>
   					<li><a data-toggle="tab" href="employee-management.html">Employee Management</a></li>
-  					<li><a data-toggle="tab" href="#">User Profile Management</a></li>
+  					<li><a data-toggle="tab" href="user-profile.html">User Profile Management</a></li>
 				</ul>
 			</div>
 
 		<!--heade end-->
 	<div id="filter-row" class="container filter-row">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 col-sm-3">
 				<form role="form" class="form-inline form-element">
 					<div class="col-md-3 form-group">
-						<label for="filter" class="control-label filter-label">Filter</label>
-					</div>
-					<div class="col-md-3 form-group">
 						<select class="form-control">
+							<option>Filter Employees</option>
 							<option>Administration</option>
 							<option>Developers</option>
 							<option>Support and Operations</option>
@@ -48,9 +44,8 @@
 					</div>
 				</form>
 			</div>
-			<div class="btn-group btn-group-xs tble-buttons col-md-offset-3">
-				<a href="add-newemployee.html"><button type="button" class="btn btn-lg btn-success">New Employee</button></a>
-				<a><button type="button" class="btn btn-lg btn-primary">Make Admin</button></a>
+			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-2">
+				<a href="add-newemployee.html"><button type="button" class="btn btn-lg btn-success add-new">New Employee</button></a>
 			</div>
 		</div>
 	</div>
@@ -75,9 +70,10 @@
 					        	<td>Admin</td>
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  <a href="#"><button type="button" class="btn btn-black">View</button></a>
-									  <a href="edit-employee.html"><button type="button" class="btn btn-primary">Edit</button></a>
-									  <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
+									  <a href="view-employee.html"><button type="button" class="btn btn-sm btn-black">View</button></a>
+									  <a><button type="button" class="btn btn-sm btn-info">Make Admin</button></a>
+									  <a href="edit-employee.html"><button type="button" class="btn btn-sm btn-primary">Edit</button></a>
+									  <a href="#"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>

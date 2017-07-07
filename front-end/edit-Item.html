@@ -4,16 +4,16 @@
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link type="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+		<!--header-->
 			<div id="header-top" class="row">
-				<div class="col-md-1">
-					<img src="images/gklogo.png" style="height:30px";>
-				</div>
-				<div class="header-top">
-					<div class="col-md-2 col-md-offset-7 header-user">
-						<a href="#">example@Genkey.com</a>
+				<div class="header-user">
+					<div class="col-md-2 col-md-offset-8">
+						<a href="user-profile.html">example@Genkey.com</a>
 					</div>
 					<div class="col-md-1 header-logout">
 						<a href="index.html">Log out</a>
@@ -93,7 +93,7 @@
 		  </div>	
 		  <div class="form-group"> 
 		    <div class="col-sm-offset-4 col-sm-3">
-		      <button type="submit" name="add" class="btn btn-success">Save</button>
+		      <button type="button" name="add" class="btn btn-success" data-toggle="modal" data-target="#edit">Save</button>
 		    </div>
 		    <div class="col-sm-3">
 		    	<button type="submit" name="cancel" class="btn btn-danger">Cancel</button>
@@ -110,5 +110,30 @@
 		</div>
 	</div>
 
+	<!--Modal -->
+	<div id="edit" class="modal fade">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h5 class="Save Edited Item">Editing Item Details</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          				<span aria-hidden="true">&times;</span>
+       				</button>
+      			</div>
+      			<div class="modal-body">
+        			<p>Are you sure you want to save changes made?</p>
+      			</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-primary">Save changes</button>
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+		<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

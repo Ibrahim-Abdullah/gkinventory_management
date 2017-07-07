@@ -3,18 +3,17 @@
 <head>
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 		<!--header-->
 			<div id="header-top" class="row">
-				<div class="col-md-1">
-					<img src="images/gklogo.png" style="height:30px; margin-top: 5px;">
-				</div>
 				<div class="header-user">
-					<div class="col-md-2 col-md-offset-7">
-						<a href="#">example@Genkey.com</a>
+					<div class="col-md-2 col-md-offset-8">
+						<a href="user-profile.html">example@Genkey.com</a>
 					</div>
 					<div class="col-md-1 header-logout">
 						<a href="index.html">Log out</a>
@@ -26,7 +25,7 @@
 				<ul class="nav nav-tabs nav-justified">
   					<li><a data-toggle="tab" href="item-management.html">Item Management</a></li>
   					<li><a data-toggle="tab" href="employee-management.html">Employee Management</a></li>
-  					<li><a data-toggle="tab" href="#">User Profile Management</a></li>
+  					<li><a data-toggle="tab" href="user-profile.html">User Profile Management</a></li>
 				</ul>
 			</div>
 
@@ -37,10 +36,8 @@
 			<div class="col-md-6">
 				<form role="form" class="form-inline form-element">
 					<div class="col-md-3 form-group">
-						<label for="filter" class="control-label filter-label">Filter</label>
-					</div>
-					<div class="col-md-3 form-group">
 						<select class="form-control">
+							<option>Filter Items</option>
 							<option>Laptops</option>
 							<option>Desktops</option>
 							<option>Mouse</option>
@@ -49,9 +46,8 @@
 					</div>
 				</form>
 			</div>
-			<div class="btn-group btn-group-xs tble-buttons col-md-offset-3">
-				<a href="add-newItem.html"><button type="button" class="btn btn-lg btn-success add-new">New Item</button></a>
-				<a><button type="button" class="btn btn-lg btn-info assign">Assign Item</button></a>
+			<div class="btn-group btn-group-xs tble-buttons col-md-offset-4">
+				<a href="add-newItem.html"><button type="button" class="btn btn-lg btn-success add-new"> Add New Item</button></a>
 			</div>
 		</div>
 	</div>
@@ -76,9 +72,10 @@
 					        	<td>Working</td>
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  	<a><button type="button" class="btn btn-black">View</button></a>
-									  	<a href="edit-Item.html"><button type="button" class="btn btn-primary">Edit</button></a>
-									  	<a><button type="button" class="btn btn-danger">Delete</button></a>
+									  	<a href="view-item.html"><button type="button" class="btn btn-black btn-sm">View</button></a>
+									  	<a><button type="button" class="btn btn-info btn-sm">Assign</button></a>
+									  	<a href="edit-Item.html"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+									  	<a href="#delete" data-toggle="modal"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>
@@ -122,8 +119,8 @@
   				</table>
 			</div>
 		</div>
-	</div>
 
+	</div>
 	<!--Content end-->
 	<!--footer-->
 	<div class="footer-bottom">
@@ -131,6 +128,7 @@
 			<p>GenKey Africa, Ghana @ 2017</p>
 		</div>
 	</div>
-
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
