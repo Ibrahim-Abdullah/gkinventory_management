@@ -2,6 +2,8 @@ body{
 	margin:0;
 	color:#6a6f8c;
 	background:	#FFFFFF;
+	padding: 0;
+	margin: 0;
 }
 html, body{
     height: 100%;
@@ -32,38 +34,35 @@ a{color:inherit;text-decoration:none}
 	margin-bottom:0%;
 }
 .footer-bottom {
-	height: 5%;
+	height: 2%;
     background:#252323;
 }
 
 .footer-class p{
   color:  #B2B2B2;
+  font-size: 11px;
   margin: auto;
-  margin-top:10px;
   text-align:center;
 }
 #header-top
 {
-	height: 5%;
+	height: 2%;
 	width: 100%;
-	margin:auto;
 	color: #999999;
-	font-size: 12;
+	margin: auto;
+	font-size: 12px;
 	background-color: #000000;
 	font-family:sans-serif;
-}
-.header-user
-{
-	margin-top: auto;
 }
 #header-tab
 {
 	height: 15%;
+	margin: auto;
 }
 ul.nav-tabs li
 {
 	font-family: Helvetica;
-	font-size: 25;
+	font-size: 20px;
 	background-color: #999999;
 	color: #003748;
 }
@@ -74,7 +73,7 @@ ul.nav-tabs li
 
 #tab-content
 {
-	height: 75%;
+	height: 80%;
 }
 #filter-row
 {
@@ -82,7 +81,7 @@ ul.nav-tabs li
 }
 #table-row
 {
-	height: 68%;
+	height: 75%;
 	overflow-y: auto;
 }
 .form-element
@@ -99,7 +98,7 @@ ul.nav-tabs li
 .add-new,.assign
 {
 	float: right;
-	margin-right:2px;
+	margin:auto;
 }
 .table-row
 {
@@ -111,4 +110,13 @@ ul.nav-tabs li
 }
 .table td, thead tr th{
    text-align: center;   
+}
+.black-background 
+{
+	background-color:#000000;
+	color: white;
+}
+.black-background:hover
+{
+	 background-color:grey;
 }

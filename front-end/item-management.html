@@ -11,7 +11,7 @@
 <body>
 		<!--header-->
 			<div id="header-top" class="row">
-				<div class="header-user">
+				<div class="header-user" id="header-user">
 					<div class="col-md-2 col-md-offset-9">kwesi.mensah@GenKey.com</div>
 				</div>
 					<div class="col-md-1 header-logout">
@@ -48,8 +48,8 @@
 					</div>
 				</form>
 			</div>
-			<div class="btn-group btn-group-xs tble-buttons col-md-offset-4">
-				<a href="#addnewitem" data-toggle="modal"><button type="button" class="btn btn-lg btn-success add-new">Add New Item</button></a>
+			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-2">
+				<a href="#addnewitem" data-toggle="modal"><button type="button" class="btn btn-sm btn-primary add-new">New Item</button></a>
 			</div>
 		</div>
 	</div>
@@ -72,12 +72,13 @@
 					        	<td>xxxxxx</td>
 					        	<td>Laptop</td>
 					        	<td>Working</td>
+
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  	<a href="#viewItem" data-toggle="modal"><button type="button" class="btn btn-black btn-sm">View</button></a>
-									  	<a><button type="button" class="btn btn-info btn-sm">Assign</button></a>
-									  	<a href="#editItem" data-toggle="modal"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
-									  	<a href="#deleteItem" data-toggle="modal"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+									  	<a href="#viewItem" data-toggle="modal"><button type="button" class="btn black-background btn-sm">View</button></a>
+									  	<a><button type="button" class="btn black-background btn-sm">Assign</button></a>
+									  	<a href="#editItem" data-toggle="modal"><button type="button" class="btn black-background btn-sm">Edit</button></a>
+									  	<a href="#deleteItem" data-toggle="modal"><button type="button" class="btn black-background btn-sm">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>
@@ -144,7 +145,7 @@
 				</form>
 			</div>
 			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-2">
-				<a href="#addnewemployee" data-toggle="modal"><button type="button" class="btn btn-lg btn-success add-new">New Employee</button></a>
+				<a href="#addnewemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-primary add-new">New Employee</button></a>
 			</div>
 		</div>
 	</div>
@@ -169,10 +170,10 @@
 					        	<td>Admin</td>
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  <a href="#viewemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-black">View</button></a>
-									  <a><button type="button" class="btn btn-sm btn-info">Make Admin</button></a>
-									  <a href="#editemployee" data-toggle="modal" ><button type="button" class="btn btn-sm btn-primary">Edit</button></a>
-									  <a href="#deleteemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+									  <a href="#viewemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-black black-background">View</button></a>
+									  <a href="#makeadmin" data-toggle="modal"><button type="button" class="btn btn-sm btn-black black-background">Make User</button></a>
+									  <a href="#editemployee" data-toggle="modal" ><button type="button" class="btn btn-sm btn-black black-background">Edit</button></a>
+									  <a href="#deleteemployee" data-toggle="modal"><button type="button" class="btn btn-sm black-background">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>
@@ -221,12 +222,44 @@
 
 	<!--USER PROFILE MANAGEMENT SECTION-->
 	<div class="tab-pane fade" id="user-profile-management">
-		<div id="filter-row" class="container filter-row">
-			<h3 class="text-center">User Profile</h3>
+	<div id="filter-row" class="container filter-row">
+		<div class="row">
+			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-8">
+				<a href="#editemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-primary add-new">Edit Profile</button></a>
+			</div>
 		</div>
-		<div id="table-row" class="container">
+	</div>
+	<div id="table-row" class="container">
+		<div class="row table-row">
+			<div class="table-responsive">
+    				<table class="table table-hover table-bordered">
+    					<tbody>
+    						<tr>
+    							<td>Employee name:</td>
+    							<td>Kwesi Mensah</td>
+    						</tr>
+    						<tr>
+    							<td>Email Address</td>
+    							<td>kwesi.mensah@GenKey.com</td>
+    						</tr>
+    						<tr>
+    							<td>Employee ID:</td>
+    							<td>xxxxxxxxxxx</td>
+    						</tr>
 
+    						<tr>
+    							<td>Department:</td>
+    							<td>Developers</td>
+    						</tr>
+    						<tr>
+    							<td>Permission:</td>
+    							<td>Admin</td>
+    						</tr>    						
+    					</tbody>
+    				</table>
+			</div>
 		</div>
+	</div>
 	</div>
 	</div>
 	<!--Content end-->
@@ -309,13 +342,33 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-        			<button type="button" class="btn btn-primary">Save changes</button>
-        			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        			<button type="button" class="btn btn-primary">Add</button>
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       			</div>
       		</div>
     	</div>
   	</div>
 	<!--END OF ADD NEW ITEM MODAL-->
+
+	<!--ASSIGN ITEM TO EMPLOYEE MODAL-->
+	<!--UNASSIGN ITEM TO EMPLOYEE MODAL-->
+	<div id="unassignitem" class="modal fade">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+      				<h5>UNASSIGN ITEM TO EMPLOYEE</h5>
+      			</div>
+      			<div class="modal-body">
+      				<p>Confirm unassignin item with GenKey Label XXXXXXX Kwesi Mensah</p>
+      			</div>
+      			<div class="modal-footer">
+      				<button type="button" class="btn btn-primary">Confirm</button>
+      				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      			</div>
+      		</div>
+      	</div>
+    </div>
+	<!--END OF UNASSIGN ITEM TO EMPLOYEE MODAL-->
 
 	<!--EDIT ITEM MODAL -->
 	<div id="editItem" class="modal fade">
@@ -405,7 +458,7 @@
       				<p>Confirm deleting Item with GenKey Label XXXXXXX</p>
       			</div>
       			<div class="modal-footer">
-      				<button type="button" class="btn btn-danger">Delete</button>
+      				<button type="button" class="btn btn-primary">Confirm</button>
       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       			</div>
       		</div>
@@ -422,7 +475,47 @@
     				<h5>Item detail</h5>
     			</div>
     			<div class="modal-body">
-    				
+					<table class="table table-hover table-bordered">
+    					<tbody>
+    						<tr>
+    							<td>Serial Number:</td>
+    							<td>xxxxxxxxxxxxx</td>
+    						</tr>
+    						<tr>
+    							<td>GK Label</td>
+    							<td>xxxxxxxxxxxxx</td>
+    						</tr>
+    						<tr>
+    							<td>Employee ID:</td>
+    							<td>xxxxxxxxxxx</td>
+    						</tr>
+
+    						<tr>
+    							<td>Type:</td>
+    							<td>Laptop</td>
+    						</tr>
+    						<tr>
+    							<td>Status:</td>
+    							<td>Working</td>
+    						</tr>
+    						<tr>
+    							<td>Model:</td>
+    							<td>xxxxxxx</td>
+    						</tr>
+    						<tr>
+    							<td>Brand:</td>
+    							<td>Dell</td>
+    						</tr>
+    						<tr>
+    							<td>Comment:</td>
+    							<td>xxxxxxxxxx</td>
+    						</tr>
+   							<tr>
+    							<td>User</td>
+    							<td>Not assigned</td>
+    						</tr>					
+    					</tbody>
+    				</table>
     			</div>
 	    		<div  class="modal-footer">
 	    			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -560,8 +653,8 @@
 							</form>
 					</div>
     			<div class="modal-footer">
-       				<button type="button" class="btn btn-primary">Add</button>
-      				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+       				<button type="button" class="btn btn-primary">Save Changes</button>
+      				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
     			</div>
     		</div>
     	</div>
@@ -579,7 +672,7 @@
       				<p>Confirm deleting of Employee identified as Kwesi Mensah</p>
       			</div>
       			<div class="modal-footer">
-      				<button type="button" class="btn btn-danger">Delete</button>
+      				<button type="button" class="btn btn-primary">Confirm</button>
       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       			</div>
       		</div>
@@ -596,7 +689,59 @@
     				<h5>Employee Profile</h5>
     			</div>
     			<div class="modal-body">
-    				
+    				<table class="table table-hover table-bordered">
+    					<tbody>
+    						<tr>
+    							<td>Employee name:</td>
+    							<td>Kwesi Mensah</td>
+    						</tr>
+    						<tr>
+    							<td>Email Address</td>
+    							<td>kwesi.mensah@GenKey.com</td>
+    						</tr>
+    						<tr>
+    							<td>Employee ID:</td>
+    							<td>xxxxxxxxxxx</td>
+    						</tr>
+
+    						<tr>
+    							<td>Department:</td>
+    							<td>Developers</td>
+    						</tr>
+    						<tr>
+    							<td>Permission:</td>
+    							<td>Admin</td>
+    						</tr>    						
+    					</tbody>
+    				</table>
+    				<hr>
+    				<h5>Assigned Items</h5>
+    				<table class="table table-hover">
+    					<tbody>
+    						<thead>
+    							<tr>
+    								<td>Type</td>
+    								<td>GK Label</td>
+    								<td>Action</td>
+    							</tr>
+    						</thead>
+    						<tr>
+    							<td>Laptop</td>
+    							<td>xxxxxxx</td>
+    							<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
+    						</tr>
+    						<tr>
+    							<td>Laptop</td>
+    							<td>xxxxxxx</td>
+    							<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
+    						</tr>
+     						<tr>
+    							<td>Laptop</td>
+    							<td>xxxxxxx</td>
+    							<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
+    						</tr>
+    					</tbody>
+    				</table>
     			</div>
 	    		<div  class="modal-footer">
 	    			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -606,6 +751,26 @@
     	
     </div>
     <!--END OF VIEW EMPLOYEE MODAL-->
+
+    <!--MAKE EMPLOYEE ADMIN MODALL-->
+	<div id="makeadmin" class="modal fade">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+      				<h5>MAKE EMPLOYEE ADMIN</h5>
+      			</div>
+      			<div class="modal-body">
+      				<p>Confirm making Employee identified as Kwesi Mensah and ADMIN USER</p>
+      			</div>
+      			<div class="modal-footer">
+      				<button type="button" class="btn btn-primary">Confirm</button>
+      				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      			</div>
+      		</div>
+      	</div>
+    </div>
+
+    <!--END OF MAKE EMPLOYEE ADMIN MODAL-->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
