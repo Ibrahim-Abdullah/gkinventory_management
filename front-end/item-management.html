@@ -436,7 +436,7 @@
       			<div class="modal-body">
 					<form role="form" class="form-horizontal">
 						<div class="form-group">
-		    				<label class="control-label col-sm-3 col-md-offset-1" for="serial_number">Serial Number:</label>
+		    				<label class="control-label col-sm-3 col-md-offset-1" for="serial_number">Serial Number</label>
 		    				<div class="col-sm-6">
 		      					<input type="text" class="form-control" id="serial_number" readonly value="xxxxxxxxxx">
 		    				</div>
@@ -461,28 +461,28 @@
 					      		</select>
 					    	</div>
 					  	</div>
-					  	<div class="form-group" id="cpu" style="display: none">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="cpu">CPU</label>
+					  	<div class="form-group" id="cpue" style="display: none">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="cpue">CPU</label>
 					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="cpu" required>
+					      		<input type="text" class="form-control" id="cpue" required>
 					    	</div>
 					  	</div>
-					  	<div class="form-group" id="ram" style="display: none">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="ram">RAM(MB)</label>
+					  	<div class="form-group" id="rame" style="display: none">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="rame">RAM(MB)</label>
 					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="ram" required>
+					      		<input type="text" class="form-control" id="rame" required>
 					    	</div>
 					  	</div>
-					  	<div class="form-group" id="hdd" style="display: none">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="hdd">HDD(GB)</label>
+					  	<div class="form-group" id="hdde" style="display: none">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="hdde">HDD(GB)</label>
 					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="hdd" required>
+					      		<input type="text" class="form-control" id="hdde" required>
 					    	</div>
 					  	</div>
-					  	<div class="form-group" id="os" style="display: none">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="os">OS</label>
+					  	<div class="form-group" id="ose" style="display: none">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="ose">OS</label>
 					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="os" required>
+					      		<input type="text" class="form-control" id="ose" required>
 					    	</div>
 					  	</div>
 					  	<script>
@@ -490,16 +490,16 @@
     						{
         						if (that.value == "laptop") 
         						{
-            						document.getElementById("cpu").style.display = "block";
-            						document.getElementById("ram").style.display = "block";
-            						document.getElementById("hdd").style.display = "block";
-            						document.getElementById("os").style.display = "block";
+            						document.getElementById("cpue").style.display = "block";
+            						document.getElementById("rame").style.display = "block";
+            						document.getElementById("hdde").style.display = "block";
+            						document.getElementById("ose").style.display = "block";
 	        					} 
 	        					else {
-            						document.getElementById("cpu").style.display = "none";
-            						document.getElementById("ram").style.display = "none";
-            						document.getElementById("hdd").style.display = "none";
-            						document.getElementById("os").style.display = "none";	        					
+            						document.getElementById("cpue").style.display = "none";
+            						document.getElementById("rame").style.display = "none";
+            						document.getElementById("hdde").style.display = "none";
+            						document.getElementById("ose").style.display = "none";	        					
             					}
     						}
 						</script>
@@ -529,7 +529,8 @@
             						document.getElementById("defectiveDes").style.display = "block";
 	        					} 
 	        					else {
-            						document.getElementById("defectiveDes").style.display = "none";}
+            						document.getElementById("defectiveDes").style.display = "none";
+            					}
     						}
 						</script>	
 					  	<div class="form-group">
