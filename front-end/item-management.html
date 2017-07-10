@@ -33,7 +33,7 @@
 	<div class="tab-pane fade in active" id="item-management">
 	<div id="filter-row" class="container">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 col-md-offset-2">
 				<form role="form" class="form-inline" id="itemManagementForm">
 					<div class="col-md-3 form-group">
 						<select class="form-control">
@@ -48,7 +48,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-2">
+			<div class="btn-group btn-group-xs tble-buttons col-md-3 col-sm-4">
 				<a href="#addnewitem" data-toggle="modal"><button type="button" class="btn btn-sm btn-primary add-new">New Item</button></a>
 			</div>
 		</div>
@@ -335,9 +335,9 @@
 					    	</div>
 					  	</div>
 					  	<script>
-    						function isLaptop(that) 
+    						function isLaptop(optionSelected) 
     						{
-        						if (that.value == "laptop") 
+        						if (optionSelected.value == "laptop") 
         						{
             						document.getElementById("cpu").style.display = "block";
             						document.getElementById("ram").style.display = "block";
@@ -370,14 +370,15 @@
 					  		</div>
 					  	</div>	
 					  	<script>
-    						function isDefective(that) 
+    						function isDefective(optionSelected) 
     						{
-        						if (that.value == "defective") 
+        						if (optionSelected.value == "defective") 
         						{
             						document.getElementById("defectiveDescription").style.display = "block";
 	        					} 
 	        					else {
-            						document.getElementById("defectiveDescription").style.display = "none";}
+            						document.getElementById("defectiveDescription").style.display = "none";
+            					}
     						}
 						</script>
 					  	<div class="form-group">
@@ -450,9 +451,9 @@
 					  	<div class="form-group">
 					    	<label class="control-label col-sm-3 col-md-offset-1">Type</label>
 					    	<div class="col-sm-6"> 
-					      		<select onchange="if(this.selectedIndex==1)laptopSelected(this);" class="form-control" required>
+					      		<select onchange="laptopSelected(this);" class="form-control" required>
 					      			<option value="">Select</option>
-					      			<option value="laptop" selected>Laptop</option>
+					      			<option value="laptop">Laptop</option>
 					      			<option value="desktop">Desktop</option>
 					      			<option value="keyboardMouse">Keyboard and Mouse</option>
 					      			<option value="keyboard">Only Keyboard</option>
@@ -486,9 +487,9 @@
 					    	</div>
 					  	</div>
 					  	<script>
-    						function laptopSelected(that) 
+    						function laptopSelected(optionSelected) 
     						{
-        						if (that.value == "laptop") 
+        						if (optionSelected.value == "laptop") 
         						{
             						document.getElementById("cpue").style.display = "block";
             						document.getElementById("rame").style.display = "block";
@@ -499,14 +500,14 @@
             						document.getElementById("cpue").style.display = "none";
             						document.getElementById("rame").style.display = "none";
             						document.getElementById("hdde").style.display = "none";
-            						document.getElementById("ose").style.display = "none";	        					
+            						document.getElementById("ose").style.display = "none"; 	       					
             					}
     						}
 						</script>
 					  	<div class="form-group">
 					    	<label class="control-label col-sm-3 col-md-offset-1">Status</label>
 					    	<div class="col-sm-6"> 
-					      		<select onchange="isDefective(this);" class="form-control">
+					      		<select class="form-control" onchange="defectiveSelected(this);">
 					      			<option value="">Select</option>
 					      			<option value="working">Working</option>
 					      			<option value="defective">Defective</option>
@@ -522,9 +523,9 @@
 					  		</div>
 					  	</div>
 					  	<script>
-    						function isDefective(that) 
+    						function defectiveSelected(optionSelected) 
     						{
-        						if (that.value == "defective") 
+        						if (optionSelected.value == "defective") 
         						{
             						document.getElementById("defectiveDes").style.display = "block";
 	        					} 
@@ -544,14 +545,6 @@
 					    	<div class="col-sm-6"> 
 					      		<input type="text" class="form-control" id="model" readonly autocomplete="true" value="LATTITUDE E7450">
 					    	</div>
-					  	</div>
-					  	<div class="form-group">
-					  		<label class="control-label col-sm-3 col-md-offset-1" for="comment">Comment</label>
-					  		<div class="col-sm-6">
-					  			<textarea rows="2" class="form-control">
-					  				
-					  			</textarea>
-					  		</div>
 					  	</div>	
 					</form>
 				</div>

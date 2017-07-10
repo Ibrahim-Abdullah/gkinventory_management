@@ -105,3 +105,8 @@ ul.nav-tabs li
 {
 	 background-color:grey;
 }
+.modal-content
+{
+	height: 40%;
+	overflow-y: auto;
+}
