@@ -1,0 +1,511 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.1
+-- Dumped by pg_dump version 9.5.1
+
+-- Started on 2017-07-11 12:19:31
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET SESSION AUTHORIZATION 'gkinventory';
+
+DROP DATABASE "gkinventorymgt";
+--
+-- TOC entry 2187 (class 1262 OID 25901)
+-- Name: gkinventorymgt; Type: DATABASE; Schema: -; Owner: gkinventory
+--
+
+CREATE DATABASE "gkinventorymgt" WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'English_United States.1252' LC_CTYPE = 'English_United States.1252';
+
+
+\connect "gkinventorymgt"
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET SESSION AUTHORIZATION 'gkinventory';
+
+--
+-- TOC entry 7 (class 2615 OID 2200)
+-- Name: gkinventorymgt; Type: SCHEMA; Schema: -; Owner: gkinventory
+--
+
+CREATE SCHEMA "gkinventorymgt";
+
+
+--
+-- TOC entry 2188 (class 0 OID 0)
+-- Dependencies: 7
+-- Name: SCHEMA "gkinventorymgt"; Type: COMMENT; Schema: -; Owner: gkinventory
+--
+
+COMMENT ON SCHEMA "gkinventorymgt" IS 'standard public schema';
+
+
+SET SESSION AUTHORIZATION DEFAULT;
+
+--
+-- TOC entry 1 (class 3079 OID 12355)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS "plpgsql" WITH SCHEMA "pg_catalog";
+
+
+--
+-- TOC entry 2190 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION "plpgsql"; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION "plpgsql" IS 'PL/pgSQL procedural language';
+
+
+SET SESSION AUTHORIZATION 'gkinventory';
+
+SET search_path = "gkinventorymgt", pg_catalog;
+
+--
+-- TOC entry 570 (class 1247 OID 25944)
+-- Name: employee_permission; Type: TYPE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TYPE "employee_permission" AS ENUM (
+    'User',
+    'Not_User'
+);
+
+
+--
+-- TOC entry 564 (class 1247 OID 25924)
+-- Name: item_status; Type: TYPE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TYPE "item_status" AS ENUM (
+    'Working',
+    'Defective'
+);
+
+
+--
+-- TOC entry 567 (class 1247 OID 25930)
+-- Name: item_type; Type: TYPE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TYPE "item_type" AS ENUM (
+    'Laptop',
+    'Mobile_Phone',
+    'Desktop',
+    'Keyboard_Only',
+    'Mouse_Only',
+    'Keyboard_And_Mouse'
+);
+
+
+--
+-- TOC entry 561 (class 1247 OID 25909)
+-- Name: week; Type: TYPE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TYPE "week" AS ENUM (
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun'
+);
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 188 (class 1259 OID 26001)
+-- Name: App_Users; Type: TABLE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TABLE "App_Users" (
+    "Employee_ID" character varying NOT NULL,
+    "Password" character varying NOT NULL,
+    "Id" bigint NOT NULL
+);
+
+
+--
+-- TOC entry 186 (class 1259 OID 25985)
+-- Name: Department; Type: TABLE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TABLE "Department" (
+    "Department_Name" character varying NOT NULL,
+    "Id" bigint NOT NULL
+);
+
+
+--
+-- TOC entry 183 (class 1259 OID 25961)
+-- Name: Emloyee; Type: TABLE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TABLE "Emloyee" (
+    "Employee_ID" character varying NOT NULL,
+    "Frst_Name" character varying NOT NULL,
+    "Last_Name" character varying NOT NULL,
+    "Email" character varying NOT NULL,
+    "Permission" "employee_permission" NOT NULL
+);
+
+
+--
+-- TOC entry 187 (class 1259 OID 25993)
+-- Name: Employee_Department; Type: TABLE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TABLE "Employee_Department" (
+    "Employee_ID" character varying NOT NULL,
+    "Department_Name" character varying NOT NULL
+);
+
+
+--
+-- TOC entry 181 (class 1259 OID 25902)
+-- Name: Item; Type: TABLE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TABLE "Item" (
+    "Gk_ID" character varying NOT NULL,
+    "Manufacturer" character varying NOT NULL,
+    "Model" character varying NOT NULL,
+    "Status" "item_status" NOT NULL,
+    "Date_Added" "date" NOT NULL,
+    "Type" "item_type",
+    "Serial_Number" character varying NOT NULL
+);
+
+
+--
+-- TOC entry 184 (class 1259 OID 25971)
+-- Name: Item_Allocated_Employee; Type: TABLE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TABLE "Item_Allocated_Employee" (
+    "Item_Serial_Number" character varying NOT NULL,
+    "Employee_ID" character varying NOT NULL
+);
+
+
+--
+-- TOC entry 189 (class 1259 OID 26030)
+-- Name: defect_description_count; Type: SEQUENCE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE SEQUENCE "defect_description_count"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 185 (class 1259 OID 25979)
+-- Name: Item_Defect_Description; Type: TABLE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TABLE "Item_Defect_Description" (
+    "Item_Serial_Number" character varying NOT NULL,
+    "Defect_Description" "text" NOT NULL,
+    "Id" bigint DEFAULT "nextval"('"defect_description_count"'::"regclass") NOT NULL
+);
+
+
+--
+-- TOC entry 190 (class 1259 OID 26033)
+-- Name: laptop_specific_properties_count; Type: SEQUENCE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE SEQUENCE "laptop_specific_properties_count"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 182 (class 1259 OID 25949)
+-- Name: Laptop_Specific_Properties; Type: TABLE; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+CREATE TABLE "Laptop_Specific_Properties" (
+    "Laptop_Serial_Number" character varying,
+    "Operating_System" character varying NOT NULL,
+    "Ram_Size" integer NOT NULL,
+    "CPU" character varying,
+    "Hardrive_Size" integer,
+    "AntiVirus_Installed" boolean,
+    "P9_Installed" boolean,
+    "Id" integer DEFAULT "nextval"('"laptop_specific_properties_count"'::"regclass") NOT NULL
+);
+
+
+--
+-- TOC entry 2180 (class 0 OID 26001)
+-- Dependencies: 188
+-- Data for Name: App_Users; Type: TABLE DATA; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+
+
+--
+-- TOC entry 2178 (class 0 OID 25985)
+-- Dependencies: 186
+-- Data for Name: Department; Type: TABLE DATA; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+
+
+--
+-- TOC entry 2175 (class 0 OID 25961)
+-- Dependencies: 183
+-- Data for Name: Emloyee; Type: TABLE DATA; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+
+
+--
+-- TOC entry 2179 (class 0 OID 25993)
+-- Dependencies: 187
+-- Data for Name: Employee_Department; Type: TABLE DATA; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+
+
+--
+-- TOC entry 2173 (class 0 OID 25902)
+-- Dependencies: 181
+-- Data for Name: Item; Type: TABLE DATA; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+
+
+--
+-- TOC entry 2176 (class 0 OID 25971)
+-- Dependencies: 184
+-- Data for Name: Item_Allocated_Employee; Type: TABLE DATA; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+
+
+--
+-- TOC entry 2177 (class 0 OID 25979)
+-- Dependencies: 185
+-- Data for Name: Item_Defect_Description; Type: TABLE DATA; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+
+
+--
+-- TOC entry 2174 (class 0 OID 25949)
+-- Dependencies: 182
+-- Data for Name: Laptop_Specific_Properties; Type: TABLE DATA; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+
+
+--
+-- TOC entry 2191 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: defect_description_count; Type: SEQUENCE SET; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+SELECT pg_catalog.setval('"defect_description_count"', 1, false);
+
+
+--
+-- TOC entry 2192 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: laptop_specific_properties_count; Type: SEQUENCE SET; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+SELECT pg_catalog.setval('"laptop_specific_properties_count"', 1, false);
+
+
+--
+-- TOC entry 2052 (class 2606 OID 26015)
+-- Name: App_Users_pkey; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "App_Users"
+    ADD CONSTRAINT "App_Users_pkey" PRIMARY KEY ("Id");
+
+
+--
+-- TOC entry 2048 (class 2606 OID 25992)
+-- Name: Department_pkey; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Department"
+    ADD CONSTRAINT "Department_pkey" PRIMARY KEY ("Department_Name");
+
+
+--
+-- TOC entry 2040 (class 2606 OID 25970)
+-- Name: Emloyee_Email_key; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Emloyee"
+    ADD CONSTRAINT "Emloyee_Email_key" UNIQUE ("Email");
+
+
+--
+-- TOC entry 2042 (class 2606 OID 25968)
+-- Name: Emloyee_pkey; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Emloyee"
+    ADD CONSTRAINT "Emloyee_pkey" PRIMARY KEY ("Employee_ID");
+
+
+--
+-- TOC entry 2050 (class 2606 OID 26000)
+-- Name: Employee_Department_pkey; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Employee_Department"
+    ADD CONSTRAINT "Employee_Department_pkey" PRIMARY KEY ("Employee_ID", "Department_Name");
+
+
+--
+-- TOC entry 2044 (class 2606 OID 25978)
+-- Name: Item_Allocated_Employee_pkey; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Item_Allocated_Employee"
+    ADD CONSTRAINT "Item_Allocated_Employee_pkey" PRIMARY KEY ("Item_Serial_Number", "Employee_ID");
+
+
+--
+-- TOC entry 2046 (class 2606 OID 26029)
+-- Name: Item_Defect_Description_pkey; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Item_Defect_Description"
+    ADD CONSTRAINT "Item_Defect_Description_pkey" PRIMARY KEY ("Id");
+
+
+--
+-- TOC entry 2034 (class 2606 OID 25958)
+-- Name: Item_Gk_ID_key; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Item"
+    ADD CONSTRAINT "Item_Gk_ID_key" UNIQUE ("Gk_ID");
+
+
+--
+-- TOC entry 2036 (class 2606 OID 26022)
+-- Name: Item_pkey; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Item"
+    ADD CONSTRAINT "Item_pkey" PRIMARY KEY ("Serial_Number");
+
+
+--
+-- TOC entry 2038 (class 2606 OID 25960)
+-- Name: Laptop_Specific_Properties_pkey; Type: CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Laptop_Specific_Properties"
+    ADD CONSTRAINT "Laptop_Specific_Properties_pkey" PRIMARY KEY ("Id");
+
+
+--
+-- TOC entry 2058 (class 2606 OID 26016)
+-- Name: App_Users_Employee_ID_fkey; Type: FK CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "App_Users"
+    ADD CONSTRAINT "App_Users_Employee_ID_fkey" FOREIGN KEY ("Employee_ID") REFERENCES "Emloyee"("Employee_ID") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2057 (class 2606 OID 26007)
+-- Name: Employee_Department_Employee_ID_fkey; Type: FK CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Employee_Department"
+    ADD CONSTRAINT "Employee_Department_Employee_ID_fkey" FOREIGN KEY ("Employee_ID") REFERENCES "Emloyee"("Employee_ID") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2055 (class 2606 OID 26046)
+-- Name: Item_Allocated_Employee_Employee_ID_fkey; Type: FK CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Item_Allocated_Employee"
+    ADD CONSTRAINT "Item_Allocated_Employee_Employee_ID_fkey" FOREIGN KEY ("Employee_ID") REFERENCES "Emloyee"("Employee_ID") ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2054 (class 2606 OID 26023)
+-- Name: Item_Allocated_Employee_Item_Serial_Number_fkey; Type: FK CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Item_Allocated_Employee"
+    ADD CONSTRAINT "Item_Allocated_Employee_Item_Serial_Number_fkey" FOREIGN KEY ("Item_Serial_Number") REFERENCES "Item"("Serial_Number") ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2056 (class 2606 OID 26036)
+-- Name: Item_Defect_Description_Item_Serial_Number_fkey; Type: FK CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Item_Defect_Description"
+    ADD CONSTRAINT "Item_Defect_Description_Item_Serial_Number_fkey" FOREIGN KEY ("Item_Serial_Number") REFERENCES "Item"("Serial_Number") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2053 (class 2606 OID 26041)
+-- Name: Laptop_Specific_Properties_Laptop_Serial_Number_fkey; Type: FK CONSTRAINT; Schema: gkinventorymgt; Owner: gkinventory
+--
+
+ALTER TABLE ONLY "Laptop_Specific_Properties"
+    ADD CONSTRAINT "Laptop_Specific_Properties_Laptop_Serial_Number_fkey" FOREIGN KEY ("Laptop_Serial_Number") REFERENCES "Item"("Serial_Number") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2189 (class 0 OID 0)
+-- Dependencies: 7
+-- Name: gkinventorymgt; Type: ACL; Schema: -; Owner: gkinventory
+--
+
+REVOKE ALL ON SCHEMA "gkinventorymgt" FROM PUBLIC;
+REVOKE ALL ON SCHEMA "gkinventorymgt" FROM "gkinventory";
+GRANT ALL ON SCHEMA "gkinventorymgt" TO "gkinventory";
+GRANT ALL ON SCHEMA "gkinventorymgt" TO PUBLIC;
+
+
+-- Completed on 2017-07-11 12:19:32
+
+--
+-- PostgreSQL database dump complete
+--
+
