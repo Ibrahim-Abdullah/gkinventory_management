@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.gkinventory.domain;
+package com.gkinventory.model;
 
 /**
  * @author Ibrahim Abdullah

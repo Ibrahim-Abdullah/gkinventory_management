@@ -1,7 +1,7 @@
 package com.gkinventory.service;
 
-import com.gkinventory.domain.Employee;
-import com.gkinventory.domain.Item;
+import com.gkinventory.model.Employee;
+import com.gkinventory.model.Item;
 
 /**
  * @author Ibrahim Abdullah

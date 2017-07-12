@@ -5,7 +5,7 @@ package com.gkinventory.service;
 
 import java.util.List;
 
-import com.gkinventory.domain.Employee;
+import com.gkinventory.model.Employee;
 
 /**
  * @author Ibrahim Abdullah
