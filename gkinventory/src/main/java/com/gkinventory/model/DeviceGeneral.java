@@ -7,7 +7,7 @@ package com.gkinventory.model;
  * @author Ibrahim Abdullah
  *
  */
-public class Item 
+public class DeviceGeneral 
 {
 	private String serialNumber;
 	private String gkLabel;

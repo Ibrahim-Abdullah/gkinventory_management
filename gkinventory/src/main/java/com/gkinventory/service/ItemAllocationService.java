@@ -1,7 +1,7 @@
 package com.gkinventory.service;
 
 import com.gkinventory.model.Employee;
-import com.gkinventory.model.Item;
+import com.gkinventory.model.DeviceGeneral;
 
 /**
  * @author Ibrahim Abdullah
@@ -9,6 +9,6 @@ import com.gkinventory.model.Item;
  */
 public interface ItemAllocationService 
 {
-	public boolean allocateItemToEmployee(Item item, Employee employee);
-	public boolean deallocateItemToEmployee(Item item, Employee employee);
+	public boolean allocateItemToEmployee(DeviceGeneral item, Employee employee);
+	public boolean deallocateItemToEmployee(DeviceGeneral item, Employee employee);
 }

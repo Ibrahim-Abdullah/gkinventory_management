@@ -5,7 +5,7 @@ package com.gkinventory.service;
 
 import java.util.List;
 
-import com.gkinventory.model.Item;
+import com.gkinventory.model.DeviceGeneral;
 
 /**
  * @author Ibrahim Abdullah
@@ -13,10 +13,10 @@ import com.gkinventory.model.Item;
  */
 public interface Itemservice 
 {
-	public List<Item> getAllItems();
-	public Item getItemById(String itemId);
-	public List<Item> getItemByCateggory(String Category);
-	public boolean addNewItem(Item newItem);
-	public boolean editItem(Item itemToEdit);
-	public boolean deleteItem(Item itemToDelete);
+	public List<DeviceGeneral> getAllItems();
+	public DeviceGeneral getItemById(String itemId);
+	public List<DeviceGeneral> getItemByCateggory(String Category);
+	public boolean addNewItem(DeviceGeneral newItem);
+	public boolean editItem(DeviceGeneral itemToEdit);
+	public boolean deleteItem(DeviceGeneral itemToDelete);
 }

@@ -14,7 +14,6 @@ public class DeviceGeneral
 	private Type itemType;
 	private String model;
 	private String manufacturer;
-	private String comment;
 	private Status deviceStatus;
 	
 	/**
@@ -25,14 +24,12 @@ public class DeviceGeneral
 	 * @param brand
 	 * @param comment
 	 */
-	public DeviceGeneral(String serialNumber, String gkLabel, Type itemType, String model, String brand,
-			String comment,String status) {
+	public DeviceGeneral(String serialNumber, String gkId, String type, String model, String manufacturer,String status) {
 		this.serialNumber = serialNumber;
-		this.gkId = gkLabel;
-		this.itemType = itemType;
+		this.gkId = gkId;
 		this.model = model;
-		this.manufacturer = brand;
-		this.comment = comment;
+		this.manufacturer = manufacturer;
+		this.setItemType(type);
 		this.setDeviceStatus(status);
 	}
 	
@@ -44,11 +41,11 @@ public class DeviceGeneral
 	 * @param model
 	 * @param brand
 	 */
-	public DeviceGeneral(String serialNumber, String gkLabel, Type itemType, String model, String brand) {
+	public DeviceGeneral(String serialNumber, String gkLabel, String type, String model, String brand) {
 		super();
 		this.serialNumber = serialNumber;
 		this.gkId = gkLabel;
-		this.itemType = itemType;
+		this.setItemType(type);
 		this.model = model;
 		this.manufacturer = brand;
 	}
@@ -69,12 +66,12 @@ public class DeviceGeneral
 		this.gkId = gkLabel;
 	}
 	
-	public Type getItemType() {
-		return itemType;
+	public String getDeviceType() {
+		return itemType.toString();
 	}
 	
-	public void setItemType(Type itemType) {
-		this.itemType = itemType;
+	public void setItemType(String itemType) {
+		this.itemType = Type.valueOf(itemType);
 	}
 	
 	public String getModel() {
@@ -90,12 +87,6 @@ public class DeviceGeneral
 	
 	public void setBrand(String brand) {
 		this.manufacturer = brand;
-	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 	
 	/**
@@ -118,7 +109,7 @@ public class DeviceGeneral
 	@Override
 	public String toString() {
 		return "DeviceGeneral [serialNumber=" + serialNumber + ", gkId=" + gkId + ", itemType=" + itemType + ", model="
-				+ model + ", manufacturer=" + manufacturer + ", comment=" + comment + "]";
+				+ model + ", manufacturer=" + manufacturer + "]";
 	}
 
 	/* (non-Javadoc)
@@ -136,13 +127,6 @@ public class DeviceGeneral
 			return false;
 		}
 		DeviceGeneral other = (DeviceGeneral) obj;
-		if (comment == null) {
-			if (other.comment != null) {
-				return false;
-			}
-		} else if (!comment.equals(other.comment)) {
-			return false;
-		}
 		if (gkId == null) {
 			if (other.gkId != null) {
 				return false;
@@ -179,7 +163,7 @@ public class DeviceGeneral
 
 	public enum Type
 	{
-		DESKTOP,MOBILE_PHONE,KEYBOARD_MOUSE,MOUSE,KEYBOARD
+		DESKTOP,MOBILE_PHONE,KEYBOARD_MOUSE,MOUSE,KEYBOARD,LAPTOP
 	}
 	public enum Status
 	{
