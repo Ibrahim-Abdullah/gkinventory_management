@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="layout::site-head">
+<title>Item Management</title>
+</head>
+<body>
+
+	<!-- INCLUDE LAYOUT HEADER HERE -->
+	<header th:replace="layout::site-header"></header>
+	
+	<!-- PAGE SPECIFIC CONTENT -->
+	<div id="addnewitem" class="modal fade" aria-labelledby="addnewitem" aria-hidden="true" action="#item-management" method="post">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h4 class="text-center">ADD NEW DEVICE</h4>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          				<span>&times;</span>
+       				</button>
+      			</div>
+      			<div class="modal-body">
+					<form role="form" class="form-horizontal" id="addnewitem" action="" method="get">
+						<div class="form-group">
+		    				<label class="control-label col-sm-3 col-md-offset-1" for="serial_number">Serial Number</label>
+		    				<div class="col-sm-6">
+		      					<input type="text" class="form-control" id="serial_number">
+		    				</div>
+		  				</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="genkeyid">GenKey ID</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="genkeyid" required>
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-3 col-md-offset-1">Type</label>
+					    	<div class="col-sm-6"> 
+					      		<select onchange="isLaptop(this);" class="form-control" required>
+					      			<option value="">Select</option>
+					      			<option value="laptop">Laptop</option>
+					      			<option value="desktop">Desktop</option>
+					      			<option value="keyboardMouse">Keyboard and Mouse</option>
+					      			<option value="keyboard">Only Keyboard</option>
+					      			<option value="mouse">Only Mouse</option>
+					      			<option value="mobilePhone">Mobile Phone</option>
+					      		</select>
+					    	</div>
+					  	</div>
+					  	<div class="form-group" id="cpu" style="display: none">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="cpu">CPU</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="cpu" required>
+					    	</div>
+					  	</div>
+					  	<div class="form-group" id="ram" style="display: none">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="ram">RAM(MB)</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="ram" required>
+					    	</div>
+					  	</div>
+					  	<div class="form-group" id="hdd" style="display: none">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="hdd">HDD(GB)</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="hdd" required>
+					    	</div>
+					  	</div>
+					  	<div class="form-group" id="os" style="display: none">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="os">OS</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="os" required>
+					    	</div>
+					  	</div>
+					  	<script>
+    						function isLaptop(optionSelected) 
+    						{
+        						if (optionSelected.value == "laptop") 
+        						{
+            						document.getElementById("cpu").style.display = "block";
+            						document.getElementById("ram").style.display = "block";
+            						document.getElementById("hdd").style.display = "block";
+            						document.getElementById("os").style.display = "block";
+	        					} 
+	        					else {
+            						document.getElementById("cpu").style.display = "none";
+            						document.getElementById("ram").style.display = "none";
+            						document.getElementById("hdd").style.display = "none";
+            						document.getElementById("os").style.display = "none";	        					}
+    						}
+						</script>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-3 col-md-offset-1">Status</label>
+					    	<div class="col-sm-6"> 
+					      		<select onchange="isDefective(this);" class="form-control" required>
+					      			<option value="">Select</option>
+					      			<option value="working">Working</option>
+					      			<option value="defective">Defective</option>
+					      		</select>
+					    	</div>
+					  	</div>
+					  	<div class="form-group" id="defectiveDescription" style="display: none;">
+					  		<label class="control-label col-sm-4" for="defectiveDescription">Defect Description</label>
+					  		<div class="col-sm-6" >
+					  			<textarea rows="5" class="form-control" id="defectiveDescription">
+					  				
+					  			</textarea>
+					  		</div>
+					  	</div>	
+					  	<script>
+    						function isDefective(optionSelected) 
+    						{
+        						if (optionSelected.value == "defective") 
+        						{
+            						document.getElementById("defectiveDescription").style.display = "block";
+	        					} 
+	        					else {
+            						document.getElementById("defectiveDescription").style.display = "none";
+            					}
+    						}
+						</script>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="manufacturer">Manufacturer</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="manufacturer" required>
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label class="control-label col-sm-3 col-md-offset-1" for="model">Model</label>
+					    	<div class="col-sm-6"> 
+					      		<input type="text" class="form-control" id="model" required>
+					    	</div>
+					  	</div>
+					</form>
+				</div>
+				<div class="modal-footer form-group">
+        			<input type="submit" class="btn btn-primary" form="addnewitem" value="Add">
+        			<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      			</div>
+      		</div>
+    	</div>
+  	</div>
+	<!-- INCLUDE LAYOUT FOOTER -->
+	<footer th:replace="layout::site-footer"></footer>
+</body>
+</html>

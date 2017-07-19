@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="layout::site-head">
+<title>Item Management</title>
+</head>
+<body>
+
+	<!-- INCLUDE LAYOUT HEADER HERE -->
+	<header th:replace="layout::site-header"></header>
+	
+	<!-- PAGE SPECIFIC CONTENT -->
+   <div id="viewemployee">
+    	<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h4 class="text-center">EMPLOYEE PROFILE</h4>
+    			</div>
+    			<div class="modal-body">
+    				<table class="table table-hover table-bordered">
+    					<tbody>
+    						<tr>
+    							<td>Employee name:</td>
+    							<td>Kwesi Mensah</td>
+    						</tr>
+    						<tr>
+    							<td>Email Address</td>
+    							<td>kwesi.mensah@GenKey.com</td>
+    						</tr>
+    						<tr>
+    							<td>Employee ID:</td>
+    							<td>xxxxxxxxxxx</td>
+    						</tr>
+
+    						<tr>
+    							<td>Department:</td>
+    							<td>Developers</td>
+    						</tr>
+    						<tr>
+    							<td>Permission:</td>
+    							<td>Admin</td>
+    						</tr>    						
+    					</tbody>
+    				</table>
+    				<hr>
+    				<h5>Assigned Items</h5>
+    				<table class="table table-hover">
+    					<tbody>
+    						<thead>
+    							<tr>
+    								<td>Type</td>
+    								<td>GK Label</td>
+    								<td>Action</td>
+    							</tr>
+    						</thead>
+    						<tr>
+    							<td>Laptop</td>
+    							<td>xxxxxxx</td>
+    							<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
+    						</tr>
+    						<tr>
+    							<td>Laptop</td>
+    							<td>xxxxxxx</td>
+    							<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
+    						</tr>
+     						<tr>
+    							<td>Laptop</td>
+    							<td>xxxxxxx</td>
+    							<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
+    						</tr>
+    					</tbody>
+    				</table>
+    			</div>
+	    		<div  class="modal-footer">
+	    			<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+	<!-- INCLUDE LAYOUT FOOTER -->
+	<footer th:replace="layout::site-footer"></footer>
+</body>
+</html>

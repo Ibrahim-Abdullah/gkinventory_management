@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="layout::site-head">
+<title>Item Management</title>
+</head>
+<body>
+
+	<!-- INCLUDE LAYOUT HEADER HERE -->
+	<header th:replace="layout::site-header"></header>
+	
+	<!-- PAGE SPECIFIC CONTENT -->
+
+    <div id="viewItem" class="modal fade" aria-labelledby="viewItem" aria-hidden="true">
+    	<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h4 class="text-center">ITEM DETAIL</h4>
+    			</div>
+    			<div class="modal-body">
+					<table class="table table-hover table-bordered">
+    					<tbody>
+    						<tr>
+    							<td>Serial Number:</td>
+    							<td>xxxxxxxxxxxxx</td>
+    						</tr>
+    						<tr>
+    							<td>GK Label</td>
+    							<td>xxxxxxxxxxxxx</td>
+    						</tr>
+    						<tr>
+    							<td>Employee ID:</td>
+    							<td>xxxxxxxxxxx</td>
+    						</tr>
+
+    						<tr>
+    							<td>Type:</td>
+    							<td>Laptop</td>
+    						</tr>
+    						<tr>
+    							<td>Status:</td>
+    							<td>Working</td>
+    						</tr>
+    						<tr>
+    							<td>Model:</td>
+    							<td>xxxxxxx</td>
+    						</tr>
+    						<tr>
+    							<td>Brand:</td>
+    							<td>Dell</td>
+    						</tr>
+    						<tr>
+    							<td>Comment:</td>
+    							<td>xxxxxxxxxx</td>
+    						</tr>
+   							<tr>
+    							<td>User</td>
+    							<td>Not assigned</td>
+    						</tr>					
+    					</tbody>
+    				</table>
+    			</div>
+	    		<div  class="modal-footer">
+	    			<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+	    		</div>
+    		</div>
+    	</div>
+    	
+    </div>
+	<!-- INCLUDE LAYOUT FOOTER -->
+	<footer th:replace="layout::site-footer"></footer>
+</body>
+</html>

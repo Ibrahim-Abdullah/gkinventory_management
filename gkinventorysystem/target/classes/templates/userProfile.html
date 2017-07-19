@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="layout::site-head">
+<title>Item Management</title>
+</head>
+<body>
+
+	<!-- INCLUDE LAYOUT HEADER HERE -->
+	<header th:replace="layout::site-header"></header>
+	
+	<!-- PAGE SPECIFIC CONTENT -->
+	<!--USER PROFILE MANAGEMENT SECTION-->
+	<div class="tab-pane fade" id="user-profile-management">
+	<div id="filter-row" class="container filter-row">
+		<div class="row">
+			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-8">
+				<a href="#editemployee" data-toggle="modal"><button type="button" class="btn btn-sm btn-primary add-new">Edit Profile</button></a>
+			</div>
+		</div>
+	</div>
+	<div id="table-row" class="container">
+		<div class="row table-row">
+			<div class="table-responsive">
+    				<table class="table table-hover table-bordered">
+    					<tbody>
+    						<tr>
+    							<td>Employee name:</td>
+    							<td>Kwesi Mensah</td>
+    						</tr>
+    						<tr>
+    							<td>Email Address</td>
+    							<td>kwesi.mensah@GenKey.com</td>
+    						</tr>
+    						<tr>
+    							<td>Employee ID</td>
+    							<td>xxxxxxxxxxx</td>
+    						</tr>
+
+    						<tr>
+    							<td>Department:</td>
+    							<td>Developers</td>
+    						</tr>
+    						<tr>
+    							<td>Permission:</td>
+    							<td>User</td>
+    						</tr>    						
+    					</tbody>
+    				</table>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- INCLUDE LAYOUT FOOTER -->
+	<footer th:replace="layout::site-footer"></footer>
+</body>
+</html>
