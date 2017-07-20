@@ -3,6 +3,10 @@
  */
 package gkinventorysystem.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import gkinventorysystem.forms.NewDeviceForm;
+
 /**
  * @author Ibrahim Abdullah
  *
@@ -15,6 +19,7 @@ public class DeviceGeneral
 	private String model;
 	private String manufacturer;
 	private Status deviceStatus;
+	private String defectDescription;
 	
 	/**
 	 * @param serialNumber
@@ -23,14 +28,16 @@ public class DeviceGeneral
 	 * @param model
 	 * @param brand
 	 * @param comment
+	 * @param defectDescription
 	 */
-	public DeviceGeneral(String serialNumber, String gkId, String type, String model, String manufacturer,String status) {
+	public DeviceGeneral(String serialNumber, String gkId, String type, String model, String manufacturer,String status,String defectDescription) {
 		this.serialNumber = serialNumber;
 		this.gkId = gkId;
 		this.model = model;
 		this.manufacturer = manufacturer;
 		this.setItemType(type);
 		this.setDeviceStatus(status);
+		this.defectDescription = defectDescription;
 	}
 	
 
@@ -49,7 +56,20 @@ public class DeviceGeneral
 		this.model = model;
 		this.manufacturer = brand;
 	}
-
+	
+	/**
+	 * 
+	 * @param newDevice New Device object created from the add new device form
+	 */
+	@Autowired
+	public DeviceGeneral(NewDeviceForm newDevice){
+		this.serialNumber = newDevice.getSerialNumber();
+		this.gkId = newDevice.getGkId();
+		this.setItemType(newDevice.getType());
+		this.model = newDevice.getModel();
+		this.manufacturer = newDevice.getManufacturer();
+	}
+	
 	public String getSerialNumber() {
 		return serialNumber;
 	}

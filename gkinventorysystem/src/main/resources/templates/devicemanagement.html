@@ -67,16 +67,16 @@
 								<!-- DISPLAY ACTION BUTTONS FOR EVERY DEVICE WITH DYNAMIC URL -->
 									<div class="btn-group btn-group-xs tble-buttons">
 										<a href="viewdevice.html"
-											th:href="@{/device/view(deviceSerialNumber=${device.serialNumber})}"><button
+											th:href="@{/device/view/(deviceType=${device.type})/(deviceSerialNumber=${device.serialNumber})}"><button
 												type="button" class="btn black-background btn-sm">View</button></a>
 										<a href="#"
 											th:href="@{/device/assign(deviceSerialNumber=${device.SerialNumber})}"><button
 												type="button" class="btn black-background btn-sm">Assign</button></a>
 										<a href="editdevice.html"
-											th:href="@{/device/edit(deviceSerialNumber=${device.SerialNumber})}"><button
+											th:href="@{/device/edit/(deviceType=${device.type})/(deviceSerialNumber=${device.SerialNumber})}"><button
 												type="button" class="btn black-background btn-sm">Edit</button></a>
 										<a href="deletedevice.html"
-											th:href="@{/device/delete(deviceSerialNumber=${device.SerialNumber})}"><button
+											th:href="@{/device/delete/(deviceType=${device.type})/(deviceSerialNumber=${device.SerialNumber})}"><button
 												type="button" class="btn black-background btn-sm">Delete</button></a>
 									</div>
 								</td>

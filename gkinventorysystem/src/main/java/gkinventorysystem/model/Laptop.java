@@ -3,6 +3,9 @@
  */
 package gkinventorysystem.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import gkinventorysystem.forms.NewDeviceForm;
 import gkinventorysystem.model.DeviceGeneral;
 /**
  * @author Ibrahim-Abdullah
@@ -28,16 +31,29 @@ public class Laptop extends DeviceGeneral{
 	 * @param laptop_status
 	 */
 	public Laptop(String serialNumber, String gkId, String model, String manufacturer, String cpu, int ramSize,
-			int hardDriveSize, String operatingSystem, String laptop_status) {
+			int hardDriveSize, String operatingSystem, String laptop_status,String defectDescription) {
 		
-		super(serialNumber,gkId,"LAPTOP",model,manufacturer,laptop_status);
+		super(serialNumber,gkId,"LAPTOP",model,manufacturer,laptop_status,defectDescription);
 		this.cpu = cpu;
 		this.ramSize = ramSize;
 		this.hardDriveSize = hardDriveSize;
 		this.operatingSystem = operatingSystem;
 	}
-
-
+	
+	
+	/**
+	 * 
+	 * @param newDevice New device from the add new device form
+	 */
+	@Autowired
+	public Laptop(NewDeviceForm newDevice){
+		super(newDevice.getSerialNumber(),newDevice.getGkId(),newDevice.getType(),newDevice.getModel(),newDevice.getManufacturer(),newDevice.getStatus(),newDevice.getDefectDescription());
+		
+		this.cpu = newDevice.getCpu();
+		this.ramSize = newDevice.getRam();
+		this.hardDriveSize = newDevice.getHdd();
+		this.operatingSystem = newDevice.getOs();
+	}
 
 
 	/**

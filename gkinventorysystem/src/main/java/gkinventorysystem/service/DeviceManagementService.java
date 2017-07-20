@@ -6,6 +6,7 @@ package gkinventorysystem.service;
 import java.util.List;
 
 import gkinventorysystem.model.DeviceGeneral;
+import gkinventorysystem.model.Laptop;
 
 /**
  * @author Ibrahim-Abdullah
@@ -26,4 +27,6 @@ public interface DeviceManagementService {
 	public boolean deleteDevice(DeviceGeneral itemToDelete);
 	
 	public boolean deleteDeviceBySerialNumber(String deviceSerialNumber);
+	
+	public Laptop getLaptopBySerialNumber(String serialNumber);
 }
