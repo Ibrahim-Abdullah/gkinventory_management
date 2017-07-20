@@ -38,6 +38,8 @@ public class Laptop extends DeviceGeneral{
 	}
 
 
+
+
 	/**
 	 * @param serialNumber
 	 * @param gkId
@@ -113,4 +115,56 @@ public class Laptop extends DeviceGeneral{
 	public void setOperatingSystem(String operatingSystem) {
 		this.operatingSystem = operatingSystem;
 	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Laptop [cpu=" + cpu + ", ramSize=" + ramSize + ", hardDriveSize=" + hardDriveSize + ", operatingSystem="
+				+ operatingSystem + ", toString()=" + super.toString() + "]";
+	}
+
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Laptop)) {
+			return false;
+		}
+		Laptop other = (Laptop) obj;
+		if (cpu == null) {
+			if (other.cpu != null) {
+				return false;
+			}
+		} else if (!cpu.equals(other.cpu)) {
+			return false;
+		}
+		if (hardDriveSize != other.hardDriveSize) {
+			return false;
+		}
+		if (operatingSystem == null) {
+			if (other.operatingSystem != null) {
+				return false;
+			}
+		} else if (!operatingSystem.equals(other.operatingSystem)) {
+			return false;
+		}
+		if (ramSize != other.ramSize) {
+			return false;
+		}
+		return true;
+	}
+	
+	
 }

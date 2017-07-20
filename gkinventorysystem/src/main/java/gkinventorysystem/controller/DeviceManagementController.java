@@ -63,7 +63,7 @@ public class DeviceManagementController {
 	 * Display add new device form 
 	 * @return add new device form view
 	 */
-	@RequestMapping(value="/newdevice", method=RequestMethod.GET)
+	@RequestMapping(value="/new", method=RequestMethod.GET)
 	public String showAddNewDeviceForm(){
 		return "addnewdevice";
 	}
@@ -74,7 +74,7 @@ public class DeviceManagementController {
 	 * @param device New device to be added
 	 * @return 
 	 */
-	@RequestMapping(value="/newdevice", method=RequestMethod.POST)
+	@RequestMapping(value="/new", method=RequestMethod.POST)
 	public String addNewDevice(DeviceGeneral device){
 		
 		//Process form input
@@ -93,13 +93,13 @@ public class DeviceManagementController {
 	 * Display the edit device form with the details of the device pre-filled
 	 * @return
 	 */
-	@RequestMapping(value="/editDevice/{deviceSerialNumber}", method=RequestMethod.GET)
+	@RequestMapping(value="/edit/{deviceSerialNumber}", method=RequestMethod.GET)
 	public String showEditDeviceForm(@PathVariable("deviceSerialNumber") String deviceSerialNumber,Model model){
 		
 		DeviceGeneral device = deviceManagementService.getDeviceBySerialNumber(deviceSerialNumber);
 		
 		model.addAttribute("device",device);
-		return "editDevice";
+		return "editDevice"; 
 	}
 	
 	/**
@@ -107,7 +107,7 @@ public class DeviceManagementController {
 	 * @param editedDevice Device with edited properties
 	 * @return View to show afterwards
 	 */
-	@RequestMapping(value="/editdevice", method=RequestMethod.POST)
+	@RequestMapping(value="/edit", method=RequestMethod.POST)
 	public String editDevice(DeviceGeneral editedDevice){
 		
 		//Process form input
@@ -141,5 +141,27 @@ public class DeviceManagementController {
 		
 		//Show notification unsuccessful deletion  of device
 		return "redirect:/device";
+	}
+	
+	
+	/**
+	 * Process the assignment of a device to an emplyee
+	 * @param deviceSerialNumber device serial number
+	 * @param model model to hold the device properties
+	 * @return
+	 */
+	@RequestMapping(value="/assign/{deviceSerialNumber}", method=RequestMethod.GET)
+	public String assignDevice(@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model){
+		
+		//boolean isDeviceAssignedToEmployee = deviceManagementService.assginDeviceToEmployee(deviceSerialNumber);
+		
+		/**if(!isDeviceAssignedToEmployee){
+			//Show notification that device could not be assigned to the employee
+			return "redirect:/device";
+		}
+		
+		//Show notification that device has been assigned to employee
+		return "redirect:/device";**/
+		return "";
 	}
 }

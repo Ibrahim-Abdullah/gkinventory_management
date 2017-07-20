@@ -5,6 +5,7 @@ package gkinventorysystem.service;
 
 import java.util.List;
 
+import gkinventorysystem.forms.EmployeeForm;
 import gkinventorysystem.model.Employee;
 
 /**
@@ -51,6 +52,12 @@ public class EmployeeManagementServiceImp implements EmployeeManagementService {
 	public void makeEmployeeAdmin(Employee employee) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean addNewEmployee(EmployeeForm newEmployee) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

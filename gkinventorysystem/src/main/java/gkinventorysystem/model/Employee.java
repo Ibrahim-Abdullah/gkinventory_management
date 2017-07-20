@@ -1,7 +1,7 @@
 /**
  * 
  */
-package gkinventorysyatem.model;
+package gkinventorysystem.model;
 
 /**
  * @author Ibrahim Abdullah

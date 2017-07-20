@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="layout :: site-head">
+<title>Item Management</title>
+</head>
+<body>
+
+	<!-- INCLUDE LAYOUT HEADER HERE -->
+	<header th:replace="layout :: site-header"></header>
+
+	<!-- PAGE SPECIFIC CONTENT -->
+	<div class="tab-pane fade in active" id="item-management">
+		<div id="filter-row" class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-2">
+
+					<!-- CHECK HOW TO IMPLEMENT THE SELECT OPTION TAGS -->
+					<form role="form" class="form-inline" id="itemManagementForm">
+						<div class="col-md-3 form-group">
+							<select class="form-control">
+								<option value="">Filter Items</option>
+								<option value="laptop">Laptop</option>
+								<option value="desktop">Desktop</option>
+								<option value="keyboardMouse">Keyboard and Mouse</option>
+								<option value="keyboard">Only Keyboard</option>
+								<option value="mouse">Only Mouse</option>
+								<option value="mobilePhone">Mobile Phone</option>
+							</select>
+						</div>
+					</form>
+
+				</div>
+				
+				<!-- BUTTON TO ADD NEW DEVICE TO THE SYSTEM -->
+				<div class="btn-group btn-group-xs tble-buttons col-md-3 col-sm-4">
+					<a href="addnewdevice.html" th:href="@{/device/new}"><button
+							type="button" class="btn btn-sm btn-primary add-new">New
+							Item</button></a>
+				</div>
+			</div>
+		</div>
+
+		<!-- CHECK FOR THE LIST OF DEVICES AND DISPLAY THIER PROPERTIES -->
+		<div id="table-row" class="container"
+			th:if="${not #lists.isEmpty(allDevice))}">
+			<div class="row table-row">
+				<div class="table-responsive">
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Serial Number</th>
+								<th>GenKey ID</th>
+								<th>Type</th>
+								<th>Status</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- DISPLAY GENERIC ITEM PROPERTIES -->
+							<tr th:each="device : ${allDevice}">
+								<td th:text="${device.serialNumber"></td>
+								<td th:text="${device.gkId"></td>
+								<td th:text="${device.type"></td>
+								<td th:text="${device.status"></td>
+
+								<td>
+								<!-- DISPLAY ACTION BUTTONS FOR EVERY DEVICE WITH DYNAMIC URL -->
+									<div class="btn-group btn-group-xs tble-buttons">
+										<a href="viewdevice.html"
+											th:href="@{/device/view(deviceSerialNumber=${device.serialNumber})}"><button
+												type="button" class="btn black-background btn-sm">View</button></a>
+										<a href="#"
+											th:href="@{/device/assign(deviceSerialNumber=${device.SerialNumber})}"><button
+												type="button" class="btn black-background btn-sm">Assign</button></a>
+										<a href="editdevice.html"
+											th:href="@{/device/edit(deviceSerialNumber=${device.SerialNumber})}"><button
+												type="button" class="btn black-background btn-sm">Edit</button></a>
+										<a href="deletedevice.html"
+											th:href="@{/device/delete(deviceSerialNumber=${device.SerialNumber})}"><button
+												type="button" class="btn black-background btn-sm">Delete</button></a>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- INCLUDE LAYOUT FOOTER -->
+	<footer th:replace="layout::site-footer"></footer>
+</body>
+</html>

@@ -4,6 +4,9 @@
 package gkinventorysystem.service;
 
 
+import java.util.List;
+
+import gkinventorysystem.forms.EmployeeForm;
 import gkinventorysystem.model.Employee;
 /**
  * @author Ibrahim Abdullah
@@ -18,7 +21,7 @@ public interface EmployeeManagementService
 	
 	public Employee getEmployeeById(String employeeId);
 	
-	public void addNewEmployee(Employee newEmployee);
+	public boolean addNewEmployee(EmployeeForm newEmployee);
 	
 	public void editEmployeeProfile(Employee employeeToEditProfile);
 	

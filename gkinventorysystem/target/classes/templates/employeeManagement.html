@@ -60,7 +60,7 @@
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
 									  <a href="viewitem.html" th:href="@{/employee/view(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">View</button></a>
-									  <a href="#makeadmin" data-toggle="modal"><button type="button" class="btn btn-sm btn-black black-background">Make User</button></a>
+									  <a href="#" th:href="@{/employee/makeuser(employeeId=${emplyee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Make User</button></a>
 									  <a href="editemployee.html" th:href="@{/employee/edit(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Edit</button></a>
 									  <a href="#deleteemployee" th:href="@{/employee/delete(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm black-background">Delete</button></a>
 									</div>

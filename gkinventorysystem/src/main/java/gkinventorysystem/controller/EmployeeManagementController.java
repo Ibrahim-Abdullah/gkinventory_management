@@ -2,13 +2,17 @@ package gkinventorysystem.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import gkinventorysystem.forms.EmployeeForm;
 import gkinventorysystem.model.Employee;
 import gkinventorysystem.service.EmployeeManagementService;
 
@@ -56,9 +60,11 @@ public class EmployeeManagementController {
 		return "viewEmployee";
 	}
 	
-	@RequestMapping(value="/newEmployee",method=RequestMethod.GET)
-	public String showAddNewEmployeeForm(){
-		return "addnewEmployee";
+	@RequestMapping(value="/new",method=RequestMethod.GET)
+	public String showAddNewEmployeeForm(Model model){
+		
+		model.addAttribute("newEmployee", new EmployeeForm());
+		return "addnewemployee";
 	}
 	
 	/**
@@ -66,11 +72,22 @@ public class EmployeeManagementController {
 	 * @param employee The employee to be added 
 	 * @return Redirect to the employee management page
 	 */
-	@RequestMapping(value="/newEmployee",method=RequestMethod.POST)
-	public String saveNewEmployee(Employee employee){
+	@RequestMapping(value="/new",method=RequestMethod.POST)
+	public String saveNewEmployee(@Valid EmployeeForm employeeForm, BindingResult bindingResult,Model model){
 		
-		//Process the form input
-		//Show notification of final work flow status
+		if(bindingResult.hasErrors()){
+			return "addnewemployee";
+		}
+		
+		boolean isEmployeeAdded = employeeService.addNewEmployee(employeeForm);
+		if(!isEmployeeAdded){
+			
+			//Show notification of employee successfully added
+			model.addAttribute("newEmployee",employeeForm);
+			return "addnewemployee";
+		}
+		
+		//Show notification of error in adding the employee to the database and show form again
 		return "redirect:/employee";
 	}
 	
