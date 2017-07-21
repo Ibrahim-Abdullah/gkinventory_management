@@ -5,10 +5,17 @@ package gkinventorysystem.model;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import gkinventorysystem.forms.EmployeeForm;
+
 /**
  * @author Ibrahim Abdullah
  *
  */
+
+@Component
 public class Employee 
 {
 	private String firstName;
@@ -19,7 +26,9 @@ public class Employee
 	private String emailAdress;
 	private List<DeviceGeneral> assignedDevices;
 	
-	
+	public Employee(){
+		
+	}
 	public Employee(String fname, String lname,String employeeId,String email,String department){
 		 this.firstName = fname;
 		 this.lastName = lname;
@@ -29,6 +38,19 @@ public class Employee
 		 this.setPermission(Permission.NOT_ADMIN);
 		 this.assignedDevices = null;
 	}
+	
+	@Autowired
+	public Employee(EmployeeForm employee){
+		this.firstName = employee.getFirstName();
+		this.lastName = employee.getLastName();
+		this.gkEmployeeId = employee.getGkEmployeeId();
+		this.department = Department.valueOf(employee.getDepartment());
+		this.permission = Permission.valueOf(employee.getPermission());
+		this.emailAdress = employee.getEmailAdress();
+		this.assignedDevices = null;
+	}
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}

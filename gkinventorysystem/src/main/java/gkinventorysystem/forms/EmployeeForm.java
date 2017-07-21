@@ -7,10 +7,17 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import gkinventorysystem.model.Employee;
+
 /**
  * @author Ibrahim-Abdullah
  *
  */
+
+@Component
 public class EmployeeForm {
 	
 	@NotNull
@@ -36,6 +43,19 @@ public class EmployeeForm {
 	private String emailAdress;
 
 	
+	public EmployeeForm(){
+		
+	}
+	
+	@Autowired
+	public EmployeeForm(Employee employee){
+		this.firstName = employee.getFirstName();
+		this.lastName = employee.getLastName();
+		this.gkEmployeeId = employee.getGkEmployeeId();
+		this.department = String.valueOf(employee.getDepartment());
+		this.permission = String.valueOf(employee.getPermission());
+		this.emailAdress = employee.getEmailAdress();
+	}
 	/**
 	 * @return the firstName
 	 */

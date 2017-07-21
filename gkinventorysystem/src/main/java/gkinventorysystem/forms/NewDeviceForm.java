@@ -5,10 +5,18 @@ package gkinventorysystem.forms;
 
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import gkinventorysystem.model.DeviceGeneral;
+import gkinventorysystem.model.Laptop;
+
 /**
  * @author Ibrahim-Abdullah
  *
  */
+
+@Component
 public class NewDeviceForm {
 	
 	@NotNull
@@ -39,6 +47,37 @@ public class NewDeviceForm {
 
 	private String defectDescription;
 
+	
+	
+	public NewDeviceForm(){
+		
+	}
+	
+	@Autowired
+	public NewDeviceForm(Laptop laptop){
+		this.serialNumber = laptop.getSerialNumber();
+		this.gkId = laptop.getGkLabel();
+		this.type = laptop.getDeviceType();
+		this.status = String.valueOf(laptop.getDeviceStatus());
+		this.manufacturer = laptop.getBrand();
+		this.model = laptop.getModel();
+		this.cpu = laptop.getCpu();
+		this.ram = laptop.getRamSize();
+		this.os = laptop.getOperatingSystem();
+		this.hdd = laptop.getHardDriveSize();
+		
+	}
+	
+	@Autowired
+	public NewDeviceForm(DeviceGeneral device){
+		this.serialNumber = device.getSerialNumber();
+		this.gkId = device.getGkLabel();
+		this.type = device.getDeviceType();
+		this.status = String.valueOf(device.getDeviceStatus());
+		this.manufacturer = device.getBrand();
+		this.model = device.getModel();
+		
+	}
 	/**
 	 * @return the serialNumber
 	 */

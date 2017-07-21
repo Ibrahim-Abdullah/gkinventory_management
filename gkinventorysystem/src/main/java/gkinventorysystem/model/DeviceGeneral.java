@@ -4,6 +4,7 @@
 package gkinventorysystem.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import gkinventorysystem.forms.NewDeviceForm;
 
@@ -11,6 +12,8 @@ import gkinventorysystem.forms.NewDeviceForm;
  * @author Ibrahim Abdullah
  *
  */
+
+@Component
 public class DeviceGeneral 
 {
 	private String serialNumber;

@@ -9,8 +9,7 @@
 	<header th:replace="layout::site-header"></header>
 	
 	<!-- PAGE SPECIFIC CONTENT:EPLOYEE MANAGEMENT TAB SECTION-->
-	<main>
-	<div class="tab-pane fade" id="employee-management">
+	<div>
 		<!--header end-->
 	<div id="filter-row" class="container filter-row">
 		<div class="row">
@@ -31,7 +30,7 @@
 				</form>
 			</div>
 			<div class="btn-group btn-group-xs tble-buttons col-md-4 col-sm-2 col-md-offset-2">
-				<a href="addnewemployee.html" th:href="@{/employee/newEmployee}"><button type="button" class="btn btn-sm btn-primary add-new">New Employee</button></a>
+				<a href="addnewemployee.html" th:href="@{/employee/new}"><button type="button" class="btn btn-sm btn-primary add-new">New Employee</button></a>
 			</div>
 		</div>
 	</div>
@@ -59,10 +58,10 @@
 					        	<td th:text="${employee.permission"></td>
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  <a href="viewitem.html" th:href="@{/employee/view(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">View</button></a>
-									  <a href="#" th:href="@{/employee/makeuser(employeeId=${emplyee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Make User</button></a>
-									  <a href="editemployee.html" th:href="@{/employee/edit(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Edit</button></a>
-									  <a href="#deleteemployee" th:href="@{/employee/delete(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm black-background">Delete</button></a>
+									  <a href="viewemployee.html" th:href="@{/employee/view/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">View</button></a>
+									  <a href="#" th:href="@{/employee/makeuser/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Make User</button></a>
+									  <a href="editemployee.html" th:href="@{/employee/edit/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Edit</button></a>
+									  <a href="#deleteemployee" th:href="@{/employee/delete/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm black-background">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>					   
@@ -72,7 +71,6 @@
 		</div>
 	</div>
 	</div>
-	</main>
 	<!-- INCLUDE LAYOUT FOOTER -->
 	<footer th:replace="layout::site-footer"></footer>
 </body>

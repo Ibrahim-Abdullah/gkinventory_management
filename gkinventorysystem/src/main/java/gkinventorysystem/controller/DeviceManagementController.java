@@ -102,7 +102,7 @@ public class DeviceManagementController {
 		if (bindingResult.hasErrors()) {
 
 			// Show notification that device could not be add
-			model.addAttribute("newDeviceForm", newDeviceForm);
+			//model.addAttribute("newDeviceForm", newDeviceForm);
 			return "addnewdevice";
 		}
 
@@ -117,7 +117,7 @@ public class DeviceManagementController {
 				return "redirect:/device";
 			}
 			// Show notification of device not added
-			model.addAttribute("newDeviceForm", newDeviceForm);
+			//model.addAttribute("newDeviceForm", newDeviceForm);
 			return "addnewdevice";
 		}
 
@@ -130,7 +130,7 @@ public class DeviceManagementController {
 		}
 
 		// Show notification unsuccessful addition of device
-		model.addAttribute("newDeviceForm", newDeviceForm);
+		//model.addAttribute("newDeviceForm", newDeviceForm);
 		return "addnewdevice";
 	}
 
@@ -145,14 +145,14 @@ public class DeviceManagementController {
 
 		if (deviceType.equalsIgnoreCase("laptop")) {
 			Laptop laptop = laptopManagementService.getLaptopBySerialNumber(deviceSerialNumber);
-			model.addAttribute("device", laptop);
+			model.addAttribute("newDeviceForm", new NewDeviceForm(laptop));
 
 			return "editdevice";
 		}
 
 		DeviceGeneral device = deviceManagementService.getDeviceBySerialNumber(deviceSerialNumber);
 
-		model.addAttribute("device", device);
+		model.addAttribute("device", new NewDeviceForm(device));
 		return "editdevice";
 	}
 
@@ -222,7 +222,7 @@ public class DeviceManagementController {
 
 
 	
-	@RequestMapping(value = "/assign/{deviceType}{deviceSerialNumber}", method = RequestMethod.GET)
+	@RequestMapping(value = "/assign/{deviceType}/{deviceSerialNumber}", method = RequestMethod.GET)
 	public String assignDevice(@PathVariable("deviceType") String deviceType,
 			@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
 
@@ -236,6 +236,12 @@ public class DeviceManagementController {
 		 * //Show notification that device has been assigned to employee return
 		 * "redirect:/device";
 		 **/
+		return "";
+	}
+	
+	@RequestMapping(value="/unassign/{deviceType}/{devicegkId}", method = RequestMethod.GET)
+	public String unassignDevice(@PathVariable("deviceTye")String deviceType, @PathVariable("devicegkId")String devicegkId){
+		
 		return "";
 	}
 }

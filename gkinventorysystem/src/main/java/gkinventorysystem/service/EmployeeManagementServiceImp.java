@@ -34,9 +34,9 @@ public class EmployeeManagementServiceImp implements EmployeeManagementService {
 		
 	}
 
-	public void editEmployeeProfile(Employee employeeToEditProfile) {
+	public boolean editEmployeeProfile(Employee employeeToEditProfile) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 	public void deleteEmployee(Employee employeeToEdit) {

@@ -23,7 +23,7 @@ public interface EmployeeManagementService
 	
 	public boolean addNewEmployee(EmployeeForm newEmployee);
 	
-	public void editEmployeeProfile(Employee employeeToEditProfile);
+	public boolean editEmployeeProfile(Employee employee);
 	
 	public void deleteEmployee(Employee employeeToEdit);
 	

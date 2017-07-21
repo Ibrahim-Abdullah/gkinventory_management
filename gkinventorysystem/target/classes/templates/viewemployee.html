@@ -59,23 +59,12 @@
 				<tr th:each="device: ${employee.assignedDevices}">
 					<td th:text="device.type"></td>
 					<td th:text="device.gkId"></td>
-					<td><a href="#" th:href="@{device/unassign/(deviceType=${device.type})/(gkId=${device.gkId})}"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
-				</tr>
-				<tr>
-					<td>Laptop</td>
-					<td>xxxxxxx</td>
-					<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
-				</tr>
-				<tr>
-					<td>Laptop</td>
-					<td>xxxxxxx</td>
-					<td><a href="#"><button class="btn btn-danger btn-sm">Unassign</button></a></td>
+					<td><a href="#"
+						th:href="@{device/unassign/{deviceType}/{gkId}(deviceType=${device.type},gkId=${device.gkId})}"><button
+								class="btn btn-danger btn-sm">Unassign</button></a></td>
 				</tr>
 				</tbody>
 			</table>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
 		</div>
 	</div>
 	<!-- INCLUDE LAYOUT FOOTER -->
