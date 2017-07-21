@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th=“http://www.thymeleaf.org”>
 <head th:replace="layout::site-head">
-<title>Item Management</title>
+<title>DEVICE MANAGEMENT</title>
 </head>
 <body>
 
@@ -10,39 +10,37 @@
 	
 	<!-- PAGE SPECIFIC CONTENT -->
 
-    <div id="viewItem" class="modal fade" aria-labelledby="viewItem" aria-hidden="true">
-    	<div class="modal-dialog" role="document">
-    		<div class="modal-content">
-    			<div class="modal-header">
-    				<h4 class="text-center">ITEM DETAIL</h4>
+    <div>
+    			<div>
+    				<h4 class="text-center">DEVICE PROPERTIES</h4>
     			</div>
-    			<div class="modal-body">
+    			<div>
 					<table class="table table-hover table-bordered">
     					<tbody>
     						<tr>
     							<td>Serial Number:</td>
-    							<td>xxxxxxxxxxxxx</td>
+    							<td th:text="${device.serialNumber}"></td>
     						</tr>
     						<tr>
-    							<td>GK Label</td>
-    							<td>xxxxxxxxxxxxx</td>
+    							<td>Genkey ID</td>
+    							<td th:text="${device.gkId}"></td>
     						</tr>
     						<tr>
-    							<td>Employee ID:</td>
-    							<td>xxxxxxxxxxx</td>
+    							<td>Type</td>
+    							<td th:text="${device.type}"></td>
     						</tr>
 
     						<tr>
-    							<td>Type:</td>
-    							<td>Laptop</td>
+    							<td>Manufacturer</td>
+    							<td th:text="${device.manufacturer}"></td>
     						</tr>
     						<tr>
-    							<td>Status:</td>
-    							<td>Working</td>
+    							<td>Model</td>
+    							<td th:text="${device.model}"></td>
     						</tr>
     						<tr>
-    							<td>Model:</td>
-    							<td>xxxxxxx</td>
+    							<td>Status</td>
+    							<td th:text="${device.status}"></td>
     						</tr>
     						<tr>
     							<td>Brand:</td>
@@ -59,13 +57,10 @@
     					</tbody>
     				</table>
     			</div>
-	    		<div  class="modal-footer">
-	    			<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+	    		<div>
+	    			<button type="button" class="btn btn-danger">Cancel</button>
 	    		</div>
     		</div>
-    	</div>
-    	
-    </div>
 	<!-- INCLUDE LAYOUT FOOTER -->
 	<footer th:replace="layout::site-footer"></footer>
 </body>

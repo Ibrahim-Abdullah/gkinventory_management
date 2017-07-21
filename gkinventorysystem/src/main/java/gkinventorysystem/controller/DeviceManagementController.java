@@ -61,16 +61,16 @@ public class DeviceManagementController {
 	 * @return The view to show afterwards
 	 */
 	@RequestMapping(value = "/view/{deviceType}/{deviceSerialNumber}", method = RequestMethod.GET)
-	public String getAllDevice(@PathVariable("deviceType") String deviceType,@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
+	public String getAllDevice(@PathVariable("deviceType") String deviceType,
+			@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
 
-		
-		if(deviceType.equalsIgnoreCase("laptop")){
+		if (deviceType.equalsIgnoreCase("laptop")) {
 			Laptop laptop = laptopManagementService.getLaptopBySerialNumber(deviceSerialNumber);
-			
-			model.addAttribute("device",laptop);
+
+			model.addAttribute("device", laptop);
 			return "viewdevice";
 		}
-		
+
 		DeviceGeneral device = deviceManagementService.getDeviceBySerialNumber(deviceSerialNumber);
 		model.addAttribute("device", device);
 		return "viewdevice";
@@ -83,8 +83,8 @@ public class DeviceManagementController {
 	 */
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String showAddNewDeviceForm(Model model) {
-		
-		model.addAttribute("newDeviceForm",new NewDeviceForm());
+
+		model.addAttribute("newDeviceForm", new NewDeviceForm());
 		return "addnewdevice";
 	}
 
@@ -102,12 +102,12 @@ public class DeviceManagementController {
 		if (bindingResult.hasErrors()) {
 
 			// Show notification that device could not be add
-			model.addAttribute("newDeviceForm",newDeviceForm);
+			model.addAttribute("newDeviceForm", newDeviceForm);
 			return "addnewdevice";
 		}
-		
+
 		if (newDeviceForm.getType().equalsIgnoreCase("laptop")) {
-			
+
 			Laptop newLaptop = new Laptop(newDeviceForm);
 			boolean isLaptopAdded = laptopManagementService.addNewLaptop(newLaptop);
 
@@ -120,7 +120,7 @@ public class DeviceManagementController {
 			model.addAttribute("newDeviceForm", newDeviceForm);
 			return "addnewdevice";
 		}
-		
+
 		DeviceGeneral otherDeviceType = new DeviceGeneral(newDeviceForm);
 		boolean isDeviceAdded = deviceManagementService.addNewDevice(otherDeviceType);
 
@@ -140,7 +140,15 @@ public class DeviceManagementController {
 	 * @return
 	 */
 	@RequestMapping(value = "/edit/{deviceType}/{deviceSerialNumber}", method = RequestMethod.GET)
-	public String showEditDeviceForm(@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
+	public String showEditDeviceForm(@PathVariable("deviceType") String deviceType,
+			@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
+
+		if (deviceType.equalsIgnoreCase("laptop")) {
+			Laptop laptop = laptopManagementService.getLaptopBySerialNumber(deviceSerialNumber);
+			model.addAttribute("device", laptop);
+
+			return "editdevice";
+		}
 
 		DeviceGeneral device = deviceManagementService.getDeviceBySerialNumber(deviceSerialNumber);
 
@@ -148,18 +156,29 @@ public class DeviceManagementController {
 		return "editdevice";
 	}
 
-	/**
-	 * Process editing device properties
-	 * 
-	 * @param editedDevice
-	 *            Device with edited properties
-	 * @return View to show afterwards
-	 */
-	@RequestMapping(value = "/edit/{deviceType}", method = RequestMethod.POST)
-	public String editDevice(DeviceGeneral editedDevice) {
+	
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public String editDevice(@Valid NewDeviceForm editedDevice, BindingResult bindingResult, Model model) {
 
+		if (editedDevice.getType().equalsIgnoreCase("laptop")) {
+
+			Laptop editedLaptop = new Laptop(editedDevice);
+			boolean isLaptopEdited = laptopManagementService.editLaptop(editedLaptop);
+
+			if (isLaptopEdited) {
+
+				// Show notification that Laptop has been added successfully
+				return "redirect:/device";
+			}
+
+			model.addAttribute("editedDevice", editedDevice);
+			return "editdevice";
+		}
 		// Process form input
-		boolean isEditedDeviceSaved = deviceManagementService.editDevice(editedDevice);
+		DeviceGeneral device = new DeviceGeneral(editedDevice);
+
+		boolean isEditedDeviceSaved = deviceManagementService.editDevice(device);
 
 		if (isEditedDeviceSaved) {
 			// Show notification of successful edit of item
@@ -167,24 +186,32 @@ public class DeviceManagementController {
 		}
 
 		// Show notification unsuccessful edit of device
+		model.addAttribute("editedDevice", device);
 		return "editdevice";
 	}
+	
+	
 
-	/**
-	 * Process the deletion of device
-	 * 
-	 * @param deviceSerialNumber
-	 *            Serial number of the item to be deleted
-	 * @param model
-	 * @return View to show after the deletion
-	 */
-	@RequestMapping(value = "/delete/{deviceSerialNumber}", method = RequestMethod.POST)
-	public String editDevice(@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
 
-		// Process form input
-		boolean isEditedDeviceSaved = deviceManagementService.deleteDeviceBySerialNumber(deviceSerialNumber);
+	@RequestMapping(value = "/delete/{deviceType}/{deviceSerialNumber}", method = RequestMethod.POST)
+	public String deleteDevice(@PathVariable("deviceType") String deviceType,
+			@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
 
-		if (isEditedDeviceSaved) {
+		if (deviceType.equalsIgnoreCase("laptop")) {
+			boolean isLaptopDeleted = laptopManagementService.deleteLaptopBySerialNumber(deviceSerialNumber);
+
+			if (isLaptopDeleted) {
+				// Show notification of item deleted
+				return "redirect:/device";
+			}
+
+			// Show notification of item not deleted
+			return "redirect:/device";
+		}
+
+		boolean isDeviceDeleted = deviceManagementService.deleteDeviceBySerialNumber(deviceSerialNumber);
+
+		if (isDeviceDeleted) {
 			// Show notification of successful delete of item
 			return "redirect:/device";
 		}
@@ -193,17 +220,11 @@ public class DeviceManagementController {
 		return "redirect:/device";
 	}
 
-	/**
-	 * Process the assignment of a device to an emplyee
-	 * 
-	 * @param deviceSerialNumber
-	 *            device serial number
-	 * @param model
-	 *            model to hold the device properties
-	 * @return
-	 */
-	@RequestMapping(value = "/assign/{deviceSerialNumber}", method = RequestMethod.GET)
-	public String assignDevice(@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
+
+	
+	@RequestMapping(value = "/assign/{deviceType}{deviceSerialNumber}", method = RequestMethod.GET)
+	public String assignDevice(@PathVariable("deviceType") String deviceType,
+			@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
 
 		// boolean isDeviceAssignedToEmployee =
 		// deviceManagementService.assginDeviceToEmployee(deviceSerialNumber);

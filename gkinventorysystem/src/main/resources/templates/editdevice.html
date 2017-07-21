@@ -1,144 +1,152 @@
 <!DOCTYPE html>
 <html xmlns:th=“http://www.thymeleaf.org”>
 <head th:replace="layout::site-head">
-<title>Item Management</title>
+<title>EDITING DEVICE</title>
 </head>
 <body>
 
 	<!-- INCLUDE LAYOUT HEADER HERE -->
 	<header th:replace="layout::site-header"></header>
-	
+
 	<!-- PAGE SPECIFIC CONTENT -->
-	<div id="editItem" class="modal fade" aria-labelledby="editItem" aria-hidden="true">
-  		<div class="modal-dialog" role="document">
-    		<div class="modal-content">
-      			<div class="modal-header">
-        			<h4 class="text-center">EDITING ITEM</h4>
-        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-       				</button>
-      			</div>
-      			<div class="modal-body">
-					<form role="form" class="form-horizontal">
-						<div class="form-group">
-		    				<label class="control-label col-sm-3 col-md-offset-1" for="serial_number">Serial Number</label>
-		    				<div class="col-sm-6">
-		      					<input type="text" class="form-control" id="serial_number" readonly value="xxxxxxxxxx">
-		    				</div>
-		  				</div>
-					  	<div class="form-group">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="gk_label">GK Label</label>
-					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="gk_label">
-					    	</div>
-					  	</div>
-					  	<div class="form-group">
-					    	<label class="control-label col-sm-3 col-md-offset-1">Type</label>
-					    	<div class="col-sm-6"> 
-					      		<select onchange="laptopSelected(this);" class="form-control" required>
-					      			<option value="">Select</option>
-					      			<option value="laptop">Laptop</option>
-					      			<option value="desktop">Desktop</option>
-					      			<option value="keyboardMouse">Keyboard and Mouse</option>
-					      			<option value="keyboard">Only Keyboard</option>
-					      			<option value="mouse">Only Mouse</option>
-					      			<option value="mobilePhone">Mobile Phone</option>
-					      		</select>
-					    	</div>
-					  	</div>
-					  	<div class="form-group" id="cpue" style="display: none">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="cpue">CPU</label>
-					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="cpue" required>
-					    	</div>
-					  	</div>
-					  	<div class="form-group" id="rame" style="display: none">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="rame">RAM(MB)</label>
-					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="rame" required>
-					    	</div>
-					  	</div>
-					  	<div class="form-group" id="hdde" style="display: none">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="hdde">HDD(GB)</label>
-					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="hdde" required>
-					    	</div>
-					  	</div>
-					  	<div class="form-group" id="ose" style="display: none">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="ose">OS</label>
-					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="ose" required>
-					    	</div>
-					  	</div>
-					  	<script>
-    						function laptopSelected(optionSelected) 
-    						{
-        						if (optionSelected.value == "laptop") 
-        						{
-            						document.getElementById("cpue").style.display = "block";
-            						document.getElementById("rame").style.display = "block";
-            						document.getElementById("hdde").style.display = "block";
-            						document.getElementById("ose").style.display = "block";
-	        					} 
-	        					else {
-            						document.getElementById("cpue").style.display = "none";
-            						document.getElementById("rame").style.display = "none";
-            						document.getElementById("hdde").style.display = "none";
-            						document.getElementById("ose").style.display = "none"; 	       					
-            					}
-    						}
-						</script>
-					  	<div class="form-group">
-					    	<label class="control-label col-sm-3 col-md-offset-1">Status</label>
-					    	<div class="col-sm-6"> 
-					      		<select class="form-control" onchange="defectiveSelected(this);">
-					      			<option value="">Select</option>
-					      			<option value="working">Working</option>
-					      			<option value="defective">Defective</option>
-					      		</select>
-					    	</div>
-					  	</div>
-					  	<div class="form-group" id="defectiveDes" style="display: none;">
-					  		<label class="control-label col-sm-4" for="defectiveDes">Defect Description</label>
-					  		<div class="col-sm-6" >
-					  			<textarea rows="5" class="form-control" id="defectiveDescription">
+	<div>
+		<div>
+			<h4 class="text-center">EDITING DEVICE</h4>
+		</div>
+		<div>
+			<form role="form" class="form-horizontal" method="post" id="editdevice"
+				th:action="@{/device/edit}" th:object="${newDeviceForm}">
+				<div class="form-group">
+					<label class="control-label col-sm-3 col-md-offset-1"
+						for="serialNumber">Serial Number</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="serialNumber" readonly
+							th:field="*{serialNumber}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3 col-md-offset-1" for="gkId">Genkey
+						ID</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="gkId"
+							th:field="*{gkId}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3 col-md-offset-1">Type</label>
+					<div class="col-sm-6">
+					
+					<!-- DISABLED BECAUSE DEVICE TYPE IS NOT SUPPOSED TO BE CHANGED -->
+						<select onchange="laptopSelected(this);" class="form-control"
+							disabled th:field="*{type}">
+							<option value="">Select</option>
+							<option value="laptop">Laptop</option>
+							<option value="desktop">Desktop</option>
+							<option value="keyboardMouse">Keyboard and Mouse</option>
+							<option value="keyboard">Only Keyboard</option>
+							<option value="mouse">Only Mouse</option>
+							<option value="mobilePhone">Mobile Phone</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- LAPTOP SPECIFIC PROPERTIES -->
+				<div class="form-group" id="cpu" style="display: none">
+					<label class="control-label col-sm-3 col-md-offset-1" for="cpu">CPU</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="cpu"
+							th:fields="*{cpu}">
+					</div>
+				</div>
+				<div class="form-group" id="rame" style="display: none">
+					<label class="control-label col-sm-3 col-md-offset-1" for="ram">RAM(MB)</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="ram"
+							th:fields="*{ram}">
+					</div>
+				</div>
+				<div class="form-group" id="hdde" style="display: none">
+					<label class="control-label col-sm-3 col-md-offset-1" for="hdd">HDD(GB)</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="hdd"
+							th:fields="*{hdd}">
+					</div>
+				</div>
+				<div class="form-group" id="ose" style="display: none">
+					<label class="control-label col-sm-3 col-md-offset-1" for="os">OS</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="os" th:fields="*{os}">
+					</div>
+				</div>
+				<script>
+					function laptopSelected(optionSelected) {
+						if (optionSelected.value == "laptop") {
+							document.getElementById("cpu").style.display = "block";
+							document.getElementById("ram").style.display = "block";
+							document.getElementById("hdd").style.display = "block";
+							document.getElementById("os").style.display = "block";
+						} else {
+							document.getElementById("cpu").style.display = "none";
+							document.getElementById("ram").style.display = "none";
+							document.getElementById("hdd").style.display = "none";
+							document.getElementById("os").style.display = "none";
+						}
+					}
+				</script>
+
+				<div class="form-group">
+					<label class="control-label col-sm-3 col-md-offset-1">Status</label>
+					<div class="col-sm-6">
+						<select class="form-control" onchange="defectiveSelected(this);">
+							<option value="">Select</option>
+							<option value="working">Working</option>
+							<option value="defective">Defective</option>
+						</select>
+					</div>
+				</div>
+				
+				<!-- DEFECTIVE DEVICES -->
+				<script>
+					function defectiveSelected(optionSelected) {
+						if (optionSelected.value == "defective") {
+							document.getElementById("defectiveDes").style.display = "block";
+						} else {
+							document.getElementById("defectiveDes").style.display = "none";
+						}
+					}
+				</script>
+				<div class="form-group" id="defectiveDes" style="display: none;">
+					<label class="control-label col-sm-4" for="defectiveDes">Defect
+						Description</label>
+					<div class="col-sm-6">
+						<textarea rows="5" class="form-control" id="defectiveDescription">
 					  				
 					  			</textarea>
-					  		</div>
-					  	</div>
-					  	<script>
-    						function defectiveSelected(optionSelected) 
-    						{
-        						if (optionSelected.value == "defective") 
-        						{
-            						document.getElementById("defectiveDes").style.display = "block";
-	        					} 
-	        					else {
-            						document.getElementById("defectiveDes").style.display = "none";
-            					}
-    						}
-						</script>	
-					  	<div class="form-group">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="brand">Brand</label>
-					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="brand" readonly autocomplete="true" value="Dell">
-					    	</div>
-					  	</div>
-					  	<div class="form-group">
-					    	<label class="control-label col-sm-3 col-md-offset-1" for="model">Model</label>
-					    	<div class="col-sm-6"> 
-					      		<input type="text" class="form-control" id="model" readonly autocomplete="true" value="LATTITUDE E7450">
-					    	</div>
-					  	</div>	
-					</form>
+					</div>
 				</div>
-				<div class="modal-footer">
-        			<button type="button" class="btn btn-primary">Save changes</button>
-        			<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      			</div>
-      		</div>
-    	</div>
-  	</div>
+				
+				
+				<div class="form-group">
+					<label class="control-label col-sm-3 col-md-offset-1" for="manufacture">Manufacture</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="manufacture" readonly th:field="*{manufacture}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3 col-md-offset-1" for="model">Model</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="model" readonly
+							th:field="*{model}">
+					</div>
+				</div>
+			</form>
+		</div>
+		<div>
+			<input type="submit" class="btn btn-primary" form="editdevice"
+				value="Save">
+				<a href="devicemanagement.html" th:href="@{/device}"><button type="button" class="btn btn-danger">Cancel</button></a>
+		</div>
+	</div>
 	<!-- INCLUDE LAYOUT FOOTER -->
 	<footer th:replace="layout::site-footer"></footer>
 </body>

@@ -20,6 +20,7 @@ public class DeviceGeneral
 	private String manufacturer;
 	private Status deviceStatus;
 	private String defectDescription;
+	private Employee user;
 	
 	/**
 	 * @param serialNumber
@@ -38,6 +39,7 @@ public class DeviceGeneral
 		this.setItemType(type);
 		this.setDeviceStatus(status);
 		this.defectDescription = defectDescription;
+		this.user = null;
 	}
 	
 
@@ -55,6 +57,7 @@ public class DeviceGeneral
 		this.setItemType(type);
 		this.model = model;
 		this.manufacturer = brand;
+		this.user =  null;
 	}
 	
 	/**
@@ -68,6 +71,7 @@ public class DeviceGeneral
 		this.setItemType(newDevice.getType());
 		this.model = newDevice.getModel();
 		this.manufacturer = newDevice.getManufacturer();
+		this.user = null;
 	}
 	
 	public String getSerialNumber() {
@@ -123,6 +127,25 @@ public class DeviceGeneral
 		this.deviceStatus = Status.valueOf(deviceStatus);
 	}
 	
+	
+	
+	/**
+	 * @return the user
+	 */
+	public Employee getUser() {
+		return user;
+	}
+
+
+	/**
+	 * @param user the user to set
+	 */
+	@Autowired
+	public void setUser(Employee user) {
+		this.user = user;
+	}
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

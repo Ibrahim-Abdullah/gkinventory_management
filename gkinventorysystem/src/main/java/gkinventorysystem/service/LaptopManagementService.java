@@ -25,6 +25,6 @@ public interface LaptopManagementService {
 	
 	public boolean deleteLaptop(Laptop laptopToDelete);
 	
-	public boolean deleteDeviceBySerialNumber(String deviceSerialNumber);
+	public boolean deleteLaptopBySerialNumber(String deviceSerialNumber);
 	
 }

@@ -3,6 +3,8 @@
  */
 package gkinventorysystem.model;
 
+import java.util.List;
+
 /**
  * @author Ibrahim Abdullah
  *
@@ -15,6 +17,7 @@ public class Employee
 	private Department department;
 	private Permission permission;
 	private String emailAdress;
+	private List<DeviceGeneral> assignedDevices;
 	
 	
 	public Employee(String fname, String lname,String employeeId,String email,String department){
@@ -24,6 +27,7 @@ public class Employee
 		 this.emailAdress = email;
 		 this.setDepartment(department);
 		 this.setPermission(Permission.NOT_ADMIN);
+		 this.assignedDevices = null;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -73,7 +77,31 @@ public class Employee
 		this.emailAdress = emailAdress;
 	}
 	
- 
+	
+	/**
+	 * @return the assignedDevices
+	 */
+	public List<DeviceGeneral> getAssignedDevices() {
+		return assignedDevices;
+	}
+	/**
+	 * @param assignedDevices the assignedDevices to set
+	 */
+	public void setAssignedDevices(List<DeviceGeneral> assignedDevices) {
+		this.assignedDevices = assignedDevices;
+	}
+	
+	public boolean addAsignedDevice(DeviceGeneral device){
+		
+		return this.assignedDevices.add(device);
+	}
+	
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 	
 	@Override
 	public String toString() {

@@ -35,7 +35,7 @@ public class EmployeeManagementController {
 		
 		model.addAttribute("allEmployees",allEmployees);
 		
-		return "employeeManagement";
+		return "employeemanagement";
 	}
 	
 	/**
@@ -57,7 +57,7 @@ public class EmployeeManagementController {
 			
 		}
 		model.addAttribute("employee", employee);
-		return "viewEmployee";
+		return "viewemployee";
 	}
 	
 	@RequestMapping(value="/new",method=RequestMethod.GET)
@@ -110,7 +110,7 @@ public class EmployeeManagementController {
 			return "redirect:/employee";
 		}
 		model.addAttribute("employeeToEdit",employee);
-		return "editEmployee";
+		return "editemployee";
 	}
 	
 	/**

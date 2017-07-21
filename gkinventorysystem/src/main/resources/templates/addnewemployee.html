@@ -9,7 +9,7 @@
 	<header th:replace="layout::site-header"></header>
 
 	<!-- PAGE SPECIFIC CONTENT -->
-	<div id="addnewemployee">
+	<div>
 		<div>
 			<h4 class="text-center">ADD NEW EMPLOYEE FORM</h4>
 		</div>
@@ -87,10 +87,12 @@
 				</div>
 			</form>
 		</div>
-		<button type="submit" class="btn btn-primary">Add</button>
-		<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+		<div>
+			<input type="submit" class="btn btn-primary" form="addnewemployee"
+				value="Add">
+				<a href="employeemanagement.html" th:href="@{/employee}"><button type="button" class="btn btn-danger">Cancel</button></a>
+		</div>
 	</div>
-
 	<!-- INCLUDE LAYOUT FOOTER -->
 	<footer th:replace="layout::site-footer"></footer>
 </body>
