@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th=“http://www.thymeleaf.org”>
 <head th:replace="layout::site-head">
-<title>Item Management</title>
+<title>EMPLOYEE MANAGEMENT</title>
 </head>
 <body>
 
@@ -45,18 +45,13 @@
 					</div>
 				</div>
 				
-				<!-- CHECK ON HOW TO BIND THE FORM DATA TO FORM OBJECT -->
-				<div class="form-group">
+				<!-- DEPARTMENT LIST IS GENERATED DYNAMICALLY: THIS DIV TAG SHOWS ONLY WHEN THERE ARE DEPARTMENT IN THE DATABASE-->
+				<div class="form-group" th:if="${departmentList != null and not #lists.isEmpty(departmentList)}">
 					<label
 						class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1">Department</label>
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{department}">
-							<option value="">Select</option>
-							<option value="administration">Administration</option>
-							<option value="developers">Developers</option>
-							<option value="operationsSupport">Operations and Support</option>
-							<option value="qa">Quality Assurance</option>
-							<option value="logisticsTranport">Logistics and Transport</option>
+							<option th:each="department : ${departmentList}" th:value="department.name"  th:text="department.name"></option>
 						</select>
 					</div>
 				</div>

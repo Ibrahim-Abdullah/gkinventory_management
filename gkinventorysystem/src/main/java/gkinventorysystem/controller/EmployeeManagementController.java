@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import gkinventorysystem.forms.EmployeeForm;
+import gkinventorysystem.model.Department;
 import gkinventorysystem.model.Employee;
+import gkinventorysystem.service.DepartmentService;
 import gkinventorysystem.service.EmployeeManagementService;
 
 @Controller
@@ -22,6 +24,9 @@ public class EmployeeManagementController {
 
 	@Autowired
 	private EmployeeManagementService employeeService;
+	
+	@Autowired
+	private DepartmentService departmentService;
 
 	/**
 	 * Get the list of all employees
@@ -68,6 +73,7 @@ public class EmployeeManagementController {
 	public String showAddNewEmployeeForm(Model model) {
 
 		model.addAttribute("newEmployee", new EmployeeForm());
+		model.addAttribute("departmentList", getAllDepartment());
 		return "addnewemployee";
 	}
 
@@ -163,5 +169,12 @@ public class EmployeeManagementController {
 
 		return "redirect:/employee";
 
+	}
+	/**
+	 * 
+	 * @return List of all the department in the database
+	 */
+	private List<Department> getAllDepartment(){
+		return departmentService.getAllDepartment();
 	}
 }
