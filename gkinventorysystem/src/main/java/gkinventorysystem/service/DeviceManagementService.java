@@ -5,6 +5,8 @@ package gkinventorysystem.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import gkinventorysystem.model.DeviceGeneral;
 import gkinventorysystem.model.Laptop;
 

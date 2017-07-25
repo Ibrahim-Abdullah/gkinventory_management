@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  *
  */
 
-@Component
 public class DeviceType {
 	private String type;
 	private int key;

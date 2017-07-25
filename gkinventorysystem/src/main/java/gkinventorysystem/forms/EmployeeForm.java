@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import gkinventorysystem.model.Department;
 import gkinventorysystem.model.Employee;
 
 /**
@@ -33,7 +34,7 @@ public class EmployeeForm {
 	private String gkEmployeeId;
 	
 	@NotNull
-	private String department;
+	private Department department;
 	
 	@NotNull
 	private String permission;
@@ -47,12 +48,11 @@ public class EmployeeForm {
 		
 	}
 	
-	@Autowired
 	public EmployeeForm(Employee employee){
 		this.firstName = employee.getFirstName();
 		this.lastName = employee.getLastName();
 		this.gkEmployeeId = employee.getGkEmployeeId();
-		this.department = String.valueOf(employee.getDepartment());
+		this.department = employee.getDepartment();
 		this.permission = String.valueOf(employee.getPermission());
 		this.emailAdress = employee.getEmailAdress();
 	}
@@ -101,14 +101,14 @@ public class EmployeeForm {
 	/**
 	 * @return the department
 	 */
-	public String getDepartment() {
+	public Department getDepartment() {
 		return department;
 	}
 
 	/**
 	 * @param department the department to set
 	 */
-	public void setDepartment(String department) {
+	public void setDepartment(Department department) {
 		this.department = department;
 	}
 
@@ -139,15 +139,5 @@ public class EmployeeForm {
 	public void setEmailAdress(String emailAdress) {
 		this.emailAdress = emailAdress;
 	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "EmployeeForm [firstName=" + firstName + ", lastName=" + lastName + ", gkEmployeeId=" + gkEmployeeId
-				+ ", department=" + department + ", permission=" + permission + ", emailAdress=" + emailAdress + "]";
-	}
-	
 	
 }

@@ -8,26 +8,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import gkinventorysystem.converter.DepartmentStringConverter;
 import gkinventorysystem.forms.EmployeeForm;
 import gkinventorysystem.model.Department;
 import gkinventorysystem.model.Employee;
 import gkinventorysystem.service.DepartmentService;
+import gkinventorysystem.service.DepartmentServiceImp;
 import gkinventorysystem.service.EmployeeManagementService;
+import gkinventorysystem.service.EmployeeManagementServiceImp;
 
 @Controller
 @RequestMapping("employee/")
 public class EmployeeManagementController {
 
 	@Autowired
-	private EmployeeManagementService employeeService;
+	private EmployeeManagementServiceImp employeeService;
 	
 	@Autowired
-	private DepartmentService departmentService;
-
+	private DepartmentServiceImp departmentService;
+	
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+	    binder.registerCustomEditor(Department.class, new DepartmentStringConverter());
+	}
 	/**
 	 * Get the list of all employees
 	 * 
@@ -141,7 +151,7 @@ public class EmployeeManagementController {
 			return "editemployee";
 		}
 		
-		boolean isEmployeeEditSaved = employeeService.editEmployeeProfile(new Employee(employeeForm));
+		//boolean isEmployeeEditSaved = employeeService.editEmployeeProfile(new Employee(employeeForm));
 		// Display notification of edit status
 		return "redirect:/employee";
 	}

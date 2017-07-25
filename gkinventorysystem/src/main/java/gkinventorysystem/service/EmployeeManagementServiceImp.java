@@ -5,6 +5,8 @@ package gkinventorysystem.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import gkinventorysystem.forms.EmployeeForm;
 import gkinventorysystem.model.Employee;
 
@@ -12,6 +14,7 @@ import gkinventorysystem.model.Employee;
  * @author Ibrahim-Abdullah
  *
  */
+@Component
 public class EmployeeManagementServiceImp implements EmployeeManagementService {
 
 	public List<Employee> getAllEmployees() {

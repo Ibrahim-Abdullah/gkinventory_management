@@ -53,7 +53,6 @@ public class NewDeviceForm {
 		
 	}
 	
-	@Autowired
 	public NewDeviceForm(Laptop laptop){
 		this.serialNumber = laptop.getSerialNumber();
 		this.gkId = laptop.getGkLabel();
@@ -68,7 +67,7 @@ public class NewDeviceForm {
 		
 	}
 	
-	@Autowired
+
 	public NewDeviceForm(DeviceGeneral device){
 		this.serialNumber = device.getSerialNumber();
 		this.gkId = device.getGkLabel();

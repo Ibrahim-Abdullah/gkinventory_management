@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import gkinventorysystem.forms.EmployeeForm;
-
+import gkinventorysystem.model.Department;
+import gkinventorysystem.model.Permission;
 /**
  * @author Ibrahim Abdullah
  *
@@ -24,31 +25,67 @@ public class Employee
 	private Department department;
 	private Permission permission;
 	private String emailAdress;
+	
+	//NB: A LAPTOP IS ALSO A DEVICE
 	private List<DeviceGeneral> assignedDevices;
+	
 	
 	public Employee(){
 		
 	}
-	public Employee(String fname, String lname,String employeeId,String email,String department){
+	
+	/**
+	 * 
+	 * @param fname
+	 * @param lname
+	 * @param employeeId
+	 * @param email
+	 * @param department
+	 */
+	public Employee(String fname, String lname,String employeeId,String email,Department department){
+		 this.firstName = fname;
+		 this.lastName = lname;
+		 this.gkEmployeeId = employeeId;
+		 this.emailAdress = email;
+		 this.department = department;
+		// this.permission = 
+		 //this.setPermission(Permission.NOT_ADMIN);
+		 this.assignedDevices = null;
+	}
+	
+	/**
+	 * 
+	 * @param fname
+	 * @param lname
+	 * @param employeeId
+	 * @param email
+	 * @param department
+	 * @param assignedDevice
+	 */
+	public Employee(String fname, String lname,String employeeId,String email,Department department,List<DeviceGeneral> assignedDevice){
 		 this.firstName = fname;
 		 this.lastName = lname;
 		 this.gkEmployeeId = employeeId;
 		 this.emailAdress = email;
 		 this.setDepartment(department);
-		 this.setPermission(Permission.NOT_ADMIN);
-		 this.assignedDevices = null;
+		 //this.setPermission(Permission.NOT_ADMIN);
+		 this.assignedDevices = assignedDevice;
 	}
 	
+	/**
+	 * 
+	 * @param employee
+	 *
 	@Autowired
 	public Employee(EmployeeForm employee){
 		this.firstName = employee.getFirstName();
 		this.lastName = employee.getLastName();
 		this.gkEmployeeId = employee.getGkEmployeeId();
-		this.department = Department.valueOf(employee.getDepartment());
-		this.permission = Permission.valueOf(employee.getPermission());
+		this.department = employee.getDepartment();
+		//this.permission = Permission.valueOf(employee.getPermission());
 		this.emailAdress = employee.getEmailAdress();
 		this.assignedDevices = null;
-	}
+	}**/
 	
 	
 	public String getFirstName() {
@@ -73,14 +110,6 @@ public class Employee
 	
 	public void setGkEmployeeId(String gkEmployeeId) {
 		this.gkEmployeeId = gkEmployeeId;
-	}
-	
-	public Department getDepartment() {
-		return department;
-	}
-	
-	public void setDepartment(String department) {
-		this.department = Department.valueOf(department);
 	}
 	
 	public Permission getPermission() {
@@ -125,73 +154,7 @@ public class Employee
 		this.department = department;
 	}
 	
-	@Override
-	public String toString() {
-		return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", gkEmployeeId=" + gkEmployeeId
-				+ ", department=" + department + ", permission=" + permission + ", emailAdress=" + emailAdress + "]";
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Employee)) {
-			return false;
-		}
-		Employee other = (Employee) obj;
-		if (department != other.department) {
-			return false;
-		}
-		if (emailAdress == null) {
-			if (other.emailAdress != null) {
-				return false;
-			}
-		} else if (!emailAdress.equals(other.emailAdress)) {
-			return false;
-		}
-		if (firstName == null) {
-			if (other.firstName != null) {
-				return false;
-			}
-		} else if (!firstName.equals(other.firstName)) {
-			return false;
-		}
-		if (gkEmployeeId == null) {
-			if (other.gkEmployeeId != null) {
-				return false;
-			}
-		} else if (!gkEmployeeId.equals(other.gkEmployeeId)) {
-			return false;
-		}
-		if (lastName == null) {
-			if (other.lastName != null) {
-				return false;
-			}
-		} else if (!lastName.equals(other.lastName)) {
-			return false;
-		}
-		if (permission != other.permission) {
-			return false;
-		}
-		return true;
-	}
-
-
-
-	public enum Department
-	{
-		ADMINISTRATION,OPERATIONS_SUPPORT,DEVELOPERS,QA,SALES,TRANSORT_LOGISTICS
-	}
-	
-	public enum Permission
-	{
-		ADMIN,NOT_ADMIN
+	public Department getDepartment(){
+		return this.department;
 	}
 }

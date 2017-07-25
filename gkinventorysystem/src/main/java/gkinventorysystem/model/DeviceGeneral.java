@@ -25,6 +25,10 @@ public class DeviceGeneral
 	private String defectDescription;
 	private Employee user;
 	
+	
+	public DeviceGeneral(){
+		
+	}
 	/**
 	 * @param serialNumber
 	 * @param gkLabel
@@ -67,7 +71,6 @@ public class DeviceGeneral
 	 * 
 	 * @param newDevice New Device object created from the add new device form
 	 */
-	@Autowired
 	public DeviceGeneral(NewDeviceForm newDevice){
 		this.serialNumber = newDevice.getSerialNumber();
 		this.gkId = newDevice.getGkId();
@@ -143,7 +146,6 @@ public class DeviceGeneral
 	/**
 	 * @param user the user to set
 	 */
-	@Autowired
 	public void setUser(Employee user) {
 		this.user = user;
 	}

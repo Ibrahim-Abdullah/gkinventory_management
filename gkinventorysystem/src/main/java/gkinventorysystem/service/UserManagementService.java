@@ -9,5 +9,5 @@ package gkinventorysystem.service;
  */
 public interface UserManagementService {
 	
-	boolean authenticate(String Username,String password);
+	boolean authenticate(String userEmail,String password);
 }

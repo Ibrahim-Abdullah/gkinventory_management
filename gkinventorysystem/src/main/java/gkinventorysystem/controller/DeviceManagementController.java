@@ -19,7 +19,9 @@ import gkinventorysystem.forms.NewDeviceForm;
 import gkinventorysystem.model.DeviceGeneral;
 import gkinventorysystem.model.Laptop;
 import gkinventorysystem.service.DeviceManagementService;
+import gkinventorysystem.service.DeviceManagementServiceImp;
 import gkinventorysystem.service.LaptopManagementService;
+import gkinventorysystem.service.LaptopManagementServiceImp;
 
 /**
  * @author Ibrahim-Abdullah
@@ -31,9 +33,9 @@ import gkinventorysystem.service.LaptopManagementService;
 public class DeviceManagementController {
 
 	@Autowired
-	private DeviceManagementService deviceManagementService;
+	private DeviceManagementServiceImp deviceManagementService;
 	@Autowired
-	private LaptopManagementService laptopManagementService;
+	private LaptopManagementServiceImp laptopManagementService;
 
 	/**
 	 * Process the display of list of all devices

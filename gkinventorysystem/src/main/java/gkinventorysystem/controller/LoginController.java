@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import gkinventorysystem.forms.LoginForm;
 import gkinventorysystem.service.UserManagementService;
+import gkinventorysystem.service.UserManagementServiceImp;
 
 /**
  * @author Ibrahim-Abdullah
@@ -25,7 +26,7 @@ import gkinventorysystem.service.UserManagementService;
 public class LoginController {
 	
 	@Autowired
-	private UserManagementService userManagementService;
+	private UserManagementServiceImp userManagementService;
 	
 	
 	@RequestMapping(value={"/","/login"}, method=RequestMethod.GET)
@@ -40,7 +41,7 @@ public class LoginController {
 	 * @param bindingResult 
 	 * @return Page to show
 	 */
-	@RequestMapping(value=",/login",method=RequestMethod.POST)
+	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(@Valid LoginForm loginForm, BindingResult bindingResult,Model model){
 		
 		if(bindingResult.hasErrors()){
