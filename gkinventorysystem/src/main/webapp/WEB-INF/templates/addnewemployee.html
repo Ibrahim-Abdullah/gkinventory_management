@@ -14,7 +14,7 @@
 			<h4 class="text-center">ADD NEW EMPLOYEE FORM</h4>
 		</div>
 		<div>
-			<form role="form" class="form-horizontal" id="addnewemployee"
+			<!-- <form role="form" class="form-horizontal" id="addnewemployee"
 				method="post" th:action="@{/employee/new}"
 				th:object="${employeeForm}">
 				<div class="form-group">
@@ -46,12 +46,12 @@
 				</div>
 				
 				<!-- DEPARTMENT LIST IS GENERATED DYNAMICALLY: THIS DIV TAG SHOWS ONLY WHEN THERE ARE DEPARTMENT IN THE DATABASE-->
-				<div class="form-group" th:if="${departmentList != null and not #lists.isEmpty(departmentList)}">
+				<!-- <div class="form-group" th:if="${departmentList != null and not #lists.isEmpty(departmentList)}">
 					<label
 						class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1">Department</label>
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{department}">
-							<option th:each="department : ${departmentList}" th:value="department.name"  th:text="department.name"></option>
+							<option th:each="department : ${departmentList}" th:value="department.getKey()"  th:text="department.getName()"></option>
 						</select>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 				</div>
 				
 				<!-- CHECK ON HOW TO BIND THE FORM DATA TO FORM OBJECT -->
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label
 						class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1">Permission</label>
 					<div class="col-sm-6">
@@ -80,7 +80,7 @@
 					</div>
 					<div><span></span></div>
 				</div>
-			</form>
+			</form>-->-->
 		</div>
 		<div>
 			<input type="submit" class="btn btn-primary" form="addnewemployee"

@@ -1,16 +1,14 @@
  <!DOCTYPE html>
-<html 	xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <!-- SITE HEAD TAG LAYOUT -->
 <head th:fragment="site-head">
 <meta charset="UTF-8"/>
 	<!-- provide the links to all static resources here : links to csss and javascript files-->
 
-	<link rel="stylesheet" href="../../../resources/static/css/bootstrap.min.css" th:href="@{../resources/static/css/bootstrap.min.css}"/>
-	<link rel="stylesheet" href="../../../resources/static/css/style.css" th:href="@{../resources/static/css/style.css}"/>
-	<script src="../../../resources/static/js/jquery-3.2.1.min.js" th:src="@{../resources/static/js/jquery-3.2.1.min.js}"></script>
-	<meta th:include="this :: head" th:remove="tag" />
+	<link rel="stylesheet" href="../../../resources/static/css/bootstrap.min.css" th:href="@{resources/static/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" href="../../../resources/static/css/style.css" th:href="@{resources/static/css/style.css}"/>
+	<script src="../../../resources/static/js/jquery-3.2.1.min.js" th:src="@{resources/static/js/jquery-3.2.1.min.js}"></script>
 </head>
 <!-- END OF SITE HEAD TAG LAYOUT -->
 <body>
@@ -21,11 +19,11 @@
 		<!-- Top most header -->
 		<div id="header-top" class=row>
 			<div class="header-user" id="header-user">
-				<div class="col-md-2 col-md-offset-9"><a href="userprofile.html" th:href="yet to be developed">kwesi.mensah@GenKey.com</a></div>
+				<div class="col-md-2 col-md-offset-9"><a href="userprofile.html">kwesi.mensah@GenKey.com</a></div>
 			</div>
 			
 			<div class="header-logout col-md-1">
-				<a href="login.html" th:href="yet to be developed">Log out</a>
+				<a href="login.html">Log out</a>
 			</div>
 		</div>
 		
@@ -34,9 +32,9 @@
 			<nav class="navbar navbar-default">
   				<div class="container-fluid">
    				 <ul class="nav navbar-nav list-inline text-center">
-     				 <li class="active"><a href="itemManagement.html" th:href="@{/item/listall}">ITEM MANAGEMENT</a></li>
-      				 <li><a href="employeeManagement.html" th:href="@{/employee/listall}">EMPLOYEE/USER MANAGEMENT</a></li>
-      				 <li><a href="userProfile.html"  th:href="@{/userprofile}">USER PROFILE</a></li>
+     				 <li class="active"><a href="itemmanagemet.html" th:href="@{/device}">ITEM MANAGEMENT</a></li>
+      				 <li><a href="employeemanagement.html" th:href="@{/employee}">EMPLOYEE/USER MANAGEMENT</a></li>
+      				 <li><a href="userprofile.html"  th:href="@{/userprofile}">USER PROFILE</a></li>
     			</ul>
   				</div>
 			</nav>
@@ -46,7 +44,7 @@
 	
 	
 	<!-- Page specific content will go here -->
-	
+	<p>This is Ibrahim Abdullah</p>
 	<!-- SITE FOOTER LAYOUT -->
 	<footer th:fragment="site-footer">
 		<div class="footer-bottom">

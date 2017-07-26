@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import gkinventorysystem.converter.DepartmentStringConverter;
 import gkinventorysystem.forms.EmployeeForm;
+import gkinventorysystem.forms.LoginForm;
 import gkinventorysystem.model.Department;
 import gkinventorysystem.model.Employee;
 import gkinventorysystem.service.DepartmentService;
@@ -24,7 +25,7 @@ import gkinventorysystem.service.EmployeeManagementService;
 import gkinventorysystem.service.EmployeeManagementServiceImp;
 
 @Controller
-@RequestMapping("employee/")
+@RequestMapping("/employee")
 public class EmployeeManagementController {
 
 	@Autowired
@@ -33,7 +34,13 @@ public class EmployeeManagementController {
 	@Autowired
 	private DepartmentServiceImp departmentService;
 	
-	
+
+	public EmployeeManagementController(EmployeeManagementServiceImp employeeService,
+			DepartmentServiceImp departmentService) {
+		super();
+		this.employeeService = employeeService;
+		this.departmentService = departmentService;
+	}
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 	    binder.registerCustomEditor(Department.class, new DepartmentStringConverter());
@@ -44,14 +51,18 @@ public class EmployeeManagementController {
 	 * @param model
 	 * @return the name of the view to present the list of the employees
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public String getAllEmployees(Model model) {
 
-		List<Employee> allEmployees = employeeService.getAllEmployees();
-
-		model.addAttribute("allEmployees", allEmployees);
-
-		return "employeemanagement";
+		/**List<Employee> allEmployees = employeeService.getAllEmployees();
+		if(allEmployees == null){
+			//Show notification of no employee exist
+			model.addAttribute("loginForm", new LoginForm());
+			return "login";
+		}**/
+		//model.addAttribute("allEmployees",employeeService.getAllEmployees());
+		
+		return "layout";
 	}
 
 	/**
@@ -64,7 +75,7 @@ public class EmployeeManagementController {
 	 *            The model to store
 	 * @return the name of the view to display the employee details
 	 */
-	@RequestMapping(value = "/view/{employeeId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/employee/view/{employeeId}", method = RequestMethod.GET)
 	public String view(@PathVariable("employeeId") String employeeId, Model model) {
 
 		Employee employee = employeeService.getEmployeeById(employeeId);
@@ -72,14 +83,15 @@ public class EmployeeManagementController {
 			// Notification about the absence of the specified employee and
 			// redirect
 
-			return "redirect:/employee";
+			//return "redirect:/employee";
+			return "redirect:login";
 
 		}
 		model.addAttribute("employee", employee);
 		return "viewemployee";
 	}
 
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	@RequestMapping(value = "employee/new", method = RequestMethod.GET)
 	public String showAddNewEmployeeForm(Model model) {
 
 		model.addAttribute("newEmployee", new EmployeeForm());
@@ -94,7 +106,7 @@ public class EmployeeManagementController {
 	 *            The employee to be added
 	 * @return Redirect to the employee management page
 	 */
-	@RequestMapping(value = "/new", method = RequestMethod.POST)
+	@RequestMapping(value = "/employee/new", method = RequestMethod.POST)
 	public String saveNewEmployee(@Valid EmployeeForm employeeForm, BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
@@ -105,7 +117,7 @@ public class EmployeeManagementController {
 		if (!isEmployeeAdded) {
 
 			// Show notification of employee successfully added
-			//model.addAttribute("newEmployee", employeeForm);
+			model.addAttribute("newEmployee", employeeForm);
 			return "addnewemployee";
 		}
 
@@ -122,7 +134,7 @@ public class EmployeeManagementController {
 	 * @param model
 	 * @return the name of the view to display the employee details
 	 */
-	@RequestMapping(value = "/edit/{employeeId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/employee/edit/{employeeId}", method = RequestMethod.GET)
 	public String showEditEmployeeForm(@PathVariable("employeeId") String employeeId, Model model) {
 
 		Employee employee = employeeService.getEmployeeById(employeeId);
@@ -143,7 +155,7 @@ public class EmployeeManagementController {
 	 *            Employee with the edited properties
 	 * @return Redirect to employee management page
 	 */
-	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/employee/edit", method = RequestMethod.POST)
 	public String processEditEmployeeForm(EmployeeForm employeeForm, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()){
@@ -164,7 +176,7 @@ public class EmployeeManagementController {
 	 * @param model
 	 * @return the name of the view to display the employee details
 	 */
-	@RequestMapping(value = "/delete/{employeeId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/employee/delete/{employeeId}", method = RequestMethod.GET)
 	public String delete(@PathVariable("employeeId") String employeeId, Model model) {
 
 		boolean isEmployeeDeleted = employeeService.deleteEmployeeById(employeeId);

@@ -37,7 +37,7 @@
 	<div id="table-row" class="container">
 	
 		<!-- CHECK IF THE LIST OF EMPLOYEES IS NOT EMPTY -->
-		<div class="row table-row" th:if="${not #lists.isEmpty(allEmployees))}">
+		<div class="row table-row">
 			<div class="table-responsive">
   				<table class="table table-hover table-bordered">
  					<thead>
@@ -51,7 +51,7 @@
 					</thead>
 					    <tbody>
 					    <!-- ITERATE THE LIST OF EMPLOYEES AND DISPLAY THEIR PRORPERTIES -->
-					      	<tr th:each="employee : ${allEmployees}">
+					      	<!-- <tr th:each="employee : ${allEmployees}">
 					        	<td th:text="${employee.firstname"></td>
 					        	<td th:text="${employee.lastname"></td>
 					        	<td th:text="${employee.department"></td>
@@ -64,7 +64,7 @@
 									  <a href="#deleteemployee" th:href="@{/employee/delete/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm black-background">Delete</button></a>
 									</div>
 					        	</td>
-					      	</tr>					   
+					      	</tr>-->					   
 					    </tbody>
   				</table>
 			</div>

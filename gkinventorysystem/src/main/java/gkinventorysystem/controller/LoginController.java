@@ -54,6 +54,6 @@ public class LoginController {
 		}
 		
 		//Notify user of successful login and redirect to item management page
-		return "redirect:/item";
+		return "redirect:/device";
 	}
 }

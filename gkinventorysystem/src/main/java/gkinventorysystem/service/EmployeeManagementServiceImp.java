@@ -18,7 +18,6 @@ import gkinventorysystem.model.Employee;
 public class EmployeeManagementServiceImp implements EmployeeManagementService {
 
 	public List<Employee> getAllEmployees() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
