@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th=“http://www.thymeleaf.org”>
-<head th:replace="layout::site-head">
-<title>USER PROFILE MANAGEMENT</title>
+<html xmlns:th=â€œhttp://www.thymeleaf.orgâ€>
+<head>
+<title>User Profile</title>
+<meta charset="UTF-8"/>
+	<!-- provide the links to all static resources here : links to csss and javascript files-->
+
+	<link rel="stylesheet" href="../../../resources/static/css/bootstrap.min.css" th:href="@{../resources/static/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" href="../../../resources/static/css/style.css" th:href="@{../resources/static/css/style.css}"/>
+	<script src="../../../resources/static/js/jquery-3.2.1.min.js" th:src="@{../resources/static/js/jquery-3.2.1.min.js}"></script>
 </head>
 <body>
 
@@ -29,7 +35,7 @@
 						<tbody>
 							<tr>
 								<td>First Name</td>
-								<td th:text="${employee.firstName}"></td>
+								<td th:text="${employee.getFirstName()}"></td>
 							</tr>
 							<tr>
 								<td>Last Name</td>
@@ -37,7 +43,7 @@
 							</tr>
 							<tr>
 								<td>Email Address</td>
-								<td th:text="${employee.emailAddress}"></td>
+								<td th:text="${employee.emailAdress}"></td>
 							</tr>
 							<tr>
 								<td>Employee ID</td>

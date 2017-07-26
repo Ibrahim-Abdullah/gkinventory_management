@@ -1,7 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th=“http://www.thymeleaf.org”>
-<head th:replace="layout::site-head">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
 <title>Device Management</title>
+<meta charset="UTF-8" />
+<!-- provide the links to all static resources here : links to csss and javascript files-->
+
+<link rel="stylesheet"
+	href="../../../resources/static/css/bootstrap.min.css"
+	th:href="@{../resources/static/css/bootstrap.min.css}" />
+<link rel="stylesheet" href="../../../resources/static/css/style.css"
+	th:href="@{../resources/static/css/style.css}" />
+<script src="../../../resources/static/js/jquery-3.2.1.min.js"
+	th:src="@{../resources/static/js/jquery-3.2.1.min.js}"></script>
 </head>
 <body>
 
@@ -11,11 +21,11 @@
 	<!-- PAGE SPECIFIC CONTENT -->
 	<div>
 		<div>
-			<h4 class="text-center">ADD NEW DEVICE</h4>
+			<h4 class="text-center">ADD NEW DEVICE FORM</h4>
 		</div>
 		<div>
 			<form role="form" class="form-horizontal" id="addnewitem"
-				th:action="@{device/new}" th:object="@{newDeviceForm}" method="post">
+				th:action="@{device/new}" th:object="${newDeviceForm}" method="post">
 				<div class="form-group">
 					<label class="control-label col-sm-3 col-md-offset-1"
 						for="serial_number">Serial Number</label>
@@ -32,7 +42,7 @@
 							th:field="*{gkId}">
 					</div>
 				</div>
-				
+
 				<!-- YET TO WORK ON THIS -->
 				<div class="form-group">
 					<label class="control-label col-sm-3 col-md-offset-1">Type</label>
@@ -48,7 +58,7 @@
 						</select>
 					</div>
 				</div>
-				
+
 				<!-- LAPTOP SPECIFIC PROPERTIES -->
 				<div class="form-group" id="cpu" style="display: none">
 					<label class="control-label col-sm-3 col-md-offset-1" for="cpu">CPU</label>
@@ -102,7 +112,7 @@
 						</select>
 					</div>
 				</div>
-				
+
 				<!-- SPECIFIC WITH DEVICES WITH DEFECT -->
 				<div class="form-group" id="defectiveDescription"
 					style="display: none;">
@@ -124,7 +134,7 @@
 						}
 					}
 				</script>
-				
+
 				<!-- GENERAL DEVICE PROPERTIES -->
 				<div class="form-group">
 					<label class="control-label col-sm-3 col-md-offset-1"
@@ -146,11 +156,11 @@
 		<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
 		<div>
 			<input type="submit" class="btn btn-primary" form="addnewitem"
-				value="Add">
-				<a href="devicemanagement.html" th:href="@{/device}"><button type="button" class="btn btn-danger">Cancel</button></a>
+				value="Add"> 
+				<a href="devicemanagement.html"
+				th:href="@{/device}"><button type="button"
+					class="btn btn-danger">Cancel</button></a>
 		</div>
 	</div>
-	<!-- INCLUDE LAYOUT FOOTER -->
-	<footer th:replace="layout::site-footer"></footer>
-</body>
+	</body>
 </html>

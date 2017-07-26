@@ -34,17 +34,6 @@ public class EmployeeManagementController {
 	@Autowired
 	private DepartmentServiceImp departmentService;
 	
-
-	public EmployeeManagementController(EmployeeManagementServiceImp employeeService,
-			DepartmentServiceImp departmentService) {
-		super();
-		this.employeeService = employeeService;
-		this.departmentService = departmentService;
-	}
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-	    binder.registerCustomEditor(Department.class, new DepartmentStringConverter());
-	}
 	/**
 	 * Get the list of all employees
 	 * 
@@ -54,15 +43,10 @@ public class EmployeeManagementController {
 	@RequestMapping(method=RequestMethod.GET)
 	public String getAllEmployees(Model model) {
 
-		/**List<Employee> allEmployees = employeeService.getAllEmployees();
-		if(allEmployees == null){
-			//Show notification of no employee exist
-			model.addAttribute("loginForm", new LoginForm());
-			return "login";
-		}**/
-		//model.addAttribute("allEmployees",employeeService.getAllEmployees());
+		List<Employee> allEmployees = employeeService.getAllEmployees();
+		model.addAttribute("allEmployees",employeeService.getAllEmployees());
 		
-		return "layout";
+		return "employeemanagement";
 	}
 
 	/**
@@ -75,7 +59,7 @@ public class EmployeeManagementController {
 	 *            The model to store
 	 * @return the name of the view to display the employee details
 	 */
-	@RequestMapping(value = "/employee/view/{employeeId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/view/{employeeId}", method = RequestMethod.GET)
 	public String view(@PathVariable("employeeId") String employeeId, Model model) {
 
 		Employee employee = employeeService.getEmployeeById(employeeId);
@@ -91,7 +75,7 @@ public class EmployeeManagementController {
 		return "viewemployee";
 	}
 
-	@RequestMapping(value = "employee/new", method = RequestMethod.GET)
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String showAddNewEmployeeForm(Model model) {
 
 		model.addAttribute("newEmployee", new EmployeeForm());
@@ -106,7 +90,7 @@ public class EmployeeManagementController {
 	 *            The employee to be added
 	 * @return Redirect to the employee management page
 	 */
-	@RequestMapping(value = "/employee/new", method = RequestMethod.POST)
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String saveNewEmployee(@Valid EmployeeForm employeeForm, BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
@@ -134,7 +118,7 @@ public class EmployeeManagementController {
 	 * @param model
 	 * @return the name of the view to display the employee details
 	 */
-	@RequestMapping(value = "/employee/edit/{employeeId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit/{employeeId}", method = RequestMethod.GET)
 	public String showEditEmployeeForm(@PathVariable("employeeId") String employeeId, Model model) {
 
 		Employee employee = employeeService.getEmployeeById(employeeId);
@@ -155,7 +139,7 @@ public class EmployeeManagementController {
 	 *            Employee with the edited properties
 	 * @return Redirect to employee management page
 	 */
-	@RequestMapping(value = "/employee/edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String processEditEmployeeForm(EmployeeForm employeeForm, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()){
@@ -176,7 +160,7 @@ public class EmployeeManagementController {
 	 * @param model
 	 * @return the name of the view to display the employee details
 	 */
-	@RequestMapping(value = "/employee/delete/{employeeId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete/{employeeId}", method = RequestMethod.GET)
 	public String delete(@PathVariable("employeeId") String employeeId, Model model) {
 
 		boolean isEmployeeDeleted = employeeService.deleteEmployeeById(employeeId);
@@ -191,6 +175,15 @@ public class EmployeeManagementController {
 
 		return "redirect:/employee";
 
+	}
+	
+	
+	@RequestMapping(value="/userprofile", method=RequestMethod.GET)
+	public String showUserProfile(Model model){
+		
+		Employee employee = new Employee();
+		model.addAttribute("employee",employee);
+		return "userprofile";
 	}
 	/**
 	 * 

@@ -68,12 +68,23 @@ public class DeviceManagementController {
 
 		if (deviceType.equalsIgnoreCase("laptop")) {
 			Laptop laptop = laptopManagementService.getLaptopBySerialNumber(deviceSerialNumber);
-
+			
+			if(laptop == null){
+				//Show notification that device does not exist
+				
+				return "redirect:/device";
+			}
 			model.addAttribute("device", laptop);
 			return "viewdevice";
 		}
 
 		DeviceGeneral device = deviceManagementService.getDeviceBySerialNumber(deviceSerialNumber);
+		
+		if(device == null){
+			//Show notification that device does not exist
+			
+			return "redirect:/device";			
+		}
 		model.addAttribute("device", device);
 		return "viewdevice";
 	}

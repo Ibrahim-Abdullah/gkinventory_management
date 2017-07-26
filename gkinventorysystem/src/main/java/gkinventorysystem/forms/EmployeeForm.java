@@ -23,11 +23,11 @@ public class EmployeeForm {
 	
 	@NotNull
 	@Size(min=2,max=30)
-	private String firstName;
+	private String firstname;
 	
 	@NotNull
 	@Size(min=2,max=30)
-	private String lastName;
+	private String lastname;
 	
 	@NotNull
 	@Size(min=2,max=30)
@@ -41,7 +41,7 @@ public class EmployeeForm {
 	
 	@NotNull
 	@Email
-	private String emailAdress;
+	private String email;
 
 	
 	public EmployeeForm(){
@@ -49,95 +49,61 @@ public class EmployeeForm {
 	}
 	
 	public EmployeeForm(Employee employee){
-		this.firstName = employee.getFirstName();
-		this.lastName = employee.getLastName();
+		this.firstname = employee.getFirstName();
+		this.lastname = employee.getLastName();
 		this.gkEmployeeId = employee.getGkEmployeeId();
 		this.department = employee.getDepartment();
 		this.permission = String.valueOf(employee.getPermission());
-		this.emailAdress = employee.getEmailAdress();
-	}
-	/**
-	 * @return the firstName
-	 */
-	public String getFirstName() {
-		return firstName;
+		this.email = employee.getEmailAdress();
 	}
 
-	/**
-	 * @param firstName the firstName to set
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	/**
-	 * @return the lastName
-	 */
-	public String getLastName() {
-		return lastName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	/**
-	 * @param lastName the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public String getLastname() {
+		return lastname;
 	}
 
-	/**
-	 * @return the gkEmployeeId
-	 */
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
 	public String getGkEmployeeId() {
 		return gkEmployeeId;
 	}
 
-	/**
-	 * @param gkEmployeeId the gkEmployeeId to set
-	 */
 	public void setGkEmployeeId(String gkEmployeeId) {
 		this.gkEmployeeId = gkEmployeeId;
 	}
 
-	/**
-	 * @return the department
-	 */
 	public Department getDepartment() {
 		return department;
 	}
 
-	/**
-	 * @param department the department to set
-	 */
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
 
-	/**
-	 * @return the permission
-	 */
 	public String getPermission() {
 		return permission;
 	}
 
-	/**
-	 * @param permission the permission to set
-	 */
 	public void setPermission(String permission) {
 		this.permission = permission;
 	}
 
-	/**
-	 * @return the emailAdress
-	 */
-	public String getEmailAdress() {
-		return emailAdress;
+	public String getEmail() {
+		return email;
 	}
 
-	/**
-	 * @param emailAdress the emailAdress to set
-	 */
-	public void setEmailAdress(String emailAdress) {
-		this.emailAdress = emailAdress;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+	
 	
 }

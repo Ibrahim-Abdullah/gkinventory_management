@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th=“http://www.thymeleaf.org”>
 <head th:replace="layout::site-head">
-<title>Item Management</title>
+<title>Employee Management</title>
 </head>
 <body>
 
@@ -16,15 +16,14 @@
 			<div class="col-md-6 col-sm-3">
 			
 			<!-- NOT FULLY IMPLEMENTED YET -->
-				<form role="form" class="form-inline form-element" method="post" th:action="@{/employee/getEmployeeByDepartment/specify deprtment value here}">
+				<form role="form" class="form-inline form-element" method="post">
 					<div class="col-md-3 form-group">
 						<select class="form-control">
 							<option value="">Filter Employees</option>
-							<option value="administration">Administration</option>
-							<option value="developers">Developers</option>
-							<option value="operationsSupport">Operations and Support</option>
-							<option value="qa">Quality Assurance</option>
-							<option value="logisticsTranport"> Logistics and Transport</option>
+							<option value="administration">Administration and Finance</option>
+							<option value="developers">Products</option>
+							<option value="operationsSupport">Support</option>
+							<option value="sales">Sales</option>
 						</select>
 					</div>
 				</form>
@@ -51,7 +50,7 @@
 					</thead>
 					    <tbody>
 					    <!-- ITERATE THE LIST OF EMPLOYEES AND DISPLAY THEIR PRORPERTIES -->
-					      	<!-- <tr th:each="employee : ${allEmployees}">
+					      	<tr th:each="employee : ${allEmployees}">
 					        	<td th:text="${employee.firstname"></td>
 					        	<td th:text="${employee.lastname"></td>
 					        	<td th:text="${employee.department"></td>
@@ -64,7 +63,7 @@
 									  <a href="#deleteemployee" th:href="@{/employee/delete/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm black-background">Delete</button></a>
 									</div>
 					        	</td>
-					      	</tr>-->					   
+					      	</tr>					   
 					    </tbody>
   				</table>
 			</div>
