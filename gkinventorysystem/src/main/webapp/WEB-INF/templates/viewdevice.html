@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th=“http://www.thymeleaf.org”>
-<head th:replace="layout::site-head">
-<title>DEVICE MANAGEMENT</title>
+<html xmlns:th=â€œhttp://www.thymeleaf.orgâ€>
+<title>Device Management</title>
+<meta charset="UTF-8" />
+<!-- provide the links to all static resources here : links to csss and javascript files-->
+
+<link rel="stylesheet"
+	href="../../../resources/static/css/bootstrap.min.css"
+	th:href="@{../../../resources/static/css/bootstrap.min.css}" />
+<link rel="stylesheet" href="../../../resources/static/css/style.css"
+	th:href="@{../../../../resources/static/css/style.css}" />
+<script src="../../../resources/static/js/jquery-3.2.1.min.js"
+	th:src="@{../../../resources/static/js/jquery-3.2.1.min.js}"></script>
 </head>
 <body>
 
@@ -10,7 +19,7 @@
 	
 	<!-- PAGE SPECIFIC CONTENT -->
 
-    <div>
+    <div class="container">
     			<div>
     				<h4 class="text-center">DEVICE PROPERTIES</h4>
     			</div>
@@ -27,9 +36,24 @@
     						</tr>
     						<tr>
     							<td>Type</td>
-    							<td th:text="${device.type}"></td>
+    							<td th:text="${device.deviceType.type}"></td>
     						</tr>
-
+    						<tr th:if="${device.deviceType.key==1}">
+    							<td>CPU</td>
+    							<td th:text="${device.cpu}"></td>
+    						</tr>
+    						<tr th:if="${device.deviceType.key==1}">
+    							<td>RAM Size</td>
+    							<td th:text="${device.ramSize}"></td>
+    						</tr>
+    						<tr th:if="${device.deviceType.key==1}">
+    							<td>HDD Size</td>
+    							<td th:text="${device.hardDriveSize}"></td>
+    						</tr>
+    						<tr th:if="${device.deviceType.key==1}">
+    							<td>Operating System</td>
+    							<td th:text="${device.operatingSystem}"></td>
+    						</tr>
     						<tr>
     							<td>Manufacturer</td>
     							<td th:text="${device.manufacturer}"></td>
@@ -40,19 +64,19 @@
     						</tr>
     						<tr>
     							<td>Status</td>
-    							<td th:text="${device.status}"></td>
+    							<td th:text="${device.deviceStatus.status}"></td>
+    						</tr>
+    						<tr th:if="${device.deviceStatus.key==2}">
+    							<td>Defective Description</td>
+    							<td th:text="${device.defectDescription}"></td>
     						</tr>
     						<tr>
-    							<td>Brand:</td>
-    							<td>Dell</td>
-    						</tr>
-    						<tr>
-    							<td>Comment:</td>
-    							<td>xxxxxxxxxx</td>
+    							<td>Manufacturer</td>
+    							<td th:text="${device.manufacturer}"></td>
     						</tr>
    							<tr>
     							<td>User</td>
-    							<td>Not assigned</td>
+    							<td th:text="${device.user} ? ${device.user.firstName} + ${device.user.lastName} : 'Not Assigned'"></td>
     						</tr>					
     					</tbody>
     				</table>

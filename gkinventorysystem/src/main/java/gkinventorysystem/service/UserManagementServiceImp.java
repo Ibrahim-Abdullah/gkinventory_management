@@ -13,11 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserManagementServiceImp implements UserManagementService {
 
-	/* (non-Javadoc)
-	 * @see gkinventorysystem.service.UserService#authenticate(java.lang.String, java.lang.String)
-	 */
 	public boolean authenticate(String userEmail, String password) {
-		return false;
+		return (userEmail.equalsIgnoreCase("ibrahim.abdullah@ashesi.edu.gh")&&(password.equalsIgnoreCase("admin")));
 	}
 
 }

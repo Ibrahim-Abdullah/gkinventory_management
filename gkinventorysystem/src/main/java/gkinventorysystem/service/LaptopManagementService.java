@@ -14,10 +14,9 @@ import gkinventorysystem.model.Laptop;
  */
 public interface LaptopManagementService {
 
-	public List<Laptop> getAllLaptops();
+	public List<DeviceGeneral> getAllLaptops();
 	
-	public Laptop getLaptopBySerialNumber(String laptopSerialNumber);
-	
+	public DeviceGeneral getLaptopBySerialNumber(String laptopSerialNumber);
 	
 	public boolean addNewLaptop(Laptop newLaptop);
 	

@@ -3,12 +3,15 @@
  */
 package gkinventorysystem.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import gkinventorysystem.model.DeviceGeneral;
 import gkinventorysystem.model.Laptop;
-
+import gkinventorysystem.service.DeviceManagementServiceImp;
 /**
  * @author Ibrahim-Abdullah
  *
@@ -16,32 +19,46 @@ import gkinventorysystem.model.Laptop;
 
 @Component
 public class LaptopManagementServiceImp implements LaptopManagementService {
+	
+	List<DeviceGeneral> allLaptops = new ArrayList<DeviceGeneral>();
+	
+	
+	public LaptopManagementServiceImp() {
+		super();
+		Iterator<DeviceGeneral> iter = DeviceManagementServiceImp.devices.iterator();
+		
+		if(iter.hasNext()){
+			if(iter.next().getDeviceType().getType().equalsIgnoreCase("laptop")){
+				allLaptops.add(iter.next());
+			}
+		}
+	}
 
-	/* (non-Javadoc)
-	 * @see gkinventorysystem.service.LaptopManagementService#getAllLaptops()
-	 */
 	@Override
-	public List<Laptop> getAllLaptops() {
-		// TODO Auto-generated method stub
+	public List<DeviceGeneral> getAllLaptops() {
+		if(allLaptops.isEmpty()){
+			return null;
+		}
+		return this.allLaptops;
+	}
+
+	@Override
+	public DeviceGeneral getLaptopBySerialNumber(String laptopSerialNumber) {
+		
+		if(allLaptops.isEmpty()){
+			return null;
+		}
+		for(DeviceGeneral device: allLaptops){
+			if(device.getSerialNumber().equalsIgnoreCase(laptopSerialNumber)){
+				return device;
+			}
+		}
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see gkinventorysystem.service.LaptopManagementService#getLaptopBySerialNumber(java.lang.String)
-	 */
-	@Override
-	public Laptop getLaptopBySerialNumber(String laptopSerialNumber) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see gkinventorysystem.service.LaptopManagementService#addNewLaptop(gkinventorysystem.model.Laptop)
-	 */
 	@Override
 	public boolean addNewLaptop(Laptop newLaptop) {
-		// TODO Auto-generated method stub
-		return false;
+		return DeviceManagementServiceImp.devices.add(newLaptop);
 	}
 
 	/* (non-Javadoc)

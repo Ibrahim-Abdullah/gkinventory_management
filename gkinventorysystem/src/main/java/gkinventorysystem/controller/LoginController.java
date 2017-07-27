@@ -46,6 +46,7 @@ public class LoginController {
 		
 		if(bindingResult.hasErrors()){
 			//Show notification of invalid login
+			return "redirect:/login";
 		}
 		
 		if(!userManagementService.authenticate(loginForm.getEmail(), loginForm.getPassword())){

@@ -78,6 +78,7 @@ public class DeviceGeneral
 		this.gkId = newDevice.getGkId();
 		this.deviceType = newDevice.getType();
 		this.model = newDevice.getModel();
+		this.deviceStatus = newDevice.getStatus();
 		this.manufacturer = newDevice.getManufacturer();
 		this.user = null;
 	}

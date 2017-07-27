@@ -21,16 +21,21 @@ import gkinventorysystem.model.Laptop;
 @Component
 public class DeviceManagementServiceImp implements DeviceManagementService {
 
-	List<DeviceGeneral> devices = new ArrayList<DeviceGeneral>();
-	@Override
-	public List<DeviceGeneral> getAllDevice() {
-		
+	public static List<DeviceGeneral> devices = new ArrayList<DeviceGeneral>();
+	
+	
+	public DeviceManagementServiceImp() {
+		super();
 		devices.add(new Laptop("00001000","gk00001000","LATITUDE E7450","DELL","Corei7",8,500,"Windows",new DeviceStatus("working",1)));
 		devices.add(new Laptop("00001001","gk00001001","LATITUDE E7450","DELL","Corei7",16,450,"Linux",new DeviceStatus("Defective",2),"Can't Boot"));
 		devices.add(new Laptop("00001000","gk00001000","LATITUDE E7450","DELL","Corei7",8,500,"Operating System",new DeviceStatus("working",1)));
 		devices.add(new DeviceGeneral("00001000","gk00001000",new DeviceType("laptop",1),"LATITUDE E7450","DELL",new DeviceStatus("working",1)));
 		devices.add(new DeviceGeneral("00001000","gk00001000",new DeviceType("laptop",1),"LATITUDE E7450","DELL",new DeviceStatus("working",1)));
 		devices.add(new DeviceGeneral("00001000","gk00001000",new DeviceType("laptop",1),"LATITUDE E7450","DELL",new DeviceStatus("working",1)));
+	}
+
+	@Override
+	public List<DeviceGeneral> getAllDevice() {
 		return devices;
 	}
 
@@ -39,31 +44,30 @@ public class DeviceManagementServiceImp implements DeviceManagementService {
 	 */
 	@Override
 	public DeviceGeneral getDeviceBySerialNumber(String serialNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(this.devices.isEmpty()){
+			return null;
+		}
+		
+		for(DeviceGeneral device: devices){
+			if(device.getSerialNumber().equalsIgnoreCase(serialNumber)){
+				return device;
+			}
+		}
+		return  null;
 	}
 
-	/* (non-Javadoc)
-	 * @see gkinventorysystem.service.DeviceManagementService#geteviceByType(java.lang.String)
-	 */
 	@Override
 	public List<DeviceGeneral> geteviceByType(String Category) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see gkinventorysystem.service.DeviceManagementService#addNewDevice(gkinventorysystem.model.DeviceGeneral)
-	 */
 	@Override
 	public boolean addNewDevice(DeviceGeneral newDevice) {
-		// TODO Auto-generated method stub
-		return false;
+		return devices.add(newDevice);
 	}
 
-	/* (non-Javadoc)
-	 * @see gkinventorysystem.service.DeviceManagementService#editDevice(gkinventorysystem.model.DeviceGeneral)
-	 */
 	@Override
 	public boolean editDevice(DeviceGeneral itemToEdit) {
 		// TODO Auto-generated method stub

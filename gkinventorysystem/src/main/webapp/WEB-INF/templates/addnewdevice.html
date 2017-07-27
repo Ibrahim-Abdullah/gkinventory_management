@@ -25,7 +25,8 @@
 		</div>
 		<div>
 			<form role="form" class="form-horizontal" id="addnewitem"
-				th:action="@{device/new}" th:object="${newDeviceForm}" method="post">
+				th:action="@{device/../new}" th:object="${newDeviceForm}"
+				method="post">
 				<div class="form-group">
 					<label class="control-label col-sm-3 col-md-offset-1"
 						for="serial_number">Serial Number</label>
@@ -44,8 +45,10 @@
 				</div>
 
 				<!-- YET TO WORK ON THIS -->
-				<div class="form-group" th:if="${deviceTypeList != null and not #lists.isEmpty(deviceTypeList)}">
-					<label class="control-label col-sm-3 col-md-offset-1">Device Type</label>
+				<div class="form-group"
+					th:if="${deviceTypeList != null and not #lists.isEmpty(deviceTypeList)}">
+					<label class="control-label col-sm-3 col-md-offset-1">Device
+						Type</label>
 					<div class="col-sm-6">
 						<select onchange="isLaptop(this);" class="form-control"
 							th:field="*{type}">
@@ -165,16 +168,15 @@
 							th:field="*{model}">
 					</div>
 				</div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				<div>
+					<input type="submit" class="btn btn-primary" form="addnewitem"
+						value="Add"> <a href="devicemanagement.html"
+						th:href="@{/device}"><button type="button"
+							class="btn btn-danger">Cancel</button></a>
+				</div>
 			</form>
 		</div>
-		<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-		<div>
-			<input type="submit" class="btn btn-primary" form="addnewitem"
-				value="Add"> 
-				<a href="devicemanagement.html"
-				th:href="@{/device}"><button type="button"
-					class="btn btn-danger">Cancel</button></a>
-		</div>
 	</div>
-	</body>
+</body>
 </html>

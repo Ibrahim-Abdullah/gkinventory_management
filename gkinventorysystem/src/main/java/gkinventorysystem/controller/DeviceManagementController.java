@@ -85,7 +85,7 @@ public class DeviceManagementController {
 			@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
 
 		if (deviceType.equalsIgnoreCase("laptop")) {
-			Laptop laptop = laptopManagementService.getLaptopBySerialNumber(deviceSerialNumber);
+			DeviceGeneral laptop = laptopManagementService.getLaptopBySerialNumber(deviceSerialNumber);
 			
 			if(laptop == null){
 				//Show notification that device does not exist
@@ -177,7 +177,7 @@ public class DeviceManagementController {
 			@PathVariable("deviceSerialNumber") String deviceSerialNumber, Model model) {
 
 		if (deviceType.equalsIgnoreCase("laptop")) {
-			Laptop laptop = laptopManagementService.getLaptopBySerialNumber(deviceSerialNumber);
+			DeviceGeneral laptop = laptopManagementService.getLaptopBySerialNumber(deviceSerialNumber);
 			model.addAttribute("newDeviceForm", new NewDeviceForm(laptop));
 
 			return "editdevice";
@@ -185,7 +185,7 @@ public class DeviceManagementController {
 
 		DeviceGeneral device = deviceManagementService.getDeviceBySerialNumber(deviceSerialNumber);
 
-		model.addAttribute("device", new NewDeviceForm(device));
+		model.addAttribute("newDeviceForm", new NewDeviceForm(device));
 		return "editdevice";
 	}
 
