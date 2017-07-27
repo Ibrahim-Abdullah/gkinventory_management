@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th=“http://www.thymeleaf.org”>
-<head th:replace="layout::site-head">
-<title>EMPLOYEE MANAGEMENT</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>Employee Management</title>
+<meta charset="UTF-8" />
+<!-- provide the links to all static resources here : links to csss and javascript files-->
+
+<link rel="stylesheet"
+	href="../../../resources/static/css/bootstrap.min.css"
+	th:href="@{../../resources/static/css/bootstrap.min.css}" />
+<link rel="stylesheet" href="../../../resources/static/css/style.css"
+	th:href="@{../../resources/static/css/style.css}" />
+<script src="../../../resources/static/js/jquery-3.2.1.min.js"
+	th:src="@{../../resources/static/js/jquery-3.2.1.min.js}"></script>
 </head>
 <body>
 
@@ -26,7 +35,7 @@
 					</tr>
 					<tr>
 						<td>Email Address</td>
-						<td th:text="${employee.email}"></td>
+						<td th:text="${employee.emailAdress}"></td>
 					</tr>
 					<tr>
 						<td>Employee ID:</td>
@@ -35,16 +44,16 @@
 
 					<tr>
 						<td>Department</td>
-						<td th:text="${employee.department}"></td>
+						<td th:text="${employee.department.name}"></td>
 					</tr>
 					<tr>
 						<td>Permission:</td>
-						<td th:text="${employee.permision}"></td>
+						<td th:text="${employee.permission.permission}"></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div th:if="${not #lists.isEmpty(employee.assignedDevice))}">
+		<div>
 			<hr>
 			<h5>Assigned Items</h5>
 			<table class="table table-hover">

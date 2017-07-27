@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import gkinventorysystem.forms.NewDeviceForm;
+import gkinventorysystem.model.DeviceStatus;
 
 /**
  * @author Ibrahim Abdullah
@@ -18,10 +19,10 @@ public class DeviceGeneral
 {
 	private String serialNumber;
 	private String gkId;
-	private Type itemType;
+	private DeviceType deviceType;
 	private String model;
 	private String manufacturer;
-	private Status deviceStatus;
+	private DeviceStatus deviceStatus;
 	private String defectDescription;
 	private Employee user;
 	
@@ -38,13 +39,13 @@ public class DeviceGeneral
 	 * @param comment
 	 * @param defectDescription
 	 */
-	public DeviceGeneral(String serialNumber, String gkId, String type, String model, String manufacturer,String status,String defectDescription) {
+	public DeviceGeneral(String serialNumber, String gkId, DeviceType type, String model, String manufacturer,DeviceStatus status,String defectDescription) {
 		this.serialNumber = serialNumber;
 		this.gkId = gkId;
 		this.model = model;
 		this.manufacturer = manufacturer;
-		this.setItemType(type);
-		this.setDeviceStatus(status);
+		this.deviceType = type;
+		this.deviceStatus = status;
 		this.defectDescription = defectDescription;
 		this.user = null;
 	}
@@ -57,13 +58,14 @@ public class DeviceGeneral
 	 * @param model
 	 * @param brand
 	 */
-	public DeviceGeneral(String serialNumber, String gkLabel, String type, String model, String brand) {
+	public DeviceGeneral(String serialNumber, String gkLabel, DeviceType type, String model, String manufacturer,DeviceStatus status) {
 		super();
 		this.serialNumber = serialNumber;
 		this.gkId = gkLabel;
-		this.setItemType(type);
+		this.deviceType = type;
 		this.model = model;
-		this.manufacturer = brand;
+		this.manufacturer = manufacturer;
+		this.deviceStatus = status;
 		this.user =  null;
 	}
 	
@@ -74,7 +76,7 @@ public class DeviceGeneral
 	public DeviceGeneral(NewDeviceForm newDevice){
 		this.serialNumber = newDevice.getSerialNumber();
 		this.gkId = newDevice.getGkId();
-		this.setItemType(newDevice.getType());
+		this.deviceType = newDevice.getType();
 		this.model = newDevice.getModel();
 		this.manufacturer = newDevice.getManufacturer();
 		this.user = null;
@@ -88,22 +90,6 @@ public class DeviceGeneral
 		this.serialNumber = serialNumber;
 	}
 	
-	public String getGkLabel() {
-		return gkId;
-	}
-	
-	public void setGkLabel(String gkLabel) {
-		this.gkId = gkLabel;
-	}
-	
-	public String getDeviceType() {
-		return itemType.toString();
-	}
-	
-	public void setItemType(String itemType) {
-		this.itemType = Type.valueOf(itemType);
-	}
-	
 	public String getModel() {
 		return model;
 	}
@@ -111,30 +97,49 @@ public class DeviceGeneral
 	public void setModel(String model) {
 		this.model = model;
 	}
-	public String getBrand() {
-		return manufacturer;
-	}
-	
-	public void setBrand(String brand) {
-		this.manufacturer = brand;
-	}
 	
 	/**
 	 * @return the deviceStatus
 	 */
-	public Status getDeviceStatus() {
+	public DeviceStatus getDeviceStatus() {
 		return deviceStatus;
 	}
 
 	/**
 	 * @param deviceStatus the deviceStatus to set
 	 */
-	public void setDeviceStatus(String deviceStatus) {
-		this.deviceStatus = Status.valueOf(deviceStatus);
+	public void setDeviceStatus(DeviceStatus deviceStatus) {
+		this.deviceStatus = deviceStatus;
 	}
 	
 	
 	
+	public String getGkId() {
+		return gkId;
+	}
+	public void setGkId(String gkId) {
+		this.gkId = gkId;
+	}
+	public String getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+	public String getDefectDescription() {
+		return defectDescription;
+	}
+	public void setDefectDescription(String defectDescription) {
+		this.defectDescription = defectDescription;
+	}
+	public void setDeviceType(DeviceType deviceType) {
+		this.deviceType = deviceType;
+	}
+	
+	
+	public DeviceType getDeviceType() {
+		return deviceType;
+	}
 	/**
 	 * @return the user
 	 */
@@ -150,13 +155,5 @@ public class DeviceGeneral
 		this.user = user;
 	}
 	
-	public enum Type
-	{
-		DESKTOP,MOBILE_PHONE,KEYBOARD_MOUSE,MOUSE,KEYBOARD,LAPTOP
-	}
-	public enum Status
-	{
-		WORKING,NOT_WORKING
-	}
 }
 

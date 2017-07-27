@@ -3,11 +3,14 @@
  */
 package gkinventorysystem.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import gkinventorysystem.model.DeviceGeneral;
+import gkinventorysystem.model.DeviceStatus;
+import gkinventorysystem.model.DeviceType;
 import gkinventorysystem.model.Laptop;
 
 /**
@@ -18,13 +21,17 @@ import gkinventorysystem.model.Laptop;
 @Component
 public class DeviceManagementServiceImp implements DeviceManagementService {
 
-	/* (non-Javadoc)
-	 * @see gkinventorysystem.service.DeviceManagementService#getAllDevice()
-	 */
+	List<DeviceGeneral> devices = new ArrayList<DeviceGeneral>();
 	@Override
 	public List<DeviceGeneral> getAllDevice() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		devices.add(new Laptop("00001000","gk00001000","LATITUDE E7450","DELL","Corei7",8,500,"Windows",new DeviceStatus("working",1)));
+		devices.add(new Laptop("00001001","gk00001001","LATITUDE E7450","DELL","Corei7",16,450,"Linux",new DeviceStatus("Defective",2),"Can't Boot"));
+		devices.add(new Laptop("00001000","gk00001000","LATITUDE E7450","DELL","Corei7",8,500,"Operating System",new DeviceStatus("working",1)));
+		devices.add(new DeviceGeneral("00001000","gk00001000",new DeviceType("laptop",1),"LATITUDE E7450","DELL",new DeviceStatus("working",1)));
+		devices.add(new DeviceGeneral("00001000","gk00001000",new DeviceType("laptop",1),"LATITUDE E7450","DELL",new DeviceStatus("working",1)));
+		devices.add(new DeviceGeneral("00001000","gk00001000",new DeviceType("laptop",1),"LATITUDE E7450","DELL",new DeviceStatus("working",1)));
+		return devices;
 	}
 
 	/* (non-Javadoc)

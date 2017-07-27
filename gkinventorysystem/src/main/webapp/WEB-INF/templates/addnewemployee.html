@@ -57,7 +57,7 @@
 						class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1">Department</label>
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{department}">
-							<option th:each="department : ${departmentList}" th:value="department.key"  th:text="department.name"></option>
+							<option th:each="department : ${departmentList}" th:value="${department.key}"  th:text="${department.name}"></option>
 						</select>
 					</div>
 				</div>
@@ -79,9 +79,7 @@
 						class="control-label col-sm-2 col-md-offset-1 col-sm-offset-1">Permission</label>
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{permission}">
-							<option value="">Select</option>
-							<option value="user">User</option>
-							<option value="not-user">Not User</option>
+							<option th:each="permission:${permissionList}" th:value="${permission.key}" th:text="${permission.permission}"></option>
 						</select>
 					</div>
 					<div><span></span></div>

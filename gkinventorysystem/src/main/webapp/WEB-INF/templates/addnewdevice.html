@@ -44,9 +44,16 @@
 				</div>
 
 				<!-- YET TO WORK ON THIS -->
-				<div class="form-group">
-					<label class="control-label col-sm-3 col-md-offset-1">Type</label>
+				<div class="form-group" th:if="${deviceTypeList != null and not #lists.isEmpty(deviceTypeList)}">
+					<label class="control-label col-sm-3 col-md-offset-1">Device Type</label>
 					<div class="col-sm-6">
+						<select onchange="isLaptop(this);" class="form-control"
+							th:field="*{type}">
+							<option th:each="deviceType : ${deviceTypeList}"
+								th:value="${deviceType.key}" th:text="${deviceType.type}"></option>
+						</select>
+					</div>
+					<!-- <div class="col-sm-6">
 						<select onchange="isLaptop(this);" class="form-control" required>
 							<option value="">Select</option>
 							<option value="laptop">Laptop</option>
@@ -56,7 +63,7 @@
 							<option value="mouse">Only Mouse</option>
 							<option value="mobilePhone">Mobile Phone</option>
 						</select>
-					</div>
+					</div>-->
 				</div>
 
 				<!-- LAPTOP SPECIFIC PROPERTIES -->
@@ -86,7 +93,7 @@
 				</div>
 				<script>
 					function isLaptop(optionSelected) {
-						if (optionSelected.value == "laptop") {
+						if (optionSelected.value == "1") {
 							document.getElementById("cpu").style.display = "block";
 							document.getElementById("ram").style.display = "block";
 							document.getElementById("hdd").style.display = "block";
@@ -105,12 +112,19 @@
 					<label class="control-label col-sm-3 col-md-offset-1">Status</label>
 					<div class="col-sm-6">
 						<select onchange="isDefective(this);" class="form-control"
+							th:field="*{status}">
+							<option th:each="status : ${deviceStatusList}"
+								th:value="${status.key}" th:text="${status.status}"></option>
+						</select>
+					</div>
+					<!-- <div class="col-sm-6">
+						<select onchange="isDefective(this);" class="form-control"
 							required>
 							<option value="">Select</option>
 							<option value="working">Working</option>
 							<option value="defective">Defective</option>
 						</select>
-					</div>
+					</div>-->
 				</div>
 
 				<!-- SPECIFIC WITH DEVICES WITH DEFECT -->
@@ -127,7 +141,7 @@
 				</div>
 				<script>
 					function isDefective(optionSelected) {
-						if (optionSelected.value == "defective") {
+						if (optionSelected.value == "2") {
 							document.getElementById("defectiveDescription").style.display = "block";
 						} else {
 							document.getElementById("defectiveDescription").style.display = "none";

@@ -1,5 +1,6 @@
 package gkinventorysystem.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import gkinventorysystem.converter.DepartmentStringConverter;
+import gkinventorysystem.converter.PermissionStringConverter;
 import gkinventorysystem.forms.EmployeeForm;
 import gkinventorysystem.forms.LoginForm;
 import gkinventorysystem.model.Department;
 import gkinventorysystem.model.Employee;
+import gkinventorysystem.model.Permission;
 import gkinventorysystem.service.DepartmentService;
 import gkinventorysystem.service.DepartmentServiceImp;
 import gkinventorysystem.service.EmployeeManagementService;
@@ -30,22 +33,28 @@ public class EmployeeManagementController {
 
 	@Autowired
 	private EmployeeManagementServiceImp employeeService;
-	
+
 	@Autowired
 	private DepartmentServiceImp departmentService;
-	
+
 	/**
 	 * Get the list of all employees
 	 * 
 	 * @param model
 	 * @return the name of the view to present the list of the employees
 	 */
-	@RequestMapping(method=RequestMethod.GET)
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Department.class, new DepartmentStringConverter());
+		binder.registerCustomEditor(Permission.class, new PermissionStringConverter());
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
 	public String getAllEmployees(Model model) {
 
 		List<Employee> allEmployees = employeeService.getAllEmployees();
-		model.addAttribute("allEmployees",employeeService.getAllEmployees());
-		
+		model.addAttribute("allEmployees", employeeService.getAllEmployees());
+
 		return "employeemanagement";
 	}
 
@@ -67,8 +76,8 @@ public class EmployeeManagementController {
 			// Notification about the absence of the specified employee and
 			// redirect
 
-			//return "redirect:/employee";
-			return "redirect:login";
+			// return "redirect:/employee";
+			return "redirect:/login";
 
 		}
 		model.addAttribute("employee", employee);
@@ -80,6 +89,7 @@ public class EmployeeManagementController {
 
 		model.addAttribute("newEmployee", new EmployeeForm());
 		model.addAttribute("departmentList", getAllDepartment());
+		model.addAttribute("permissionList", getAllPermission());
 		return "addnewemployee";
 	}
 
@@ -141,13 +151,14 @@ public class EmployeeManagementController {
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String processEditEmployeeForm(EmployeeForm employeeForm, BindingResult bindingResult) {
-		
-		if(bindingResult.hasErrors()){
-			
+
+		if (bindingResult.hasErrors()) {
+
 			return "editemployee";
 		}
-		
-		//boolean isEmployeeEditSaved = employeeService.editEmployeeProfile(new Employee(employeeForm));
+
+		// boolean isEmployeeEditSaved = employeeService.editEmployeeProfile(new
+		// Employee(employeeForm));
 		// Display notification of edit status
 		return "redirect:/employee";
 	}
@@ -176,20 +187,30 @@ public class EmployeeManagementController {
 		return "redirect:/employee";
 
 	}
-	
-	
-	@RequestMapping(value="/userprofile", method=RequestMethod.GET)
-	public String showUserProfile(Model model){
-		
+
+	@RequestMapping(value = "/userprofile", method = RequestMethod.GET)
+	public String showUserProfile(Model model) {
+
 		Employee employee = new Employee();
-		model.addAttribute("employee",employee);
+		model.addAttribute("employee", employee);
 		return "userprofile";
 	}
+
 	/**
 	 * 
 	 * @return List of all the department in the database
 	 */
-	private List<Department> getAllDepartment(){
+	private List<Department> getAllDepartment() {
 		return departmentService.getAllDepartment();
+	}
+	
+	private List<Permission> getAllPermission(){
+		List<Permission> permits = new ArrayList<Permission>();
+		permits.add(new Permission("Select Role", -1));
+		permits.add(new Permission("User", 1));
+		permits.add(new Permission("Not a User", 2));
+		
+		return permits;
+		
 	}
 }

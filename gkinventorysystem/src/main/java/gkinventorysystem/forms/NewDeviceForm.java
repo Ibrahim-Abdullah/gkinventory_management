@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import gkinventorysystem.model.DeviceGeneral;
+import gkinventorysystem.model.DeviceStatus;
+import gkinventorysystem.model.DeviceType;
 import gkinventorysystem.model.Laptop;
 
 /**
@@ -26,10 +28,10 @@ public class NewDeviceForm {
 	private String gkId;
 	
 	@NotNull
-	private String type;
+	private DeviceType type;
 	
 	@NotNull
-	private String status;
+	private DeviceStatus status;
 	
 	@NotNull
 	private String manufacturer;
@@ -55,25 +57,24 @@ public class NewDeviceForm {
 	
 	public NewDeviceForm(Laptop laptop){
 		this.serialNumber = laptop.getSerialNumber();
-		this.gkId = laptop.getGkLabel();
+		this.gkId = laptop.getGkId();
 		this.type = laptop.getDeviceType();
-		this.status = String.valueOf(laptop.getDeviceStatus());
-		this.manufacturer = laptop.getBrand();
+		this.status = laptop.getDeviceStatus();
+		this.manufacturer = laptop.getManufacturer();
 		this.model = laptop.getModel();
 		this.cpu = laptop.getCpu();
 		this.ram = laptop.getRamSize();
 		this.os = laptop.getOperatingSystem();
 		this.hdd = laptop.getHardDriveSize();
-		
 	}
 	
 
 	public NewDeviceForm(DeviceGeneral device){
 		this.serialNumber = device.getSerialNumber();
-		this.gkId = device.getGkLabel();
+		this.gkId = device.getGkId();
 		this.type = device.getDeviceType();
-		this.status = String.valueOf(device.getDeviceStatus());
-		this.manufacturer = device.getBrand();
+		this.status = device.getDeviceStatus();
+		this.manufacturer = device.getManufacturer();
 		this.model = device.getModel();
 		
 	}
@@ -108,28 +109,28 @@ public class NewDeviceForm {
 	/**
 	 * @return the type
 	 */
-	public String getType() {
+	public DeviceType getType() {
 		return type;
 	}
 
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(String type) {
+	public void setType(DeviceType type) {
 		this.type = type;
 	}
 
 	/**
 	 * @return the status
 	 */
-	public String getStatus() {
+	public DeviceStatus getStatus() {
 		return status;
 	}
 
 	/**
 	 * @param status the status to set
 	 */
-	public void setStatus(String status) {
+	public void setStatus(DeviceStatus status) {
 		this.status = status;
 	}
 

@@ -51,16 +51,16 @@
 					    <tbody>
 					    <!-- ITERATE THE LIST OF EMPLOYEES AND DISPLAY THEIR PRORPERTIES -->
 					      	<tr th:each="employee : ${allEmployees}">
-					        	<td th:text="${employee.firstname"></td>
-					        	<td th:text="${employee.lastname"></td>
-					        	<td th:text="${employee.department"></td>
-					        	<td th:text="${employee.permission"></td>
+					        	<td th:text="${employee.firstName}"></td>
+					        	<td th:text="${employee.lastName}"></td>
+					        	<td th:text="${employee.department.name}"></td>
+					        	<td th:text="${employee.permission.permission}"></td>
 					        	<td>
 									<div class="btn-group btn-group-xs tble-buttons">
-									  <a href="viewemployee.html" th:href="@{/employee/view/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">View</button></a>
-									  <a href="#" th:href="@{/employee/makeuser/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Make User</button></a>
-									  <a href="editemployee.html" th:href="@{/employee/edit/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Edit</button></a>
-									  <a href="#deleteemployee" th:href="@{/employee/delete/{employeeId}(employeeId=${employee.employeeId})}"><button type="button" class="btn btn-sm black-background">Delete</button></a>
+									  <a href="viewemployee.html" th:href="@{/employee/view/{employeeId}(employeeId=${employee.gkEmployeeId})}"><button type="button" class="btn btn-sm btn-black black-background">View</button></a>
+									  <a href="#" th:href="@{/employee/makeuser/{employeeId}(employeeId=${employee.gkEmployeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Make User</button></a>
+									  <a href="editemployee.html" th:href="@{/employee/edit/{employeeId}(employeeId=${employee.gkEmployeeId})}"><button type="button" class="btn btn-sm btn-black black-background">Edit</button></a>
+									  <a href="deleteemployee" th:href="@{/employee/delete/{employeeId}(employeeId=${employee.gkEmployeeId})}"><button type="button" class="btn btn-sm black-background">Delete</button></a>
 									</div>
 					        	</td>
 					      	</tr>					   

@@ -12,10 +12,12 @@ import org.springframework.stereotype.Component;
 
 public class Permission {
 	private String permission;
+	private int key;
 
-	public Permission(String permission) {
+	public Permission(String permission, int key) {
 		super();
 		this.permission = permission;
+		this.key = key;
 	}
 
 	/**
@@ -23,6 +25,14 @@ public class Permission {
 	 */
 	public String getPermission() {
 		return permission;
+	}
+
+	public int getKey() {
+		return key;
+	}
+
+	public void setKey(int key) {
+		this.key = key;
 	}
 
 	/**

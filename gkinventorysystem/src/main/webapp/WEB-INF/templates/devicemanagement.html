@@ -53,26 +53,26 @@
 						</thead>
 						<tbody>
 							<!-- DISPLAY GENERIC ITEM PROPERTIES -->
-							<tr th:each="device : ${allDevice}">
-								<td th:text="${device.serialNumber"></td>
-								<td th:text="${device.gkId"></td>
-								<td th:text="${device.type"></td>
-								<td th:text="${device.status"></td>
+							<tr th:each="device : ${allDevices}">
+								<td th:text="${device.serialNumber}"></td>
+								<td th:text="${device.gkId}"></td>
+								<td th:text="${device.deviceType.type}"></td>
+								<td th:text="${device.deviceStatus.status}"></td>
 
 								<td>
 									<!-- DISPLAY ACTION BUTTONS FOR EVERY DEVICE WITH DYNAMIC URL -->
 									<div class="btn-group btn-group-xs tble-buttons">
 										<a href="viewdevice.html"
-											th:href="@{/device/view/{deviceType}/{deviceSerialNumber}(deviceType=${device.type},deviceSerialNumber=${device.serialNumber})}"><button
+											th:href="@{/device/view/{deviceType}/{deviceSerialNumber}(deviceType=${device.deviceType},deviceSerialNumber=${device.serialNumber})}"><button
 												type="button" class="btn black-background btn-sm">View</button></a>
 										<a href="#"
 											th:href="@{/device/assign/{deviceSerialNumber}(deviceSerialNumber=${device.SerialNumber})}"><button
 												type="button" class="btn black-background btn-sm">Assign</button></a>
 										<a href="editdevice.html"
-											th:href="@{/device/edit/{deviceType}/{deviceSerialNumber}(deviceType=${device.type},deviceSerialNumber=${device.SerialNumber})}"><button
+											th:href="@{/device/edit/{deviceType}/{deviceSerialNumber}(deviceType=${device.deviceType},deviceSerialNumber=${device.SerialNumber})}"><button
 												type="button" class="btn black-background btn-sm">Edit</button></a>
 										<a href="deletedevice.html"
-											th:href="@{/device/delete/{deviceType}/{deviceSerialNumber}(deviceType=${device.type},deviceSerialNumber=${device.SerialNumber})}"><button
+											th:href="@{/device/delete/{deviceType}/{deviceSerialNumber}(deviceType=${device.deviceType},deviceSerialNumber=${device.SerialNumber})}"><button
 												type="button" class="btn black-background btn-sm">Delete</button></a>
 									</div>
 								</td>

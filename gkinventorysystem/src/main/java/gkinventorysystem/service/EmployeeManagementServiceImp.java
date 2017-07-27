@@ -3,12 +3,15 @@
  */
 package gkinventorysystem.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import gkinventorysystem.forms.EmployeeForm;
+import gkinventorysystem.model.Department;
 import gkinventorysystem.model.Employee;
+import gkinventorysystem.model.Permission;
 
 /**
  * @author Ibrahim-Abdullah
@@ -16,9 +19,17 @@ import gkinventorysystem.model.Employee;
  */
 @Component
 public class EmployeeManagementServiceImp implements EmployeeManagementService {
+	
+	List<Employee>employees = new ArrayList<Employee>();
+	public EmployeeManagementServiceImp() {
+		super();
+		employees.add(new Employee("Ibrahim","Abdullah","001","ibrahim.abdullah@ashesi.edu.gh",new Department(1,"Products"),new Permission("user",1)));
+		employees.add(new Employee("Diabene","Agire","002","Diabene.Agire@Genkey.com",new Department(1,"Products"),new Permission("Not User",2)));
+		employees.add(new Employee("Kofi","Boateng","003","Kofi.Boateng@Genkey.com",new Department(1,"Finance and Administration"),new Permission("user",1)));
+	}
 
 	public List<Employee> getAllEmployees() {
-		return null;
+		return this.employees;
 	}
 
 	public List<Employee> getEmplyeesByDepartment(String department) {
@@ -27,12 +38,17 @@ public class EmployeeManagementServiceImp implements EmployeeManagementService {
 	}
 
 	public Employee getEmployeeById(String employeeId) {
-		// TODO Auto-generated method stub
+		for( Employee employee: employees){
+			
+			if(employee.getGkEmployeeId().equalsIgnoreCase(employeeId))
+			return employee;
+		}
 		return null;
+		
 	}
 
 	public void addNewEmployee(Employee newEmployee) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -58,7 +74,12 @@ public class EmployeeManagementServiceImp implements EmployeeManagementService {
 
 	@Override
 	public boolean addNewEmployee(EmployeeForm newEmployee) {
-		// TODO Auto-generated method stub
+		
+		Employee employee = new Employee(newEmployee);
+		boolean isAdded = this.employees.add(employee);
+		if(isAdded){
+			return true;
+		}
 		return false;
 	}
 

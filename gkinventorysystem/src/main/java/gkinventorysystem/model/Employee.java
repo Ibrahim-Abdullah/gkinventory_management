@@ -42,12 +42,13 @@ public class Employee
 	 * @param email
 	 * @param department
 	 */
-	public Employee(String fname, String lname,String employeeId,String email,Department department){
+	public Employee(String fname, String lname,String employeeId,String email,Department department,Permission permission){
 		 this.firstName = fname;
 		 this.lastName = lname;
 		 this.gkEmployeeId = employeeId;
 		 this.emailAdress = email;
 		 this.department = department;
+		 this.permission = permission;
 		// this.permission = 
 		 //this.setPermission(Permission.NOT_ADMIN);
 		 this.assignedDevices = null;
@@ -75,17 +76,16 @@ public class Employee
 	/**
 	 * 
 	 * @param employee
-	 *
-	@Autowired
+	 **/
 	public Employee(EmployeeForm employee){
-		this.firstName = employee.getFirstName();
-		this.lastName = employee.getLastName();
+		this.firstName = employee.getFirstname();
+		this.lastName = employee.getLastname();
 		this.gkEmployeeId = employee.getGkEmployeeId();
 		this.department = employee.getDepartment();
-		//this.permission = Permission.valueOf(employee.getPermission());
-		this.emailAdress = employee.getEmailAdress();
+		this.permission = employee.getPermission();
+		this.emailAdress = employee.getEmail();
 		this.assignedDevices = null;
-	}**/
+	}
 	
 	
 	public String getFirstName() {

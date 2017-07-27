@@ -3,6 +3,7 @@
  */
 package gkinventorysystem.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -11,13 +12,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import gkinventorysystem.converter.DepartmentStringConverter;
+import gkinventorysystem.converter.DeviceSatusStringConverter;
+import gkinventorysystem.converter.DeviceTypeStringConverter;
+import gkinventorysystem.converter.PermissionStringConverter;
 import gkinventorysystem.forms.NewDeviceForm;
+import gkinventorysystem.model.Department;
 import gkinventorysystem.model.DeviceGeneral;
+import gkinventorysystem.model.DeviceStatus;
+import gkinventorysystem.model.DeviceType;
 import gkinventorysystem.model.Laptop;
+import gkinventorysystem.model.Permission;
 import gkinventorysystem.service.DeviceManagementService;
 import gkinventorysystem.service.DeviceManagementServiceImp;
 import gkinventorysystem.service.LaptopManagementService;
@@ -37,6 +48,12 @@ public class DeviceManagementController {
 	@Autowired
 	private LaptopManagementServiceImp laptopManagementService;
 
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(DeviceType.class, new DeviceTypeStringConverter());
+		binder.registerCustomEditor(DeviceStatus.class, new DeviceSatusStringConverter());
+	}
 	/**
 	 * Process the display of list of all devices
 	 * 
@@ -49,6 +66,7 @@ public class DeviceManagementController {
 		List<DeviceGeneral> listOfAllDevice = deviceManagementService.getAllDevice();
 
 		model.addAttribute("allDevices", listOfAllDevice);
+		//model.addAttribute("deviceTypeList", this.getDeviceTypes());
 		return "devicemanagement";
 	}
 
@@ -98,6 +116,8 @@ public class DeviceManagementController {
 	public String showAddNewDeviceForm(Model model) {
 
 		model.addAttribute("newDeviceForm", new NewDeviceForm());
+		model.addAttribute("deviceTypeList", this.getDeviceTypes());
+		model.addAttribute("deviceStatusList",this.getDeviceStatus());
 		return "addnewdevice";
 	}
 
@@ -119,7 +139,7 @@ public class DeviceManagementController {
 			return "addnewdevice";
 		}
 
-		if (newDeviceForm.getType().equalsIgnoreCase("laptop")) {
+		if (newDeviceForm.getType().getType().equalsIgnoreCase("laptop")) {
 
 			Laptop newLaptop = new Laptop(newDeviceForm);
 			boolean isLaptopAdded = laptopManagementService.addNewLaptop(newLaptop);
@@ -174,7 +194,7 @@ public class DeviceManagementController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String editDevice(@Valid NewDeviceForm editedDevice, BindingResult bindingResult, Model model) {
 
-		if (editedDevice.getType().equalsIgnoreCase("laptop")) {
+		if (editedDevice.getType().getType().equalsIgnoreCase("laptop")) {
 
 			Laptop editedLaptop = new Laptop(editedDevice);
 			boolean isLaptopEdited = laptopManagementService.editLaptop(editedLaptop);
@@ -256,5 +276,26 @@ public class DeviceManagementController {
 	public String unassignDevice(@PathVariable("deviceTye")String deviceType, @PathVariable("devicegkId")String devicegkId){
 		
 		return "";
+	}
+	
+	private List<DeviceType> getDeviceTypes() {
+		List<DeviceType> deviceTypes = new ArrayList<DeviceType>();
+		deviceTypes.add(new DeviceType("Select Device Type", -1));
+		deviceTypes.add(new DeviceType("Laptop", 1));
+		deviceTypes.add(new DeviceType("Desktop", 2));
+		deviceTypes.add(new DeviceType("Keyboard and Mouse", 3));
+		deviceTypes.add(new DeviceType("Only Keyboard", 4));
+		deviceTypes.add(new DeviceType("Only Mouse", 5));
+		deviceTypes.add(new DeviceType("Mobile Phone", 6));
+
+		return deviceTypes;
+	}
+	
+	private List<DeviceStatus> getDeviceStatus() {
+		List<DeviceStatus> status = new ArrayList<DeviceStatus>();
+		status.add(new DeviceStatus("Select Device Status", -1));
+		status.add(new DeviceStatus("Working", 1));
+		status.add(new DeviceStatus("Defective", 2));
+		return status;
 	}
 }

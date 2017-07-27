@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import gkinventorysystem.model.Department;
 import gkinventorysystem.model.Employee;
+import gkinventorysystem.model.Permission;
 
 /**
  * @author Ibrahim-Abdullah
@@ -37,7 +38,7 @@ public class EmployeeForm {
 	private Department department;
 	
 	@NotNull
-	private String permission;
+	private Permission permission;
 	
 	@NotNull
 	@Email
@@ -53,7 +54,7 @@ public class EmployeeForm {
 		this.lastname = employee.getLastName();
 		this.gkEmployeeId = employee.getGkEmployeeId();
 		this.department = employee.getDepartment();
-		this.permission = String.valueOf(employee.getPermission());
+		this.permission = employee.getPermission();
 		this.email = employee.getEmailAdress();
 	}
 
@@ -89,11 +90,11 @@ public class EmployeeForm {
 		this.department = department;
 	}
 
-	public String getPermission() {
+	public Permission getPermission() {
 		return permission;
 	}
 
-	public void setPermission(String permission) {
+	public void setPermission(Permission permission) {
 		this.permission = permission;
 	}
 

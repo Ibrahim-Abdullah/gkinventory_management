@@ -34,16 +34,24 @@ public class Laptop extends DeviceGeneral{
 	 * @param laptop_status
 	 */
 	public Laptop(String serialNumber, String gkId, String model, String manufacturer, String cpu, int ramSize,
-			int hardDriveSize, String operatingSystem, String laptop_status,String defectDescription) {
+			int hardDriveSize, String operatingSystem, DeviceStatus laptop_status,String defectDescription) {
 		
-		super(serialNumber,gkId,"LAPTOP",model,manufacturer,laptop_status,defectDescription);
+		super(serialNumber,gkId,new DeviceType("laptop",1),model,manufacturer,laptop_status,defectDescription);
 		this.cpu = cpu;
 		this.ramSize = ramSize;
 		this.hardDriveSize = hardDriveSize;
 		this.operatingSystem = operatingSystem;
 	}
 	
-	
+	public Laptop(String serialNumber, String gkId, String model, String manufacturer, String cpu, int ramSize,
+			int hardDriveSize, String operatingSystem, DeviceStatus laptop_status) {
+		
+		super(serialNumber,gkId,new DeviceType("laptop",1),model,manufacturer,laptop_status);
+		this.cpu = cpu;
+		this.ramSize = ramSize;
+		this.hardDriveSize = hardDriveSize;
+		this.operatingSystem = operatingSystem;
+	}
 	/**
 	 * 
 	 * @param newDevice New device from the add new device form
@@ -65,9 +73,9 @@ public class Laptop extends DeviceGeneral{
 	 * @param manufacturer
 	 * @param laptop_status
 	 */
-	public Laptop(String serialNumber, String gkId, String model, String manufacturer, String laptop_status) {
+	public Laptop(String serialNumber, String gkId, String model, String manufacturer, DeviceStatus laptop_status) {
 		
-		super(serialNumber,gkId,model,manufacturer,laptop_status);
+		super(serialNumber,gkId,new DeviceType("laptop",1),model,manufacturer,laptop_status);
 	}
 	public Laptop(){
 		
