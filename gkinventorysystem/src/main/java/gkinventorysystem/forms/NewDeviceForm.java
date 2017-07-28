@@ -40,9 +40,16 @@ public class NewDeviceForm {
 	private String model;
 	
 	//Laptop specific properties
+	@NotNull
 	private String cpu;
-	private int ram;
-	private int hdd;
+	
+	@NotNull
+	private String ram;
+	
+	@NotNull
+	private String hdd;
+	
+	@NotNull
 	private String os;
 	
 	//Defective device property
@@ -63,9 +70,9 @@ public class NewDeviceForm {
 		this.manufacturer = laptop.getManufacturer();
 		this.model = laptop.getModel();
 		this.cpu = laptop.getCpu();
-		this.ram = laptop.getRamSize();
+		this.ram = String.valueOf(laptop.getRamSize());
 		this.os = laptop.getOperatingSystem();
-		this.hdd = laptop.getHardDriveSize();
+		this.hdd = String.valueOf(laptop.getHardDriveSize());
 	}
 	
 
@@ -179,28 +186,28 @@ public class NewDeviceForm {
 	/**
 	 * @return the ram
 	 */
-	public int getRam() {
+	public String getRam() {
 		return ram;
 	}
 
 	/**
 	 * @param ram the ram to set
 	 */
-	public void setRam(int ram) {
+	public void setRam(String ram) {
 		this.ram = ram;
 	}
 
 	/**
 	 * @return the hdd
 	 */
-	public int getHdd() {
+	public String getHdd() {
 		return hdd;
 	}
 
 	/**
 	 * @param hdd the hdd to set
 	 */
-	public void setHdd(int hdd) {
+	public void setHdd(String hdd) {
 		this.hdd = hdd;
 	}
 

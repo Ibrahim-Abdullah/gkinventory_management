@@ -179,13 +179,19 @@ public class DeviceManagementController {
 		if (deviceType.equalsIgnoreCase("laptop")) {
 			DeviceGeneral laptop = laptopManagementService.getLaptopBySerialNumber(deviceSerialNumber);
 			model.addAttribute("newDeviceForm", new NewDeviceForm(laptop));
-
+			model.addAttribute("deviceTypeList", this.getDeviceTypes());
+			model.addAttribute("deviceStatusList",this.getDeviceStatus());
+			model.addAttribute("selectedType",laptop.getDeviceStatus());
 			return "editdevice";
 		}
 
 		DeviceGeneral device = deviceManagementService.getDeviceBySerialNumber(deviceSerialNumber);
 
 		model.addAttribute("newDeviceForm", new NewDeviceForm(device));
+		model.addAttribute("deviceTypeList", this.getDeviceTypes());
+		model.addAttribute("deviceStatusList",this.getDeviceStatus());
+		model.addAttribute("selectedType",device.getDeviceType());
+		model.addAttribute("selectedStatus",device.getDeviceStatus());
 		return "editdevice";
 	}
 

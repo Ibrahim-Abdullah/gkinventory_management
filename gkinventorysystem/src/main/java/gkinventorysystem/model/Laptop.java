@@ -60,8 +60,8 @@ public class Laptop extends DeviceGeneral{
 		super(newDevice.getSerialNumber(),newDevice.getGkId(),newDevice.getType(),newDevice.getModel(),newDevice.getManufacturer(),newDevice.getStatus(),newDevice.getDefectDescription());
 		
 		this.cpu = newDevice.getCpu();
-		this.ramSize = newDevice.getRam();
-		this.hardDriveSize = newDevice.getHdd();
+		this.ramSize = Integer.parseInt(newDevice.getRam());
+		this.hardDriveSize = Integer.parseInt(newDevice.getHdd());
 		this.operatingSystem = newDevice.getOs();
 	}
 

@@ -6,11 +6,11 @@
 
 <link rel="stylesheet"
 	href="../../../resources/static/css/bootstrap.min.css"
-	th:href="@{../../resources/static/css/bootstrap.min.css}" />
+	th:href="@{../../../resources/static/css/bootstrap.min.css}" />
 <link rel="stylesheet" href="../../../resources/static/css/style.css"
-	th:href="@{../../resources/static/css/style.css}" />
+	th:href="@{../../../resources/static/css/style.css}" />
 <script src="../../../resources/static/js/jquery-3.2.1.min.js"
-	th:src="@{../../resources/static/js/jquery-3.2.1.min.js}"></script>
+	th:src="@{../../../resources/static/js/jquery-3.2.1.min.js}"></script>
 </head>
 <body>
 
@@ -46,102 +46,57 @@
 					<label class="control-label col-sm-3 col-md-offset-1">Device
 						Type</label>
 					<div class="col-sm-6">
-						<select onchange="isLaptop(this);" class="form-control"
-							th:field="*{type}">
+						<select class="form-control" name="type" id="type">
 							<option th:each="deviceType : ${deviceTypeList}"
 								th:value="${deviceType.key}" th:text="${deviceType.type}"
-								th:selected="${deviceType.type == newDeviceForm.type.type}"></option>
+								th:selected="${deviceType.key==selectedType.key}"></option>
 						</select>
 					</div>
 				</div>
-				<!-- <div class="form-group">
-					<label class="control-label col-sm-3 col-md-offset-1">Device Type</label>
-					<div class="col-sm-6">
-					
-					<!-- DISABLED BECAUSE DEVICE TYPE IS NOT SUPPOSED TO BE CHANGED 
-						<select onchange="laptopSelected(this);" class="form-control"
-							disabled th:field="*{type}">
-							<option value="">Select</option>
-							<option value="laptop">Laptop</option>
-							<option value="desktop">Desktop</option>
-							<option value="keyboardMouse">Keyboard and Mouse</option>
-							<option value="keyboard">Only Keyboard</option>
-							<option value="mouse">Only Mouse</option>
-							<option value="mobilePhone">Mobile Phone</option>
-						</select>
-					</div>
-				</div>-->
 
 				<!-- LAPTOP SPECIFIC PROPERTIES -->
-				<div class="form-group" id="cpu" style="display: none">
+				<div class="form-group" id="cpu" th:if="${selectedType.key==1}">
 					<label class="control-label col-sm-3 col-md-offset-1" for="cpu">CPU</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="cpu"
-							th:fields="*{cpu}">
+						<input type="text" class="form-control" id="cpu" th:value="${newDeviceForm.cpu}"
+							>
 					</div>
 				</div>
-				<div class="form-group" id="rame" style="display: none">
+				<div class="form-group" th:if="${selectedType.key==1}">
 					<label class="control-label col-sm-3 col-md-offset-1" for="ram">RAM(MB)</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="ram"
-							th:fields="*{ram}">
+						<input type="text" class="form-control"
+							th:field="*{ram}">
 					</div>
 				</div>
-				<div class="form-group" id="hdde" style="display: none">
+				<div class="form-group" th:if="${selectedType.key==1}">
 					<label class="control-label col-sm-3 col-md-offset-1" for="hdd">HDD(GB)</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="hdd"
-							th:fields="*{hdd}">
+							th:field="*{hdd}">
 					</div>
 				</div>
-				<div class="form-group" id="ose" style="display: none">
+				<div class="form-group" th:if="${selectedType.key==1}">
 					<label class="control-label col-sm-3 col-md-offset-1" for="os">OS</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="os" th:fields="*{os}">
+						<input type="text" class="form-control" th:field="*{os}">
 					</div>
 				</div>
-				<script>
-					function laptopSelected(optionSelected) {
-						if (optionSelected.value == "laptop") {
-							document.getElementById("cpu").style.display = "block";
-							document.getElementById("ram").style.display = "block";
-							document.getElementById("hdd").style.display = "block";
-							document.getElementById("os").style.display = "block";
-						} else {
-							document.getElementById("cpu").style.display = "none";
-							document.getElementById("ram").style.display = "none";
-							document.getElementById("hdd").style.display = "none";
-							document.getElementById("os").style.display = "none";
-						}
-					}
-				</script>
 
 				<div class="form-group">
 					<label class="control-label col-sm-3 col-md-offset-1">Status</label>
 					<div class="col-sm-6">
-						<select class="form-control" onchange="defectiveSelected(this);">
-							<option value="">Select</option>
-							<option value="working">Working</option>
-							<option value="defective">Defective</option>
+						<select class="form-control" name="status" id="status">
+							<option th:each="status : ${deviceStatusList}"
+								th:value="${status.key}" th:text="${status.status}" th:selected="${status.key == selectedStatus.key}"></option>
 						</select>
 					</div>
 				</div>
-				
-				<!-- DEFECTIVE DEVICES -->
-				<script>
-					function defectiveSelected(optionSelected) {
-						if (optionSelected.value == "defective") {
-							document.getElementById("defectiveDes").style.display = "block";
-						} else {
-							document.getElementById("defectiveDes").style.display = "none";
-						}
-					}
-				</script>
-				<div class="form-group" id="defectiveDes" style="display: none;">
+				<div class="form-group" id="defectiveDes" th:if="${selectedStatus.key==2}">
 					<label class="control-label col-sm-4" for="defectiveDes">Defect
 						Description</label>
 					<div class="col-sm-6">
-						<textarea rows="5" class="form-control" id="defectiveDescription">
+						<textarea rows="5" class="form-control" id="defectiveDescription" th:text="*{defectDescription}">
 					  				
 					  			</textarea>
 					</div>
@@ -149,9 +104,9 @@
 				
 				
 				<div class="form-group">
-					<label class="control-label col-sm-3 col-md-offset-1" for="manufacture">Manufacture</label>
+					<label class="control-label col-sm-3 col-md-offset-1" for="manufacturer">Manufacture</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="manufacture" readonly th:field="*{manufacture}">
+						<input type="text" class="form-control" id="manufacturer" readonly th:field="*{manufacturer}">
 					</div>
 				</div>
 				<div class="form-group">
